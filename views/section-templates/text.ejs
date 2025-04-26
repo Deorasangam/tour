@@ -1,0 +1,29 @@
+<% /** * Text Section Template * * Available variables: * - section: The entire
+section object * - content: The section content object * - styles: Custom styles
+for the section * - classes: Custom CSS classes */ // Default content if none
+provided const defaultContent = { heading: "Text Section Heading", text: "
+<p>
+  This is a sample text section. You can edit this content in the admin panel.
+</p>
+", alignment: "left" }; // Merge provided content with defaults const
+sectionContent = {...defaultContent, ...(content || {})}; // Process custom
+styles const customStyles = styles || {}; const styleString =
+Object.entries(customStyles) .map(([key, value]) => `${key}: ${value}`) .join(';
+'); // Process alignment classes let alignmentClass = ''; if
+(sectionContent.alignment === 'center') { alignmentClass = 'text-center'; } else
+if (sectionContent.alignment === 'right') { alignmentClass = 'text-end'; } %>
+
+<section
+  class="section text-section <%= classes %> <%= alignmentClass %>"
+  style="<%= styleString %>"
+>
+  <div class="container">
+    <div class="section-content">
+      <% if (sectionContent.heading) { %>
+      <h2 class="section-heading"><%= sectionContent.heading %></h2>
+      <% } %>
+
+      <div class="section-text"><%- sectionContent.text %></div>
+    </div>
+  </div>
+</section>

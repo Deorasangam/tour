@@ -1,0 +1,1960 @@
+<%- include('../components/header', { pageTitle: 'Edit Section: ' +
+section.displayName, breadcrumb: [ { label: 'Sections', link: '/admin/sections'
+}, { label: section.displayName } ] }) %>
+
+<div class="page-intro">
+  <div class="intro-content">
+    <div class="intro-icon">
+      <i class="<%= section.icon %>"></i>
+    </div>
+    <div class="intro-text">
+      <h2>Editing "<%= section.displayName %>" Section</h2>
+      <p>Update the content and settings for this section of your website. Changes will be reflected on the frontend after saving.</p>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <h2 class="card-title">
+      <i class="<%= section.icon %>"></i>
+      Edit <%= section.displayName %>
+    </h2>
+    <div>
+      <div class="form-check form-switch d-flex align-items-center">
+        <label class="form-check-label me-2" for="sectionStatus">
+          <% if (section.isActive) { %>
+          <span class="badge badge-success">Active</span>
+          <% } else { %>
+          <span class="badge badge-danger">Hidden</span>
+          <% } %>
+        </label>
+        <button
+          class="btn btn-sm btn-warning toggle-section-btn"
+          data-id="<%= section._id %>"
+          data-name="<%= section.displayName %>"
+          data-active="<%= section.isActive %>"
+        >
+          <% if (section.isActive) { %>
+          <i class="fas fa-eye-slash"></i> Hide Section <% } else { %>
+          <i class="fas fa-eye"></i> Show Section <% } %>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <form
+      id="sectionForm"
+      action="/api/sections/<%= section._id %>"
+      data-method="PUT"
+      data-redirect="/admin/sections"
+    >
+      <div class="form-section">
+        <h3 class="form-section-title">Section Information</h3>
+        <div class="form-section-body">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="displayName" class="form-label"
+              >Section Display Name</label
+            >
+            <input
+              type="text"
+              id="displayName"
+              name="displayName"
+              class="form-control"
+              value="<%= section.displayName %>"
+              required
+            />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="icon" class="form-label">Icon (Font Awesome)</label>
+            <div class="input-group">
+              <input
+                type="text"
+                id="icon"
+                name="icon"
+                class="form-control"
+                value="<%= section.icon %>"
+              />
+              <div class="input-group-append">
+                <span class="input-group-text">
+                  <i class="<%= section.icon %>"></i>
+                </span>
+              </div>
+            </div>
+            <small class="form-text text-muted"
+              >Enter a Font Awesome icon class (e.g., fas fa-edit)</small
+            >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section Content -->
+      <div class="form-section">
+        <h3 class="form-section-title">Section Content</h3>
+        <div class="form-section-body">
+
+        <% if (section.name === 'navbar') { %>
+        <!-- Header & Navigation Section -->
+        <div class="card mb-4">
+          <div class="card-header">
+            <h4 class="mb-0">Logo Settings</h4>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <label for="logo_text" class="form-label">Logo Text</label>
+                  <input
+                    type="text"
+                    id="logo_text"
+                    name="content.logo.text"
+                    class="form-control"
+                    value="<%= section.content.logo?.text || 'LUXTRIPPER' %>"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <label for="logo_accent" class="form-label">Accent Text (highlighted part)</label>
+                  <input
+                    type="text"
+                    id="logo_accent"
+                    name="content.logo.accentText"
+                    class="form-control"
+                    value="<%= section.content.logo?.accentText || 'LUX' %>"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="logo_url" class="form-label">Logo URL</label>
+              <input
+                type="text"
+                id="logo_url"
+                name="content.logo.url"
+                class="form-control"
+                value="<%= section.content.logo?.url || '#' %>"
+                placeholder="e.g., /, /home, https://example.com"
+              />
+              <small class="form-text text-muted">The URL that the logo links to when clicked</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mb-4">
+          <div class="card-header">
+            <h4 class="mb-0">Contact Information</h4>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <label for="contact_phone" class="form-label">Phone Number</label>
+                  <input
+                    type="text"
+                    id="contact_phone"
+                    name="content.contactPhone.number"
+                    class="form-control"
+                    value="<%= section.content.contactPhone?.number || '' %>"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <label for="contact_icon" class="form-label">Phone Icon (Font Awesome)</label>
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      id="contact_icon"
+                      name="content.contactPhone.icon"
+                      class="form-control"
+                      value="<%= section.content.contactPhone?.icon || 'fas fa-phone-alt' %>"
+                    />
+                    <div class="input-group-append">
+                      <span class="input-group-text">
+                        <i class="<%= section.content.contactPhone?.icon || 'fas fa-phone-alt' %>"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mb-4">
+          <div class="card-header">
+            <h4 class="mb-0">Call to Action Button</h4>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <label for="cta_text" class="form-label">Button Text</label>
+                  <input
+                    type="text"
+                    id="cta_text"
+                    name="content.ctaButton.text"
+                    class="form-control"
+                    value="<%= section.content.ctaButton?.text || 'Plan Your Trip' %>"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <label for="cta_url" class="form-label">Button URL</label>
+                  <input
+                    type="text"
+                    id="cta_url"
+                    name="content.ctaButton.url"
+                    class="form-control"
+                    value="<%= section.content.ctaButton?.url || '#' %>"
+                    placeholder="e.g., /contact, #contact-form"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <h4 class="mb-0">Navigation Menu Items</h4>
+            <button type="button" id="addMenuItem" class="btn btn-sm btn-success">
+              <i class="fas fa-plus"></i> Add Menu Item
+            </button>
+          </div>
+          <div class="card-body">
+            <div id="menuItemsContainer">
+              <% 
+              // Get menu items or set default empty array
+              const menuItems = section.content.menuItems || [];
+              
+              // Sort by order
+              menuItems.sort((a, b) => (a.order || 0) - (b.order || 0));
+              
+              // Display each menu item
+              menuItems.forEach(function(item, index) { 
+              %>
+              <div class="menu-item card mb-3">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                  <div class="d-flex align-items-center">
+                    <span class="menu-item-handle me-2"><i class="fas fa-grip-vertical"></i></span>
+                    <h5 class="mb-0">Menu Item: <%= item.text %></h5>
+                  </div>
+                  <button type="button" class="btn btn-sm btn-danger remove-menu-item">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-5">
+                      <div class="form-group mb-3">
+                        <label class="form-label">Menu Text</label>
+                        <input
+                          type="text"
+                          name="content.menuItems[<%= index %>].text"
+                          class="form-control"
+                          value="<%= item.text || '' %>"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-5">
+                      <div class="form-group mb-3">
+                        <label class="form-label">URL / Link</label>
+                        <input
+                          type="text"
+                          name="content.menuItems[<%= index %>].url"
+                          class="form-control"
+                          value="<%= item.url || '#' %>"
+                          placeholder="e.g., /about, #contact-section"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-2">
+                      <div class="form-group mb-3">
+                        <label class="form-label">Order</label>
+                        <input
+                          type="number"
+                          name="content.menuItems[<%= index %>].order"
+                          class="form-control menu-item-order"
+                          value="<%= item.order || index + 1 %>"
+                          min="1"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <% }); %>
+            </div>
+            <% if (menuItems.length === 0) { %>
+              <div class="alert alert-info">
+                <i class="fas fa-info-circle"></i> No menu items have been added yet. Click "Add Menu Item" to create your navigation menu.
+              </div>
+            <% } %>
+          </div>
+        </div>
+
+        <% } else if (section.name === 'hero') { %>
+        <!-- Hero Section -->
+        <div class="form-group">
+          <label for="content_title" class="form-label">Title</label>
+          <input
+            type="text"
+            id="content_title"
+            name="content.title"
+            class="form-control"
+            value="<%= section.content.title || '' %>"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="content_subtitle" class="form-label">Subtitle</label>
+          <input
+            type="text"
+            id="content_subtitle"
+            name="content.subtitle"
+            class="form-control"
+            value="<%= section.content.subtitle || '' %>"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="content_location" class="form-label">Location</label>
+          <input
+            type="text"
+            id="content_location"
+            name="content.location"
+            class="form-control"
+            value="<%= section.content.location || '' %>"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Background Image</label>
+          <div class="card p-3 bg-light">
+            <div class="mb-3">
+              <label class="form-label fw-bold">Option 1: Enter Image URL</label>
+            <input
+              type="text"
+              id="content_backgroundImage"
+              name="content.backgroundImage"
+              class="form-control"
+              value="<%= section.content.backgroundImage || '' %>"
+              placeholder="Image URL"
+            />
+            </div>
+            
+            <div class="mb-3">
+              <label class="form-label fw-bold">Option 2: Upload from your device</label>
+              <input 
+                type="file" 
+                id="backgroundImageFile" 
+                class="form-control mb-2" 
+                accept="image/*"
+              />
+              <div class="d-grid">
+              <button
+                type="button"
+                  id="uploadBackgroundBtn"
+                  class="btn btn-primary">
+                  <i class="fas fa-upload"></i> Upload Image
+              </button>
+            </div>
+              <small class="form-text text-muted mt-1">Select an image and click Upload to immediately upload it</small>
+          </div>
+
+            <div id="uploadProgressContainer" class="progress mb-3 d-none">
+              <div id="uploadProgress" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+            </div>
+
+            <div class="image-preview mt-2" id="backgroundImagePreviewContainer" <%= section.content.backgroundImage ? '' : 'style="display: none;"' %>>
+              <img
+                id="backgroundImagePreview"
+                src="<%= section.content.backgroundImage || '' %>"
+              alt="Background Image"
+                style="max-width: 100%; max-height: 200px"
+            />
+          </div>
+          </div>
+        </div>
+
+        <!-- Key Points Section -->
+        <div class="card mt-4">
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <h4 class="card-title">Key Points</h4>
+            <button type="button" id="addKeyPoint" class="btn btn-sm btn-success">
+              <i class="fas fa-plus"></i> Add Key Point
+            </button>
+          </div>
+          <div class="card-body">
+            <div id="keyPointsContainer">
+              <% 
+              // Convert the object-based keyPoints to an array format for dynamic handling
+              let keyPointsArray = [];
+              if (section.content.keyPoints) {
+                if (Array.isArray(section.content.keyPoints)) {
+                  // If it's already an array, use it directly
+                  keyPointsArray = section.content.keyPoints;
+                } else {
+                  // If it's an object with named keys, convert to array
+                  Object.keys(section.content.keyPoints).forEach(key => {
+                    const item = section.content.keyPoints[key];
+                    keyPointsArray.push({
+                      title: key.charAt(0).toUpperCase() + key.slice(1), // Capitalize the key name as title
+                      icon: item.icon || '',
+                      detail: item.value || '',
+                      size: item.size || 'minor'
+                    });
+                  });
+                }
+              }
+              
+              // Now render each key point from the array
+              keyPointsArray.forEach(function(keyPoint, index) { 
+              %>
+              <div class="key-point-item card mb-3">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                  <h5 class="mb-0">Key Point <%= index + 1 %>: <%= keyPoint.title %></h5>
+                  <button type="button" class="btn btn-sm btn-danger remove-key-point">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </div>
+                <div class="card-body">
+                  <div class="form-group mb-3">
+                    <label class="form-label">Title</label>
+                    <input
+                      type="text"
+                      name="content.keyPoints[<%= index %>].title"
+                      class="form-control"
+                      value="<%= keyPoint.title || '' %>"
+                      required
+                    />
+                  </div>
+                  
+                  <div class="form-group mb-3">
+                    <label class="form-label">Icon (Font Awesome)</label>
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        name="content.keyPoints[<%= index %>].icon"
+                        class="form-control key-point-icon-input"
+                        value="<%= keyPoint.icon || '' %>"
+                      />
+                      <div class="input-group-append">
+                        <span class="input-group-text">
+                          <i class="<%= keyPoint.icon || 'fas fa-info-circle' %>"></i>
+                        </span>
+                      </div>
+                    </div>
+                    <small class="form-text text-muted">Enter a Font Awesome icon class (e.g., fas fa-building)</small>
+                  </div>
+                  
+                  <div class="form-group mb-3">
+                    <label class="form-label">Detail/Description</label>
+                    <input
+                      type="text"
+                      name="content.keyPoints[<%= index %>].detail"
+                      class="form-control"
+                      value="<%= keyPoint.detail || '' %>"
+                    />
+                  </div>
+                  
+                  <div class="form-group">
+                    <label class="form-label d-flex align-items-center">
+                      <span class="me-2">Size:</span>
+                      <div class="form-check form-switch">
+                        <input 
+                          class="form-check-input key-point-size-toggle" 
+                          type="checkbox" 
+                          id="keyPointSize<%= index %>" 
+                          <%= (keyPoint.size === 'major') ? 'checked' : '' %>
+                        >
+                        <input 
+                          type="hidden" 
+                          name="content.keyPoints[<%= index %>].size" 
+                          value="<%= keyPoint.size || 'minor' %>"
+                          class="key-point-size-input"
+                        >
+                        <label class="form-check-label" for="keyPointSize<%= index %>">
+                          <span class="size-label"><%= (keyPoint.size === 'major') ? 'Major (Full Width)' : 'Minor (Half Width)' %></span>
+                        </label>
+                      </div>
+                    </label>
+                    <div class="key-point-preview mt-2">
+                      <div class="key-point-preview-container <%= (keyPoint.size === 'major') ? 'preview-major' : 'preview-minor' %>">
+                        <div class="preview-card">
+                          <div class="preview-title"><i class="<%= keyPoint.icon || 'fas fa-info-circle' %>"></i> <%= keyPoint.title || 'Key Point' %></div>
+                          <div class="preview-content"><%= keyPoint.detail || '' %></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <% }); %>
+            </div>
+          </div>
+        </div>
+
+        <% } else if (section.name === 'about' || section.name === 'history' ||
+        section.name === 'architecture' || section.name === 'travel') { %>
+        <!-- Text Content Sections -->
+        <div class="form-group">
+          <label for="content_title" class="form-label">Title</label>
+          <input
+            type="text"
+            id="content_title"
+            name="content.title"
+            class="form-control"
+            value="<%= section.content.title || '' %>"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="content_description" class="form-label">Description</label>
+          <div class="card p-3 bg-light">
+          <textarea
+            id="content_description"
+            name="content.description"
+              class="form-control"
+              rows="8"
+              placeholder="Enter description here..."
+            ><%= section.content.description || '' %></textarea>
+            <small class="form-text text-muted mt-2">
+              <i class="fas fa-info-circle"></i> Use simple text formatting. This description will be displayed on the website.
+            </small>
+          </div>
+        </div>
+
+        <% if (section.name === 'architecture') { %>
+        <!-- Architecture Cards Section -->
+        <div class="card mt-4">
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <h4 class="card-title">Architecture Cards</h4>
+            <button type="button" id="addArchCard" class="btn btn-sm btn-success">
+              <i class="fas fa-plus"></i> Add Card
+            </button>
+          </div>
+          <div class="card-body">
+            <div id="archCardsContainer">
+              <% 
+              // Convert the arch-cards to an array format for dynamic handling
+              let archCardsArray = [];
+              if (section.content.archCards) {
+                if (Array.isArray(section.content.archCards)) {
+                  // If it's already an array, use it directly
+                  archCardsArray = section.content.archCards;
+                } 
+              }
+              
+              // Now render each arch card from the array
+              archCardsArray.forEach(function(card, index) { 
+              %>
+              <div class="arch-card-item card mb-3">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                  <h5 class="mb-0">Card <%= index + 1 %>: <%= card.label || 'New Card' %></h5>
+                  <button type="button" class="btn btn-sm btn-danger remove-arch-card">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </div>
+                <div class="card-body">
+                  <div class="form-group mb-3">
+                    <label class="form-label">Label</label>
+                    <input
+                      type="text"
+                      name="content.archCards[<%= index %>].label"
+                      class="form-control arch-card-label-input"
+                      value="<%= card.label || '' %>"
+                      required
+                    />
+                  </div>
+                  
+                  <div class="form-group mb-3">
+                    <label class="form-label">Icon (Font Awesome)</label>
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        name="content.archCards[<%= index %>].icon"
+                        class="form-control arch-card-icon-input"
+                        value="<%= card.icon || '' %>"
+                      />
+                      <div class="input-group-append">
+                        <span class="input-group-text">
+                          <i class="<%= card.icon || 'fas fa-info-circle' %>"></i>
+                        </span>
+                      </div>
+                    </div>
+                    <small class="form-text text-muted">Enter a Font Awesome icon class (e.g., fas fa-building)</small>
+                  </div>
+                  
+                  <div class="form-group mb-3">
+                    <label class="form-label">Content</label>
+                    <textarea
+                      name="content.archCards[<%= index %>].content"
+                      class="form-control arch-card-content-input"
+                      rows="3"
+                    ><%= card.content || '' %></textarea>
+                  </div>
+
+                  <div class="form-group mb-3">
+                    <label class="form-label">Secondary Text (Optional)</label>
+                    <input
+                      type="text"
+                      name="content.archCards[<%= index %>].secondary"
+                      class="form-control arch-card-secondary-input"
+                      value="<%= card.secondary || '' %>"
+                    />
+                    <small class="form-text text-muted">Additional information displayed in smaller text (e.g., organization name)</small>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label class="form-label d-flex align-items-center">
+                      <span class="me-2">Size:</span>
+                      <div class="form-check form-switch">
+                        <input 
+                          class="form-check-input arch-card-size-toggle" 
+                          type="checkbox" 
+                          id="archCardSize<%= index %>" 
+                          <%= (card.isFullWidth) ? 'checked' : '' %>
+                        >
+                        <input 
+                          type="hidden" 
+                          name="content.archCards[<%= index %>].isFullWidth" 
+                          value="<%= card.isFullWidth ? 'true' : 'false' %>"
+                          class="arch-card-size-input"
+                        >
+                        <label class="form-check-label" for="archCardSize<%= index %>">
+                          <span class="size-label"><%= (card.isFullWidth) ? 'Full Width' : 'Half Width' %></span>
+                        </label>
+                      </div>
+                    </label>
+                    <div class="arch-card-preview mt-2">
+                      <div class="arch-card-preview-container <%= (card.isFullWidth) ? 'preview-full' : 'preview-half' %>">
+                        <div class="preview-arch-card">
+                          <div class="preview-label"><i class="<%= card.icon || 'fas fa-info-circle' %>"></i> <%= card.label || 'Card Label' %></div>
+                          <div class="preview-content"><%= card.content || '' %></div>
+                          <% if (card.secondary) { %>
+                          <div class="preview-secondary"><%= card.secondary %></div>
+                          <% } %>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <% }); %>
+            </div>
+          </div>
+        </div>
+        <% } %>
+
+        <% if (section.name === 'history' || section.name === 'architecture') { %>
+        <div class="form-group">
+          <label for="content_image" class="form-label">Section Image</label>
+          <div class="card p-3 bg-light">
+            <div class="mb-3">
+              <label class="form-label fw-bold">Option 1: Enter Image URL</label>
+            <input
+              type="text"
+              id="content_image"
+              name="content.image"
+              class="form-control"
+              value="<%= section.content.image || '' %>"
+              placeholder="Image URL"
+            />
+            </div>
+            
+            <div class="mb-3">
+              <label class="form-label fw-bold">Option 2: Upload from your device</label>
+              <input 
+                type="file" 
+                id="sectionImageFile" 
+                class="form-control mb-2" 
+                accept="image/*"
+              />
+              <div class="d-grid">
+              <button
+                type="button"
+                  id="uploadSectionImageBtn"
+                  class="btn btn-primary">
+                  <i class="fas fa-upload"></i> Upload Image
+              </button>
+            </div>
+              <small class="form-text text-muted mt-1">Select an image and click Upload to immediately upload it</small>
+          </div>
+
+            <div id="sectionUploadProgressContainer" class="progress mb-3 d-none">
+              <div id="sectionUploadProgress" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+          </div>
+
+            <div class="image-preview mt-2" id="sectionImagePreviewContainer" <%= section.content.image ? '' : 'style="display: none;"' %>>
+              <img
+                id="sectionImagePreview"
+                src="<%= section.content.image || '' %>"
+                alt="Section Image"
+                style="max-width: 100%; max-height: 200px"
+              />
+            </div>
+          </div>
+        </div>
+        <% } %> <% } else if (section.name === 'observation-decks') { %>
+        <!-- Observation Decks Section -->
+        <div class="form-group">
+          <label for="content_title" class="form-label">Title</label>
+          <input
+            type="text"
+            id="content_title"
+            name="content.title"
+            class="form-control"
+            value="<%= section.content.title || '' %>"
+          />
+        </div>
+
+        <div class="card mt-3">
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <h4 class="card-title mb-0">Decks</h4>
+            <button type="button" id="addDeck" class="btn btn-sm btn-success">
+              <i class="fas fa-plus"></i> Add Deck
+            </button>
+          </div>
+          <div class="card-body">
+            <div id="decksContainer">
+              <% if (section.content.decks && section.content.decks.length > 0)
+              { %> <% section.content.decks.forEach(function(deck, index) { %>
+              <div class="deck-item card mb-3">
+                <div
+                  class="card-header d-flex justify-content-between align-items-center"
+                >
+                  <h5 class="mb-0">Deck <%= index + 1 %>: <%= deck.title %></h5>
+                  <button
+                    type="button"
+                    class="btn btn-sm btn-danger remove-deck"
+                  >
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </div>
+                <div class="card-body">
+                  <div class="form-group">
+                    <label class="form-label">Title</label>
+                    <input
+                      type="text"
+                      name="content.decks[<%= index %>].title"
+                      class="form-control"
+                      value="<%= deck.title || '' %>"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label">Floors</label>
+                    <input
+                      type="text"
+                      name="content.decks[<%= index %>].floors"
+                      class="form-control"
+                      value="<%= deck.floors || '' %>"
+                    />
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="form-label">Opening Weekdays</label>
+                        <input
+                          type="text"
+                          name="content.decks[<%= index %>].openingWeekdays"
+                          class="form-control"
+                          value="<%= deck.openingWeekdays || '' %>"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="form-label">Opening Weekends</label>
+                        <input
+                          type="text"
+                          name="content.decks[<%= index %>].openingWeekends"
+                          class="form-control"
+                          value="<%= deck.openingWeekends || '' %>"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label">Closing Time</label>
+                    <input
+                      type="text"
+                      name="content.decks[<%= index %>].closing"
+                      class="form-control"
+                      value="<%= deck.closing || '' %>"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label">Image</label>
+                    <div class="card p-3 bg-light">
+                      <div class="mb-3">
+                        <label class="form-label fw-bold">Option 1: Enter Image URL</label>
+                      <input
+                        type="text"
+                        name="content.decks[<%= index %>].image"
+                          class="form-control deck-image-input"
+                        value="<%= deck.image || '' %>"
+                        placeholder="Image URL"
+                        >
+                      </div>
+                      
+                      <div class="mb-3">
+                        <label class="form-label fw-bold">Option 2: Upload from your device</label>
+                        <input type="file" class="form-control deck-image-file mb-2" accept="image/*">
+                        <div class="d-grid">
+                          <button type="button" class="btn btn-primary upload-deck-image-btn">
+                            <i class="fas fa-upload"></i> Upload Image
+                        </button>
+                      </div>
+                        <small class="form-text text-muted mt-1">Select an image and click Upload to immediately upload it</small>
+                    </div>
+
+                      <div class="progress mb-3 deck-upload-progress d-none">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                    </div>
+                      
+                      <div class="deck-image-preview-container mt-2" style="display: none;">
+                        <img src="" alt="Deck Image" class="deck-image-preview" style="max-width: 100%; max-height: 200px">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <% }); %> <% } %>
+            </div>
+          </div>
+        </div>
+
+        <% } else { %>
+        <!-- Generic content for other sections -->
+        <div class="card p-3 mb-4">
+        <div class="form-group">
+          <label for="content_title" class="form-label">Title</label>
+          <input
+            type="text"
+            id="content_title"
+            name="content.title"
+            class="form-control"
+            value="<%= section.content.title || '' %>"
+          />
+        </div>
+
+        <% if (section.content.subtitle) { %>
+        <div class="form-group">
+          <label for="content_subtitle" class="form-label">Subtitle</label>
+          <input
+            type="text"
+            id="content_subtitle"
+            name="content.subtitle"
+            class="form-control"
+            value="<%= section.content.subtitle || '' %>"
+          />
+        </div>
+          <% } %> 
+          
+          <% if (section.content.description) { %>
+        <div class="form-group">
+            <label for="content_description" class="form-label">Description</label>
+            <div class="card p-3 bg-light">
+          <textarea
+            id="content_description"
+            name="content.description"
+                class="form-control"
+                rows="8"
+                placeholder="Enter description here..."
+              ><%= section.content.description || '' %></textarea>
+              <small class="form-text text-muted mt-2">
+                <i class="fas fa-info-circle"></i> Use simple text formatting. This description will be displayed on the website.
+              </small>
+            </div>
+        </div>
+        <% } %>
+
+        <!-- Display JSON of other content properties -->
+        <div class="form-group mt-4">
+          <label class="form-label">Additional Content Properties</label>
+          <div class="alert alert-info">
+            <p>
+              This section contains additional content properties that can be
+              edited in JSON format:
+            </p>
+            <pre class="mb-0">
+<%= JSON.stringify(section.content, null, 2) %></pre
+            >
+          </div>
+          <p class="text-muted">
+            To edit these properties, please use the API directly or contact
+            your developer.
+          </p>
+          </div>
+        </div>
+        <% } %>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <div class="form-actions-container">
+          <a href="/admin/sections" class="btn btn-secondary">
+            <i class="fas fa-times"></i> Cancel
+          </a>
+        <button type="submit" class="btn btn-primary">
+          <i class="fas fa-save"></i> Save Changes
+        </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="card-footer text-end">
+  <p class="text-muted small mb-0">
+    <i class="fas fa-info-circle"></i> 
+    Last updated: <%= new Date(section.updatedAt).toLocaleString() %>
+  </p>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Background image upload handler
+    const backgroundImageFile = document.getElementById("backgroundImageFile");
+    const uploadBackgroundBtn = document.getElementById("uploadBackgroundBtn");
+    const backgroundImageInput = document.getElementById("content_backgroundImage");
+    const backgroundImagePreview = document.getElementById("backgroundImagePreview");
+    const backgroundImagePreviewContainer = document.getElementById("backgroundImagePreviewContainer");
+    const uploadProgressContainer = document.getElementById("uploadProgressContainer");
+    const uploadProgress = document.getElementById("uploadProgress");
+    
+    if (backgroundImageFile && uploadBackgroundBtn) {
+      uploadBackgroundBtn.addEventListener("click", function() {
+        if (!backgroundImageFile.files || !backgroundImageFile.files[0]) {
+          alert("Please select a file to upload");
+          return;
+        }
+        
+        const file = backgroundImageFile.files[0];
+        const formData = new FormData();
+        formData.append("image", file);
+        
+        // Show progress bar
+        uploadProgressContainer.classList.remove("d-none");
+        uploadProgress.style.width = "0%";
+        uploadProgress.textContent = "0%";
+        
+        // Create a request
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", `/api/sections/<%= section._id %>/upload?type=background`, true);
+        
+        // Track upload progress
+        xhr.upload.onprogress = function(e) {
+          if (e.lengthComputable) {
+            const percentComplete = Math.round((e.loaded / e.total) * 100);
+            uploadProgress.style.width = percentComplete + "%";
+            uploadProgress.textContent = percentComplete + "%";
+          }
+        };
+        
+        // Handle response
+        xhr.onload = function() {
+          if (xhr.status === 200) {
+            const response = JSON.parse(xhr.responseText);
+            
+            if (response.success) {
+              // Fix the image URL path to ensure it works on the frontend
+              // The server returns a path relative to the public directory, but we need a path that works on the frontend
+              let imageUrl = response.file.fullPath;
+              
+              // Make sure the URL doesn't have double slashes
+              imageUrl = imageUrl.replace(/\/\//g, '/');
+              
+              // If the URL doesn't start with http or https, make sure it starts with a single slash
+              if (!imageUrl.startsWith('http') && !imageUrl.startsWith('/')) {
+                imageUrl = '/' + imageUrl;
+              }
+              
+              // Update the image URL in the input field
+              backgroundImageInput.value = imageUrl;
+              
+              // Update the preview image
+              console.log("Setting preview image src to:", imageUrl);
+              backgroundImagePreview.src = imageUrl;
+              
+              // Force the browser to re-render the image by setting a timestamp parameter
+              const timestamp = new Date().getTime();
+              const imgWithTimestamp = imageUrl + '?t=' + timestamp;
+              backgroundImagePreview.src = imgWithTimestamp;
+              
+              // Make sure the preview container is visible
+              backgroundImagePreviewContainer.style.display = "block";
+              
+              // Show success message
+              alert("Image uploaded successfully!");
+              
+              // Log the image URL for debugging
+              console.log("Image URL saved:", imageUrl);
+            } else {
+              alert("Upload failed: " + (response.message || "Unknown error"));
+            }
+          } else {
+            alert("Upload failed with status: " + xhr.status);
+          }
+          
+          // Hide progress bar after completion
+          uploadProgressContainer.classList.add("d-none");
+        };
+        
+        // Handle errors
+        xhr.onerror = function() {
+          alert("Upload failed. Please check your connection and try again.");
+          uploadProgressContainer.classList.add("d-none");
+        };
+        
+        // Send the request
+        xhr.send(formData);
+      });
+      
+      // Preview selected file before upload
+      backgroundImageFile.addEventListener("change", function() {
+        if (this.files && this.files[0]) {
+          const reader = new FileReader();
+
+          reader.onload = function(e) {
+            backgroundImagePreview.src = e.target.result;
+            backgroundImagePreviewContainer.style.display = "block";
+          };
+
+          reader.readAsDataURL(this.files[0]);
+        }
+      });
+    }
+    
+    // Link URL input to preview
+    if (backgroundImageInput) {
+      backgroundImageInput.addEventListener("input", function() {
+        if (this.value) {
+          backgroundImagePreview.src = this.value;
+          backgroundImagePreviewContainer.style.display = "block";
+        } else {
+          backgroundImagePreviewContainer.style.display = "none";
+        }
+      });
+    }
+
+    // Section image upload handler (for history and architecture sections)
+    const sectionImageFile = document.getElementById("sectionImageFile");
+    const uploadSectionImageBtn = document.getElementById("uploadSectionImageBtn");
+    const sectionImageInput = document.getElementById("content_image");
+    const sectionImagePreview = document.getElementById("sectionImagePreview");
+    const sectionImagePreviewContainer = document.getElementById("sectionImagePreviewContainer");
+    const sectionUploadProgressContainer = document.getElementById("sectionUploadProgressContainer");
+    const sectionUploadProgress = document.getElementById("sectionUploadProgress");
+    
+    if (sectionImageFile && uploadSectionImageBtn) {
+      uploadSectionImageBtn.addEventListener("click", function() {
+        if (!sectionImageFile.files || !sectionImageFile.files[0]) {
+          alert("Please select a file to upload");
+          return;
+        }
+        
+        const file = sectionImageFile.files[0];
+        const formData = new FormData();
+        formData.append("image", file);
+        formData.append("type", "section"); // Add a type marker to differentiate from other uploads
+        
+        // Show progress bar
+        sectionUploadProgressContainer.classList.remove("d-none");
+        sectionUploadProgress.style.width = "0%";
+        sectionUploadProgress.textContent = "0%";
+        
+        // Create a request
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", `/api/sections/<%= section._id %>/upload?type=section`, true);
+        
+        // Track upload progress
+        xhr.upload.onprogress = function(e) {
+          if (e.lengthComputable) {
+            const percentComplete = Math.round((e.loaded / e.total) * 100);
+            sectionUploadProgress.style.width = percentComplete + "%";
+            sectionUploadProgress.textContent = percentComplete + "%";
+          }
+        };
+        
+        // Handle response
+        xhr.onload = function() {
+          if (xhr.status === 200) {
+            const response = JSON.parse(xhr.responseText);
+            
+            if (response.success) {
+              // Fix the image URL path
+              let imageUrl = response.file.fullPath;
+              
+              // Make sure the URL doesn't have double slashes
+              imageUrl = imageUrl.replace(/\/\//g, '/');
+              
+              // If the URL doesn't start with http or https, make sure it starts with a single slash
+              if (!imageUrl.startsWith('http') && !imageUrl.startsWith('/')) {
+                imageUrl = '/' + imageUrl;
+              }
+              
+              // Update the image URL in the input field
+              sectionImageInput.value = imageUrl;
+              
+              // Update the preview image with a timestamp to force refresh
+              console.log("Setting section image preview to:", imageUrl);
+              const timestamp = new Date().getTime();
+              const imgWithTimestamp = imageUrl + '?t=' + timestamp;
+              sectionImagePreview.src = imgWithTimestamp;
+              sectionImagePreviewContainer.style.display = "block";
+              
+              // Show success message
+              alert("Image uploaded successfully!");
+              
+              // Log the image URL for debugging
+              console.log("Section image URL saved:", imageUrl);
+            } else {
+              alert("Upload failed: " + (response.message || "Unknown error"));
+            }
+          } else {
+            alert("Upload failed with status: " + xhr.status);
+          }
+          
+          // Hide progress bar after completion
+          sectionUploadProgressContainer.classList.add("d-none");
+        };
+        
+        // Handle errors
+        xhr.onerror = function() {
+          alert("Upload failed. Please check your connection and try again.");
+          sectionUploadProgressContainer.classList.add("d-none");
+        };
+        
+        // Send the request
+        xhr.send(formData);
+      });
+      
+      // Preview selected file before upload
+      sectionImageFile.addEventListener("change", function() {
+        if (this.files && this.files[0]) {
+          const reader = new FileReader();
+          
+          reader.onload = function(e) {
+            sectionImagePreview.src = e.target.result;
+            sectionImagePreviewContainer.style.display = "block";
+          };
+          
+          reader.readAsDataURL(this.files[0]);
+        }
+      });
+      
+      // Link URL input to preview for section image
+      if (sectionImageInput) {
+        sectionImageInput.addEventListener("input", function() {
+          if (this.value) {
+            sectionImagePreview.src = this.value;
+            sectionImagePreviewContainer.style.display = "block";
+          } else {
+            sectionImagePreviewContainer.style.display = "none";
+          }
+        });
+      }
+    }
+
+    // Icon preview
+    const iconInput = document.getElementById("icon");
+    const iconPreview = document.querySelector(".input-group-text i");
+
+    if (iconInput && iconPreview) {
+      iconInput.addEventListener("input", function () {
+        iconPreview.className = this.value;
+      });
+    }
+
+    // Key points icon previews
+    const iconInputs = document.querySelectorAll(".icon-input");
+
+    iconInputs.forEach((input) => {
+      input.addEventListener("input", function () {
+        // Find the closest icon preview element (in the input-group-text)
+        const previewIcon = this.closest(".input-group").querySelector(
+          ".input-group-text i"
+        );
+        if (previewIcon) {
+          previewIcon.className = this.value;
+        }
+      });
+    });
+
+    // Add key point button for hero section
+    const addKeyPointBtn = document.getElementById("addKeyPoint");
+    const keyPointsContainer = document.getElementById("keyPointsContainer");
+
+    if (addKeyPointBtn && keyPointsContainer) {
+      addKeyPointBtn.addEventListener("click", function() {
+        // Get the current number of key points
+        const keyPointCount = keyPointsContainer.querySelectorAll(".key-point-item").length;
+        // Generate a new index for the new key point
+        const newIndex = keyPointCount;
+
+        // Create HTML for the new key point
+        const keyPointHtml = `
+          <div class="key-point-item card mb-3">
+            <div class="card-header d-flex justify-content-between align-items-center">
+              <h5 class="mb-0">Key Point ${newIndex + 1}: New Key Point</h5>
+              <button type="button" class="btn btn-sm btn-danger remove-key-point">
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
+            <div class="card-body">
+              <div class="form-group mb-3">
+                <label class="form-label">Title</label>
+                <input
+                  type="text"
+                  name="content.keyPoints[${newIndex}].title"
+                  class="form-control"
+                  value="New Key Point"
+                  required
+                />
+              </div>
+              
+              <div class="form-group mb-3">
+                <label class="form-label">Icon (Font Awesome)</label>
+                <div class="input-group">
+                  <input
+                    type="text"
+                    name="content.keyPoints[${newIndex}].icon"
+                    class="form-control key-point-icon-input"
+                    value="fas fa-info-circle"
+                  />
+                  <div class="input-group-append">
+                    <span class="input-group-text">
+                      <i class="fas fa-info-circle"></i>
+                    </span>
+              </div>
+                  </div>
+                <small class="form-text text-muted">Enter a Font Awesome icon class (e.g., fas fa-building)</small>
+              </div>
+              
+              <div class="form-group mb-3">
+                <label class="form-label">Detail/Description</label>
+                <input
+                  type="text"
+                  name="content.keyPoints[${newIndex}].detail"
+                  class="form-control"
+                  value=""
+                />
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label d-flex align-items-center">
+                  <span class="me-2">Size:</span>
+                  <div class="form-check form-switch">
+                    <input 
+                      class="form-check-input key-point-size-toggle" 
+                      type="checkbox" 
+                      id="keyPointSize${newIndex}"
+                    >
+                    <input 
+                      type="hidden" 
+                      name="content.keyPoints[${newIndex}].size" 
+                      value="minor"
+                      class="key-point-size-input"
+                    >
+                    <label class="form-check-label" for="keyPointSize${newIndex}">
+                      <span class="size-label">Minor (Half Width)</span>
+                    </label>
+                  </div>
+                </label>
+                <div class="key-point-preview mt-2">
+                  <div class="key-point-preview-container preview-minor">
+                    <div class="preview-card">
+                      <div class="preview-title"><i class="fas fa-info-circle"></i> New Key Point</div>
+                      <div class="preview-content"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+
+        // Add the new key point to the container
+        keyPointsContainer.insertAdjacentHTML("beforeend", keyPointHtml);
+
+        // Add event listener to remove button
+        const removeBtns = keyPointsContainer.querySelectorAll(".remove-key-point");
+        const lastRemoveBtn = removeBtns[removeBtns.length - 1];
+        lastRemoveBtn.addEventListener("click", function() {
+          this.closest(".key-point-item").remove();
+          updateKeyPointIndices();
+        });
+
+        // Add event listener to icon input
+        const iconInputs = keyPointsContainer.querySelectorAll(".key-point-icon-input");
+        const lastIconInput = iconInputs[iconInputs.length - 1];
+        lastIconInput.addEventListener("input", function() {
+          const iconPreview = this.closest(".input-group").querySelector(".input-group-text i");
+          if (iconPreview) {
+            iconPreview.className = this.value;
+          }
+          
+          // Also update the preview card icon
+          const card = this.closest('.card-body');
+          const previewIcon = card.querySelector('.preview-title i');
+          if (previewIcon) {
+            previewIcon.className = this.value;
+          }
+        });
+        
+        // Add event listener to the title input for preview update
+        const titleInput = keyPointsContainer.querySelectorAll('input[name$=".title"]')[keyPointCount];
+        if (titleInput) {
+          titleInput.addEventListener('input', function() {
+            const card = this.closest('.card-body');
+            const previewTitle = card.querySelector('.preview-title');
+            if (previewTitle) {
+              const icon = previewTitle.querySelector('i').outerHTML;
+              previewTitle.innerHTML = icon + ' ' + this.value;
+            }
+            
+            // Also update the card header
+            const header = this.closest('.key-point-item').querySelector('.card-header h5');
+            if (header) {
+              header.textContent = `Key Point ${newIndex + 1}: ${this.value}`;
+            }
+          });
+        }
+        
+        // Add event listener to the detail input for preview update
+        const detailInput = keyPointsContainer.querySelectorAll('input[name$=".detail"]')[keyPointCount];
+        if (detailInput) {
+          detailInput.addEventListener('input', function() {
+            const card = this.closest('.card-body');
+            const previewContent = card.querySelector('.preview-content');
+            if (previewContent) {
+              previewContent.textContent = this.value;
+            }
+          });
+        }
+        
+        // Add event listener to the size toggle
+        const sizeToggle = keyPointsContainer.querySelectorAll('.key-point-size-toggle')[keyPointCount];
+        const sizeInput = keyPointsContainer.querySelectorAll('.key-point-size-input')[keyPointCount];
+        const sizeLabel = keyPointsContainer.querySelectorAll('.size-label')[keyPointCount];
+        const previewContainer = keyPointsContainer.querySelectorAll('.key-point-preview-container')[keyPointCount];
+        
+        if (sizeToggle && sizeInput && sizeLabel && previewContainer) {
+          sizeToggle.addEventListener('change', function() {
+            if (this.checked) {
+              // Major size (full width)
+              sizeInput.value = 'major';
+              sizeLabel.textContent = 'Major (Full Width)';
+              previewContainer.classList.remove('preview-minor');
+              previewContainer.classList.add('preview-major');
+            } else {
+              // Minor size (half width)
+              sizeInput.value = 'minor';
+              sizeLabel.textContent = 'Minor (Half Width)';
+              previewContainer.classList.remove('preview-major');
+              previewContainer.classList.add('preview-minor');
+            }
+          });
+        }
+      });
+
+      // Add event listeners to existing key point size toggles
+      document.querySelectorAll('.key-point-size-toggle').forEach((toggle, index) => {
+        const sizeInput = document.querySelectorAll('.key-point-size-input')[index];
+        const sizeLabel = document.querySelectorAll('.size-label')[index];
+        const previewContainer = document.querySelectorAll('.key-point-preview-container')[index];
+        
+        toggle.addEventListener('change', function() {
+          if (this.checked) {
+            // Major size (full width)
+            sizeInput.value = 'major';
+            sizeLabel.textContent = 'Major (Full Width)';
+            previewContainer.classList.remove('preview-minor');
+            previewContainer.classList.add('preview-major');
+          } else {
+            // Minor size (half width)
+            sizeInput.value = 'minor';
+            sizeLabel.textContent = 'Minor (Half Width)';
+            previewContainer.classList.remove('preview-major');
+            previewContainer.classList.add('preview-minor');
+          }
+        });
+      });
+      
+      // Add event listeners to existing icon inputs for preview updates
+      document.querySelectorAll('.key-point-icon-input').forEach((input, index) => {
+        input.addEventListener('input', function() {
+          const iconPreview = this.closest('.input-group').querySelector('.input-group-text i');
+          if (iconPreview) {
+            iconPreview.className = this.value;
+          }
+          
+          // Also update the preview card icon
+          const card = this.closest('.card-body');
+          const previewIcon = card.querySelector('.preview-title i');
+          if (previewIcon) {
+            previewIcon.className = this.value;
+          }
+        });
+      });
+      
+      // Add event listeners to existing title inputs for preview updates
+      document.querySelectorAll('input[name$=".title"]').forEach((input, index) => {
+        if (input.closest('.key-point-item')) {
+          input.addEventListener('input', function() {
+            const card = this.closest('.card-body');
+            const previewTitle = card.querySelector('.preview-title');
+            if (previewTitle) {
+              const icon = previewTitle.querySelector('i').outerHTML;
+              previewTitle.innerHTML = icon + ' ' + this.value;
+            }
+            
+            // Also update the card header
+            const header = this.closest('.key-point-item').querySelector('.card-header h5');
+            if (header) {
+              header.textContent = `Key Point ${index + 1}: ${this.value}`;
+            }
+          });
+        }
+      });
+      
+      // Add event listeners to existing detail inputs for preview updates
+      document.querySelectorAll('input[name$=".detail"]').forEach((input, index) => {
+        if (input.closest('.key-point-item')) {
+          input.addEventListener('input', function() {
+            const card = this.closest('.card-body');
+            const previewContent = card.querySelector('.preview-content');
+            if (previewContent) {
+              previewContent.textContent = this.value;
+            }
+          });
+        }
+      });
+
+      // Handle remove key point button clicks for existing points
+      document.querySelectorAll(".remove-key-point").forEach(btn => {
+        btn.addEventListener("click", function() {
+          this.closest(".key-point-item").remove();
+          updateKeyPointIndices();
+        });
+      });
+
+      // Function to update indices when key points are removed
+      function updateKeyPointIndices() {
+        const keyPointItems = keyPointsContainer.querySelectorAll(".key-point-item");
+        
+        keyPointItems.forEach((item, index) => {
+          // Update header
+          const header = item.querySelector(".card-header h5");
+          if (header) {
+            const title = header.textContent.split(": ")[1] || "New Key Point";
+            header.textContent = `Key Point ${index + 1}: ${title}`;
+          }
+
+          // Update input names
+          const inputs = item.querySelectorAll("input");
+          inputs.forEach((input) => {
+            const name = input.getAttribute("name");
+            if (name && name.includes("content.keyPoints[")) {
+            const newName = name.replace(
+                /content\.keyPoints\[\d+\]/,
+                `content.keyPoints[${index}]`
+            );
+            input.setAttribute("name", newName);
+            }
+          });
+          
+          // Update ID of size toggle
+          const sizeToggle = item.querySelector('.key-point-size-toggle');
+          if (sizeToggle) {
+            sizeToggle.id = `keyPointSize${index}`;
+            const label = item.querySelector('.form-check-label');
+            if (label) {
+              label.setAttribute('for', `keyPointSize${index}`);
+            }
+          }
+        });
+      }
+    }
+
+    // Add key point size preview styles
+    const keyPointPreviewStyles = document.createElement('style');
+    keyPointPreviewStyles.innerHTML = `
+      .key-point-preview {
+        border-radius: 6px;
+        overflow: hidden;
+      }
+      .key-point-preview-container {
+        background-color: #f5f5f5;
+        border-radius: 6px;
+        border: 1px dashed #ccc;
+        position: relative;
+        margin-top: 5px;
+        transition: all 0.3s ease;
+      }
+      .preview-minor {
+        width: 47%;
+        display: inline-block;
+      }
+      .preview-major {
+        width: 100%;
+      }
+      .preview-card {
+        background: white;
+        border-radius: 4px;
+        padding: 10px;
+        margin: 10px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      }
+      .preview-title {
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+      .preview-title i {
+        color: var(--primary-color);
+        margin-right: 5px;
+      }
+      .preview-content {
+        font-size: 13px;
+        color: #333;
+      }
+      .key-point-preview::before {
+        content: "Preview";
+        position: absolute;
+        top: -5px;
+        left: 10px;
+        background: #f0f0f0;
+        padding: 0 5px;
+        font-size: 10px;
+        color: #666;
+      }
+
+      /* Architecture Card Preview Styles */
+      .arch-card-preview {
+        border-radius: 6px;
+        overflow: hidden;
+        position: relative;
+      }
+      .arch-card-preview-container {
+        background-color: #f5f5f5;
+        border-radius: 6px;
+        border: 1px dashed #ccc;
+        position: relative;
+        margin-top: 5px;
+        transition: all 0.3s ease;
+      }
+      .preview-half {
+        width: 47%;
+        display: inline-block;
+      }
+      .preview-full {
+        width: 100%;
+      }
+      .preview-arch-card {
+        background: white;
+        border-radius: 4px;
+        padding: 0;
+        margin: 10px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        overflow: hidden;
+      }
+      .preview-label {
+        background-color: #0d6efd;
+        color: white;
+        padding: 8px 10px;
+        font-weight: 600;
+        font-size: 13px;
+      }
+      .preview-label i {
+        margin-right: 5px;
+      }
+      .preview-content {
+        padding: 10px;
+        font-size: 13px;
+      }
+      .preview-secondary {
+        color: #6c757d;
+        font-size: 12px;
+        font-style: italic;
+        padding: 0 10px 10px;
+      }
+      .arch-card-preview::before {
+        content: "Preview";
+        position: absolute;
+        top: -5px;
+        left: 10px;
+        background: #f0f0f0;
+        padding: 0 5px;
+        font-size: 10px;
+        color: #666;
+        z-index: 1;
+      }
+    `;
+    document.head.appendChild(keyPointPreviewStyles);
+
+    // Architecture Cards Management
+    const addArchCardBtn = document.getElementById("addArchCard");
+    const archCardsContainer = document.getElementById("archCardsContainer");
+
+    if (addArchCardBtn && archCardsContainer) {
+      addArchCardBtn.addEventListener("click", function() {
+        // Get the current number of arch cards
+        const archCardCount = archCardsContainer.querySelectorAll(".arch-card-item").length;
+        // Generate a new index for the new card
+        const newIndex = archCardCount;
+
+        // Create HTML for the new arch card
+        const archCardHtml = `
+          <div class="arch-card-item card mb-3">
+            <div class="card-header d-flex justify-content-between align-items-center">
+              <h5 class="mb-0">Card ${newIndex + 1}: New Card</h5>
+              <button type="button" class="btn btn-sm btn-danger remove-arch-card">
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
+            <div class="card-body">
+              <div class="form-group mb-3">
+                <label class="form-label">Label</label>
+                <input
+                  type="text"
+                  name="content.archCards[${newIndex}].label"
+                  class="form-control arch-card-label-input"
+                  value="New Card"
+                  required
+                />
+              </div>
+              
+              <div class="form-group mb-3">
+                <label class="form-label">Icon (Font Awesome)</label>
+                <div class="input-group">
+                  <input
+                    type="text"
+                    name="content.archCards[${newIndex}].icon"
+                    class="form-control arch-card-icon-input"
+                    value="fas fa-info-circle"
+                  />
+                  <div class="input-group-append">
+                    <span class="input-group-text">
+                      <i class="fas fa-info-circle"></i>
+                    </span>
+                  </div>
+                </div>
+                <small class="form-text text-muted">Enter a Font Awesome icon class (e.g., fas fa-building)</small>
+              </div>
+              
+              <div class="form-group mb-3">
+                <label class="form-label">Content</label>
+                <textarea
+                  name="content.archCards[${newIndex}].content"
+                  class="form-control arch-card-content-input"
+                  rows="3"
+                ></textarea>
+              </div>
+
+              <div class="form-group mb-3">
+                <label class="form-label">Secondary Text (Optional)</label>
+                <input
+                  type="text"
+                  name="content.archCards[${newIndex}].secondary"
+                  class="form-control arch-card-secondary-input"
+                  value=""
+                />
+                <small class="form-text text-muted">Additional information displayed in smaller text (e.g., organization name)</small>
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label d-flex align-items-center">
+                  <span class="me-2">Size:</span>
+                  <div class="form-check form-switch">
+                    <input 
+                      class="form-check-input arch-card-size-toggle" 
+                      type="checkbox" 
+                      id="archCardSize${newIndex}"
+                    >
+                    <input 
+                      type="hidden" 
+                      name="content.archCards[${newIndex}].isFullWidth" 
+                      value="false"
+                      class="arch-card-size-input"
+                    >
+                    <label class="form-check-label" for="archCardSize${newIndex}">
+                      <span class="size-label">Half Width</span>
+                    </label>
+                  </div>
+                </label>
+                <div class="arch-card-preview mt-2">
+                  <div class="arch-card-preview-container preview-half">
+                    <div class="preview-arch-card">
+                      <div class="preview-label"><i class="fas fa-info-circle"></i> New Card</div>
+                      <div class="preview-content"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+
+        // Add the new arch card to the container
+        archCardsContainer.insertAdjacentHTML("beforeend", archCardHtml);
+
+        // Add event listener to remove button
+        const removeBtns = archCardsContainer.querySelectorAll(".remove-arch-card");
+        const lastRemoveBtn = removeBtns[removeBtns.length - 1];
+        lastRemoveBtn.addEventListener("click", function() {
+          this.closest(".arch-card-item").remove();
+          updateArchCardIndices();
+        });
+
+        // Add event listener to icon input
+        const iconInputs = archCardsContainer.querySelectorAll(".arch-card-icon-input");
+        const lastIconInput = iconInputs[iconInputs.length - 1];
+        lastIconInput.addEventListener("input", function() {
+          const iconPreview = this.closest('.input-group').querySelector('.input-group-text i');
+          if (iconPreview) {
+            iconPreview.className = this.value;
+          }
+          
+          // Also update the preview card icon
+          const card = this.closest('.card-body');
+          const previewIcon = card.querySelector('.preview-label i');
+          if (previewIcon) {
+            previewIcon.className = this.value;
+          }
+        });
+        
+        // Add event listener to the label input for preview update
+        const labelInput = archCardsContainer.querySelectorAll('.arch-card-label-input')[archCardCount];
+        if (labelInput) {
+          labelInput.addEventListener('input', function() {
+            const card = this.closest('.card-body');
+            const previewLabel = card.querySelector('.preview-label');
+            if (previewLabel) {
+              const icon = previewLabel.querySelector('i').outerHTML;
+              previewLabel.innerHTML = icon + ' ' + this.value;
+            }
+            
+            // Also update the card header
+            const header = this.closest('.arch-card-item').querySelector('.card-header h5');
+            if (header) {
+              header.textContent = `Card ${newIndex + 1}: ${this.value}`;
+            }
+          });
+        }
+        
+        // Add event listener to the content input for preview update
+        const contentInput = archCardsContainer.querySelectorAll('.arch-card-content-input')[archCardCount];
+        if (contentInput) {
+          contentInput.addEventListener('input', function() {
+            const card = this.closest('.card-body');
+            const previewContent = card.querySelector('.preview-content');
+            if (previewContent) {
+              previewContent.textContent = this.value;
+            }
+          });
+        }
+
+        // Add event listener to the secondary text input for preview update
+        const secondaryInput = archCardsContainer.querySelectorAll('.arch-card-secondary-input')[archCardCount];
+        if (secondaryInput) {
+          secondaryInput.addEventListener('input', function() {
+            const card = this.closest('.card-body');
+            let previewSecondary = card.querySelector('.preview-secondary');
+            
+            if (this.value) {
+              if (!previewSecondary) {
+                previewSecondary = document.createElement('div');
+                previewSecondary.className = 'preview-secondary';
+                card.querySelector('.preview-arch-card').appendChild(previewSecondary);
+              }
+              previewSecondary.textContent = this.value;
+            } else {
+              if (previewSecondary) {
+                previewSecondary.remove();
+              }
+            }
+          });
+        }
+        
+        // Add event listener to the size toggle
+        const sizeToggle = archCardsContainer.querySelectorAll('.arch-card-size-toggle')[archCardCount];
+        const sizeInput = archCardsContainer.querySelectorAll('.arch-card-size-input')[archCardCount];
+        const sizeLabel = archCardsContainer.querySelectorAll('.size-label')[archCardCount + archCardsContainer.querySelectorAll('.key-point-item').length];
+        const previewContainer = archCardsContainer.querySelectorAll('.arch-card-preview-container')[archCardCount];
+        
+        if (sizeToggle && sizeInput && sizeLabel && previewContainer) {
+          sizeToggle.addEventListener('change', function() {
+            if (this.checked) {
+              // Full width
+              sizeInput.value = 'true';
+              sizeLabel.textContent = 'Full Width';
+              previewContainer.classList.remove('preview-half');
+              previewContainer.classList.add('preview-full');
+            } else {
+              // Half width
+              sizeInput.value = 'false';
+              sizeLabel.textContent = 'Half Width';
+              previewContainer.classList.remove('preview-full');
+              previewContainer.classList.add('preview-half');
+            }
+          });
+        }
+      });
+
+      // Handle remove arch card button clicks for existing cards
+      document.querySelectorAll(".remove-arch-card").forEach(btn => {
+        btn.addEventListener("click", function() {
+          this.closest(".arch-card-item").remove();
+          updateArchCardIndices();
+        });
+      });
+
+      // Add event listeners to existing icon inputs for architecture cards
+      document.querySelectorAll('.arch-card-icon-input').forEach((input, index) => {
+        input.addEventListener('input', function() {
+          const iconPreview = this.closest('.input-group').querySelector('.input-group-text i');
+          if (iconPreview) {
+            iconPreview.className = this.value;
+          }
+          
+          // Also update the preview card icon
+          const card = this.closest('.card-body');
+          const previewIcon = card.querySelector('.preview-label i');
+          if (previewIcon) {
+            previewIcon.className = this.value;
+          }
+        });
+      });
+      
+      // Add event listeners to existing label inputs for architecture cards
+      document.querySelectorAll('.arch-card-label-input').forEach((input, index) => {
+        input.addEventListener('input', function() {
+          const card = this.closest('.card-body');
+          const previewLabel = card.querySelector('.preview-label');
+          if (previewLabel) {
+            const icon = previewLabel.querySelector('i').outerHTML;
+            previewLabel.innerHTML = icon + ' ' + this.value;
+          }
+          
+          // Also update the card header
+          const header = this.closest('.arch-card-item').querySelector('.card-header h5');
+          if (header) {
+            const cardIndex = parseInt(header.textContent.split(':')[0].replace('Card', '').trim()) - 1;
+            header.textContent = `Card ${cardIndex + 1}: ${this.value}`;
+          }
+        });
+      });
+      
+      // Add event listeners to existing content inputs for architecture cards
+      document.querySelectorAll('.arch-card-content-input').forEach((input, index) => {
+        input.addEventListener('input', function() {
+          const card = this.closest('.card-body');
+          const previewContent = card.querySelector('.preview-content');
+          if (previewContent) {
+            previewContent.textContent = this.value;
+          }
+        });
+      });
+
+      // Add event listeners to existing secondary text inputs for architecture cards
+      document.querySelectorAll('.arch-card-secondary-input').forEach((input, index) => {
+        input.addEventListener('input', function() {
+          const card = this.closest('.card-body');
+          let previewSecondary = card.querySelector('.preview-secondary');
+          
+          if (this.value) {
+            if (!previewSecondary) {
+              previewSecondary = document.createElement('div');
+              previewSecondary.className = 'preview-secondary';
+              card.querySelector('.preview-arch-card').appendChild(previewSecondary);
+            }
+            previewSecondary.textContent = this.value;
+          } else {
+            if (previewSecondary) {
+              previewSecondary.remove();
+            }
+          }
+        });
+      });
+
+      // Add event listeners to existing size toggles for architecture cards
+      document.querySelectorAll('.arch-card-size-toggle').forEach((toggle, index) => {
+        const sizeInput = document.querySelectorAll('.arch-card-size-input')[index];
+        const sizeLabel = toggle.closest('.form-check').querySelector('.size-label');
+        const previewContainer = toggle.closest('.form-group').querySelector('.arch-card-preview-container');
+        
+        toggle.addEventListener('change', function() {
+          if (this.checked) {
+            // Full width
+            sizeInput.value = 'true';
+            sizeLabel.textContent = 'Full Width';
+            previewContainer.classList.remove('preview-half');
+            previewContainer.classList.add('preview-full');
+          } else {
+            // Half width
+            sizeInput.value = 'false';
+            sizeLabel.textContent = 'Half Width';
+            previewContainer.classList.remove('preview-full');
+            previewContainer.classList.add('preview-half');
+          }
+        });
+      });
+
+      // Function to update indices when arch cards are removed
+      function updateArchCardIndices() {
+        const archCardItems = archCardsContainer.querySelectorAll(".arch-card-item");
+        
+        archCardItems.forEach((item, index) => {
+          // Update header
+          const header = item.querySelector(".card-header h5");
+          if (header) {
+            const title = header.textContent.split(": ")[1] || "New Card";
+            header.textContent = `Card ${index + 1}: ${title}`;
+          }
+
+          // Update input names
+          const inputs = item.querySelectorAll("input, textarea");
+          inputs.forEach((input) => {
+            const name = input.getAttribute("name");
+            if (name && name.includes("content.archCards[")) {
+              const newName = name.replace(
+                /content\.archCards\[\d+\]/,
+                `content.archCards[${index}]`
+              );
+              input.setAttribute("name", newName);
+            }
+          });
+          
+          // Update ID of size toggle
+          const sizeToggle = item.querySelector('.arch-card-size-toggle');
+          if (sizeToggle) {
+            sizeToggle.id = `archCardSize${index}`;
+            const label = item.querySelector('.form-check-label');
+            if (label) {
+              label.setAttribute('for', `archCardSize${index}`);
+            }
+          }
+        });
+      }
+    }
+  });
+</script>
+
+<%- include('../components/footer') %>

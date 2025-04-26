@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LuxTripper - Template</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="/public/css/templates.css" />
+
+    <style>
+      /* Ensure key point cards display correctly with major/minor sizes */
+      .points-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+
+      .point-card {
+        background-color: var(--card-bg);
+        font-weight: bold;
+        border-radius: 6px;
+        color: #000000;
+        padding: 15px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        border: 1px solid var(--card-border);
+      }
+
+      .point-card h4 {
+        font-size: 14px;
+        color: #000;
+        margin-bottom: 5px;
+        display: flex;
+        align-items: center;
+      }
+
+      .point-card h4 i {
+        margin-right: 5px;
+        color: var(--accent-color);
+      }
+
+      .point-card p {
+        font-weight: 600;
+        font-size: 14px;
+      }
+
+      /* Major cards (like address) take up the full width */
+      .address-card {
+        grid-column: span 2;
+      }
+
+      /* Media queries for responsive design */
+      @media (max-width: 576px) {
+        .points-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .address-card {
+          grid-column: span 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header id="main-header">
+      <div class="container header-container">
+        <a href="#" class="logo"><span>LOGO</span>TEXT</a>
+
+        <button class="mobile-menu-btn">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <nav>
+          <ul id="nav-menu">
+            <li><a href="#">Menu Item 1</a></li>
+            <li><a href="#">Menu Item 2</a></li>
+            <li><a href="#">Menu Item 3</a></li>
+            <li><a href="#">Menu Item 4</a></li>
+          </ul>
+        </nav>
+
+        <div class="contact-info">
+          <div class="phone">
+            <i class="fas fa-phone-alt"></i>
+            <span>Phone Number</span>
+          </div>
+        </div>
+        <button class="cta-button">Call to Action</button>
+        <div class="search-icon">
+          <i class="fas fa-search"></i>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero-section">
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="">HOME</a> <span>></span> <a href="">ITEM 1</a>
+          <span>></span> <a href="">ITEM 2</a> <span>></span>
+          <a href="">ITEM 3</a> <span>></span> <a href="">ITEM 4</a>
+        </div>
+
+        <div class="hero-content">
+          <h1 id="hero-title">Hero Title</h1>
+          <h2 id="hero-subtitle">Hero Subtitle</h2>
+          <div class="location">
+            <i class="fas fa-map-marker-alt"></i>
+            <span id="hero-location">Location</span>
+          </div>
+        </div>
+
+        <div class="key-points">
+          <h3>Key Points</h3>
+          <div class="points-grid">
+            <!-- Key points will be dynamically generated -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Links -->
+    <div class="quick-links">
+      <div class="container">
+        <a href="#about-section">LINK 1</a>
+        <a href="#opening-hours-section">LINK 2</a>
+        <a href="#tickets-section">LINK 3</a>
+        <a href="#tours-section">LINK 4</a>
+        <a href="#photos-section">LINK 5</a>
+        <a href="#hotels-section">LINK 6</a>
+        <a href="#facts-section">LINK 7</a>
+      </div>
+    </div>
+
+    <!-- About Section -->
+    <section class="section" id="about-section">
+      <div class="container section-inner">
+        <h2 class="section-title">
+          <i class="fas fa-info-circle"></i>
+          <span id="about-title">About Section Title</span>
+        </h2>
+
+        <p id="about-description">About section description goes here.</p>
+      </div>
+    </section>
+
+    <!-- History Section -->
+    <section class="section" id="history-section">
+      <div class="container section-inner">
+        <h2 class="section-title">
+          <i class="fas fa-history"></i>
+          <span id="history-title">History Section Title</span>
+        </h2>
+
+        <div class="history-image-container">
+          <img
+            id="history-image"
+            src="placeholder.jpg"
+            alt="History Image"
+            class="history-image"
+          />
+        </div>
+
+        <p id="history-description">History section description goes here.</p>
+      </div>
+    </section>
+
+    <!-- Architecture and Design Section -->
+    <section class="section" id="architecture-section">
+      <div class="container section-inner">
+        <h2 class="section-title">
+          <i class="fas fa-drafting-compass"></i>
+          <span id="architecture-title">Architecture Section Title</span>
+        </h2>
+
+        <div class="arch-cards">
+          <div class="arch-card">
+            <div class="arch-card-label">
+              <i class="fas fa-user"></i> Card Label 1
+            </div>
+            <div class="arch-card-content">
+              <p>Card content 1</p>
+              <p class="arch-secondary">Secondary content</p>
+            </div>
+          </div>
+
+          <div class="arch-card">
+            <div class="arch-card-label">
+              <i class="fas fa-lightbulb"></i> Card Label 2
+            </div>
+            <div class="arch-card-content">
+              <p>Card content 2</p>
+            </div>
+          </div>
+
+          <div class="arch-card">
+            <div class="arch-card-label">
+              <i class="fas fa-building"></i> Card Label 3
+            </div>
+            <div class="arch-card-content">
+              <p>Card content 3</p>
+            </div>
+          </div>
+
+          <div class="arch-card">
+            <div class="arch-card-label">
+              <i class="fas fa-draw-polygon"></i> Card Label 4
+            </div>
+            <div class="arch-card-content">
+              <p>Card content 4</p>
+            </div>
+          </div>
+
+          <div class="arch-card full-width">
+            <div class="arch-card-label">
+              <i class="fas fa-elevator"></i> Card Label 5
+            </div>
+            <div class="arch-card-content">
+              <p>Card content 5</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="arch-image-container">
+          <img
+            id="architecture-image"
+            src="placeholder.jpg"
+            alt="Architecture Image"
+            class="arch-image"
+          />
+        </div>
+
+        <p id="architecture-description">
+          Architecture section description goes here.
+        </p>
+      </div>
+    </section>
+
+    <!-- Travel Information Section -->
+    <section class="section" id="travel-section">
+      <div class="container section-inner">
+        <h2 class="section-title">
+          <i class="fas fa-plane"></i>
+          <span id="travel-title">Travel Section Title</span>
+        </h2>
+
+        <div class="map-container">
+          <div id="travel-map" class="travel-map">
+            <!-- Map placeholder -->
+            <div class="map-placeholder">
+              <i class="fas fa-map-marked-alt"></i>
+              <p>Interactive Map</p>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="sub-heading">Travel times subheading</h3>
+
+        <div class="travel-modes">
+          <div class="travel-mode">
+            <div class="travel-mode-btn flight-btn">
+              <i class="fas fa-plane"></i> Travel Mode 1
+            </div>
+          </div>
+          <div class="travel-mode">
+            <div class="travel-mode-btn road-btn">
+              <i class="fas fa-car"></i> Travel Mode 2
+            </div>
+          </div>
+          <div class="travel-mode">
+            <div class="travel-mode-btn metro-btn">
+              <i class="fas fa-subway"></i> Travel Mode 3
+            </div>
+          </div>
+        </div>
+
+        <div class="travel-info">
+          <p id="travel-description">
+            Travel information description goes here.
+          </p>
+
+          <div class="travel-time">
+            <i class="far fa-clock"></i>
+            <span>Travel time information</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Opening Hours Section -->
+    <section class="section" id="opening-hours-section">
+      <div class="container section-inner">
+        <h2 class="section-title">
+          <i class="far fa-clock"></i>
+          <span id="opening-hours-title">Opening Hours Section Title</span>
+        </h2>
+
+        <p id="opening-hours-description">
+          Opening hours description goes here.
+        </p>
+      </div>
+    </section>
+
+    <!-- Observation Decks Section -->
+    <section class="section" id="observation-decks-section">
+      <div class="container section-inner">
+        <h2 class="section-title">
+          <i class="fas fa-eye"></i>
+          <span id="observation-decks-title"
+            >Observation Decks Section Title</span
+          >
+        </h2>
+
+        <div class="observation-decks" id="observation-decks-container">
+          <!-- Deck cards will be dynamically generated -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Best Time to Visit Section -->
+    <section class="section" id="best-time-section">
+      <div class="container section-inner">
+        <h2 class="section-title">
+          <i class="far fa-clock"></i>
+          <span id="best-time-title">Best Time Section Title</span>
+        </h2>
+
+        <div class="visit-info">
+          <h3 class="visit-subheading">Visit Info Subheading 1</h3>
+
+          <p class="visit-text" id="best-time-description">
+            Best time to visit description goes here.
+          </p>
+
+          <div class="pricing-table-container">
+            <table class="pricing-table">
+              <thead>
+                <tr>
+                  <th>Column 1</th>
+                  <th>Column 2</th>
+                  <th>Column 3</th>
+                  <th>Column 4</th>
+                  <th>Column 5</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Data 1</td>
+                  <td>Data 2</td>
+                  <td>Data 3</td>
+                  <td>Data 4</td>
+                  <td><a href="#" class="book-now-btn">Button</a></td>
+                </tr>
+                <tr>
+                  <td>Data 5</td>
+                  <td>Data 6</td>
+                  <td>Data 7</td>
+                  <td>Data 8</td>
+                  <td><a href="#" class="book-now-btn">Button</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 class="visit-subheading">Visit Info Subheading 2</h3>
+
+          <p class="visit-text">Additional visit information text goes here.</p>
+
+          <div class="season-calendar">
+            <!-- Month cards for calendar - 12 months -->
+            <div class="month-card peak">
+              <div class="month-name">JAN</div>
+              <div class="month-icon"><i class="fas fa-heart"></i></div>
+            </div>
+            <!-- Repeat for all 12 months -->
+            <div class="month-card peak">
+              <div class="month-name">FEB</div>
+              <div class="month-icon"><i class="fas fa-heart"></i></div>
+            </div>
+            <!-- More month cards... -->
+          </div>
+
+          <div class="season-legend">
+            <div class="legend-item">
+              <span class="legend-dot off-dot"></span>
+              <span>Legend Item 1</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-dot moderate-dot"></span>
+              <span>Legend Item 2</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-dot peak-dot"></span>
+              <span>Legend Item 3</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Best Ways to Experience Section -->
+    <section class="section" id="best-ways-section">
+      <div class="container section-inner">
+        <h2 class="section-title">
+          <i class="fas fa-star-of-life"></i>
+          <span id="best-ways-title">Best Ways Section Title</span>
+        </h2>
+
+        <div class="experience-container">
+          <div class="experience-wrapper" id="experienceWrapper">
+            <!-- Experience Card template -->
+            <div class="experience-card">
+              <div class="experience-image">
+                <img
+                  src="placeholder.jpg"
+                  alt="Experience Image"
+                  class="card-img"
+                />
+              </div>
+              <div class="experience-content">
+                <h3 class="experience-title">Experience Title</h3>
+                <p class="experience-description">
+                  Experience description goes here.
+                </p>
+                <div class="experience-tip">
+                  <i class="fas fa-lightbulb"></i>
+                  <span>Tip label</span>
+                </div>
+                <p class="tip-text">Tip text goes here.</p>
+              </div>
+            </div>
+
+            <!-- More experience cards would follow -->
+          </div>
+
+          <!-- Slider Button -->
+          <div class="slider-button-container">
+            <button
+              class="next-btn"
+              id="nextBtn"
+              aria-label="View more experiences"
+            >
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ticket Section -->
+    <section class="section" id="tickets-section">
+      <div class="container section-inner">
+        <h2 class="section-title">
+          <i class="fas fa-ticket-alt"></i>
+          <span id="tickets-title">Tickets Section Title</span>
+        </h2>
+
+        <div class="tickets-grid">
+          <!-- Ticket Card template -->
+          <div class="ticket-card">
+            <div class="ticket-image">
+              <img
+                src="placeholder.jpg"
+                alt="Ticket Image"
+                class="ticket-img"
+              />
+            </div>
+            <div class="ticket-content">
+              <h3 class="ticket-title">Ticket Title</h3>
+
+              <div class="ticket-price-row">
+                <div class="ticket-price">
+                  <span class="price-amount">Price</span>
+                  <span class="price-suffix">Unit</span>
+                </div>
+                <a href="#" class="view-tour-btn">Button Text</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- More ticket cards would follow -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Tours Section -->
+    <section class="section" id="tours-section">
+      <div class="container section-inner">
+        <h2 class="section-title">
+          <i class="fas fa-map-marker-alt"></i>
+          <span id="tours-title">Tours Section Title</span>
+        </h2>
+
+        <p class="section-description" id="tours-description">
+          Tours section description goes here.
+        </p>
+
+        <div class="tours-grid">
+          <!-- Tour Card template -->
+          <div class="tour-card">
+            <div class="tour-image">
+              <img src="placeholder.jpg" alt="Tour Image" class="tour-img" />
+            </div>
+            <div class="tour-content">
+              <h3 class="tour-title">Tour Title</h3>
+
+              <div class="price-container">
+                <div class="price-block">
+                  <div class="price-label">Label</div>
+                  <div class="price-row">
+                    <div class="current-price">
+                      Current Price<span class="price-pp">Unit</span>
+                    </div>
+                    <div class="original-price">
+                      Original Price<span class="price-pp">Unit</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="savings-badge">
+                  <i class="fas fa-tag"></i> Savings Text
+                </div>
+              </div>
+
+              <div class="tour-actions">
+                <a href="#" class="phone-btn">
+                  <i class="fas fa-phone-alt"></i>
+                </a>
+                <a href="#" class="view-deal-btn">Button Text</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- More tour cards would follow -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Hotels Section -->
+    <section class="section" id="hotels-section">
+      <div class="container section-inner">
+        <h2 class="section-title">
+          <i class="fas fa-hotel"></i>
+          <span id="hotels-title">Hotels Section Title</span>
+        </h2>
+
+        <div class="hotels-container">
+          <div class="hotels-wrapper">
+            <!-- Hotel Card template -->
+            <div class="hotel-card">
+              <div class="hotel-image">
+                <div class="special-offer-tag">Special Tag</div>
+                <img
+                  src="placeholder.jpg"
+                  alt="Hotel Image"
+                  class="hotel-img"
+                />
+              </div>
+
+              <div class="hotel-content">
+                <div class="location-nights">
+                  <div class="location">
+                    <i class="fas fa-map-marker-alt"></i> Location Info
+                  </div>
+                  <div class="rating">
+                    <span>Rating</span>
+                    <i class="fas fa-star"></i>
+                  </div>
+                </div>
+
+                <h3 class="hotel-title">Hotel Title</h3>
+
+                <div class="amenities">
+                  <div class="amenity">
+                    <i class="fas fa-plane"></i>
+                    <span>Amenity 1</span>
+                  </div>
+                  <div class="amenity">
+                    <i class="fas fa-hotel"></i>
+                    <span>Amenity 2</span>
+                  </div>
+                  <div class="amenity">
+                    <i class="fas fa-car"></i>
+                    <span>Amenity 3</span>
+                  </div>
+                  <div class="amenity">
+                    <i class="fas fa-utensils"></i>
+                    <span>Amenity 4</span>
+                  </div>
+                </div>
+
+                <ul class="hotel-features">
+                  <li>Feature 1</li>
+                  <li>Feature 2</li>
+                  <li>Feature 3</li>
+                </ul>
+
+                <div class="hotel-price-container">
+                  <div class="price-block">
+                    <div class="price-label">Label</div>
+                    <div class="price-row">
+                      <div class="current-price">
+                        Current Price<span class="price-pp">Unit</span>
+                      </div>
+                      <div class="original-price">
+                        Original Price<span class="price-pp">Unit</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="savings-badge">
+                    <i class="fas fa-tag"></i> Savings Text
+                  </div>
+                </div>
+
+                <div class="hotel-actions">
+                  <a href="#" class="phone-btn">
+                    <i class="fas fa-phone-alt"></i>
+                  </a>
+                  <a href="#" class="view-deal-btn">Button Text</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- More hotel cards would follow -->
+          </div>
+
+          <!-- Slider Button -->
+          <button
+            class="hotels-slider-btn"
+            id="hotelsNextBtn"
+            aria-label="View more hotels"
+          >
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+
+        <!-- View All Deals Button -->
+        <div class="view-all-container">
+          <a href="#" class="view-all-btn">
+            Button Text
+            <i class="fas fa-chevron-right"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Photos Gallery Section -->
+    <section class="section photos-section" id="photos-section">
+      <div class="container section-inner">
+        <h2 class="section-title">
+          <i class="fas fa-camera"></i>
+          <span id="photos-title">Photos Section Title</span>
+        </h2>
+
+        <div class="photo-filter">
+          <button class="filter-btn active">Filter 1</button>
+          <button class="filter-btn">Filter 2</button>
+        </div>
+
+        <div class="photos-gallery">
+          <!-- Photo gallery items -->
+          <div class="photo-item large">
+            <img
+              src="placeholder.jpg"
+              alt="Gallery Image 1"
+              class="gallery-img"
+            />
+          </div>
+
+          <div class="photo-item">
+            <img
+              src="placeholder.jpg"
+              alt="Gallery Image 2"
+              class="gallery-img"
+            />
+          </div>
+
+          <!-- More photo items would follow -->
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section faq-section" id="faq-section">
+      <div class="container section-inner">
+        <h2 class="section-title">
+          <i class="far fa-question-circle"></i>
+          <span id="faq-title">FAQ Section Title</span>
+        </h2>
+
+        <div class="faq-container">
+          <!-- FAQ Item template (active/open) -->
+          <div class="faq-item active">
+            <div class="faq-question">
+              <span>FAQ Question 1</span>
+              <button class="toggle-btn">
+                <i class="fas fa-minus"></i>
+              </button>
+            </div>
+            <div class="faq-answer">
+              <div class="answer-content">
+                <p>FAQ answer 1 goes here.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item template (inactive/closed) -->
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>FAQ Question 2</span>
+              <button class="toggle-btn">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+            <div class="faq-answer">
+              <div class="answer-content">
+                <p>FAQ answer 2 goes here.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- More FAQ items would follow -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Facts & Records Section -->
+    <section class="section facts-section" id="facts-section">
+      <div class="container section-inner">
+        <h2 class="section-title">
+          <i class="fas fa-list-alt"></i>
+          <span id="facts-title">Facts Section Title</span>
+        </h2>
+
+        <div class="facts-container">
+          <!-- Fact Item template -->
+          <div class="fact-item">
+            <div class="fact-number">
+              <span>1</span>
+            </div>
+            <div class="fact-content">
+              <h3 class="fact-title">Fact Title 1</h3>
+              <p class="fact-description">Fact description 1 goes here.</p>
+            </div>
+          </div>
+
+          <!-- More fact items would follow -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Nearby Attractions Section -->
+    <section
+      class="section attractions-section"
+      id="nearby-attractions-section"
+    >
+      <div class="container section-inner">
+        <h2 class="section-title">
+          <i class="fas fa-monument"></i>
+          <span id="nearby-attractions-title"
+            >Nearby Attractions Section Title</span
+          >
+        </h2>
+
+        <div class="attractions-container">
+          <button
+            class="slider-btn prev-btn"
+            id="attractionsPrevBtn"
+            aria-label="Previous attractions"
+          >
+            <i class="fas fa-chevron-left"></i>
+          </button>
+
+          <div class="attractions-slider" id="attractionsSlider">
+            <!-- Attraction Card template -->
+            <div class="attraction-card">
+              <div class="attraction-img-container">
+                <img
+                  src="placeholder.jpg"
+                  alt="Attraction Image"
+                  class="attraction-img"
+                />
+              </div>
+              <h3 class="attraction-name">Attraction Name</h3>
+            </div>
+
+            <!-- More attraction cards would follow -->
+          </div>
+
+          <button
+            class="slider-btn next-btn"
+            id="attractionsNextBtn"
+            aria-label="Next attractions"
+          >
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+
+        <div class="more-attractions-container">
+          <a href="#" class="more-attractions-btn">
+            Button Text
+            <div class="arrow-icon">
+              <i class="fas fa-chevron-right"></i>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Beyond Section -->
+    <section class="section beyond-section" id="beyond-section">
+      <div class="container section-inner">
+        <h2 class="section-title">
+          <i class="fas fa-globe-americas"></i>
+          <span id="beyond-title">Beyond Section Title</span>
+        </h2>
+
+        <div class="beyond-slider-container">
+          <button
+            class="slider-btn prev-btn"
+            id="beyondPrevBtn"
+            aria-label="Previous items"
+          >
+            <i class="fas fa-chevron-left"></i>
+          </button>
+
+          <div class="beyond-slider" id="beyondSlider">
+            <!-- Tower Card template -->
+            <div class="tower-card">
+              <div class="tower-img-container">
+                <img
+                  src="placeholder.jpg"
+                  alt="Tower Image"
+                  class="tower-img"
+                />
+              </div>
+              <h3 class="tower-name">Tower Name</h3>
+            </div>
+
+            <!-- More tower cards would follow -->
+          </div>
+
+          <button
+            class="slider-btn next-btn"
+            id="beyondNextBtn"
+            aria-label="Next items"
+          >
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- WhatsApp Subscription Section -->
+    <section class="whatsapp-subscription">
+      <div class="whatsapp-container">
+        <div class="whatsapp-content">
+          <h2 class="whatsapp-title">
+            Subscribe to our
+            <span class="whatsapp-logo-text"
+              ><i class="fab fa-whatsapp"></i> WhatsApp</span
+            >
+          </h2>
+          <p class="whatsapp-subtitle">Subscription subtitle text goes here</p>
+          <a href="#" class="subscribe-button">Button Text</a>
+        </div>
+        <div class="qr-code">
+          <img src="placeholder.jpg" alt="QR Code" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Subscription Section -->
+    <section class="newsletter-section">
+      <div class="newsletter-container">
+        <h3 class="newsletter-title">
+          Newsletter subscription title text goes here
+        </h3>
+
+        <form class="newsletter-form">
+          <input
+            type="text"
+            placeholder="Placeholder 1"
+            class="form-input"
+            required
+          />
+          <input
+            type="text"
+            placeholder="Placeholder 2"
+            class="form-input"
+            required
+          />
+          <input
+            type="email"
+            placeholder="Placeholder 3"
+            class="form-input"
+            required
+          />
+          <button type="submit" class="subscribe-btn">Button Text</button>
+        </form>
+
+        <div class="social-icons">
+          <a href="#" class="social-icon facebook"
+            ><i class="fab fa-facebook-f"></i
+          ></a>
+          <a href="#" class="social-icon instagram"
+            ><i class="fab fa-instagram"></i
+          ></a>
+          <a href="#" class="social-icon twitter"
+            ><i class="fab fa-twitter"></i
+          ></a>
+          <a href="#" class="social-icon youtube"
+            ><i class="fab fa-youtube"></i
+          ></a>
+          <a href="#" class="social-icon tiktok"
+            ><i class="fab fa-tiktok"></i
+          ></a>
+          <a href="#" class="social-icon threads"
+            ><i class="fab fa-threads"></i
+          ></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="site-footer">
+      <div class="footer-container">
+        <div class="footer-top">
+          <!-- Left Column: Important Links -->
+          <div class="footer-column links-column">
+            <h3 class="footer-heading">FOOTER HEADING 1</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="#"><span class="arrow">→</span> Footer Link 1</a>
+              </li>
+              <li>
+                <a href="#"><span class="arrow">→</span> Footer Link 2</a>
+              </li>
+              <li>
+                <a href="#"><span class="arrow">→</span> Footer Link 3</a>
+              </li>
+              <li>
+                <a href="#"><span class="arrow">→</span> Footer Link 4</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Middle Column: Quick Links -->
+          <div class="footer-column links-column">
+            <h3 class="footer-heading">FOOTER HEADING 2</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="#"><span class="arrow">→</span> Footer Link 5</a>
+              </li>
+              <li>
+                <a href="#"><span class="arrow">→</span> Footer Link 6</a>
+              </li>
+              <li>
+                <a href="#"><span class="arrow">→</span> Footer Link 7</a>
+              </li>
+              <li>
+                <a href="#"><span class="arrow">→</span> Footer Link 8</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Right Column: Logo and Contact Info -->
+          <div class="footer-column contact-column">
+            <!-- Logo -->
+            <div class="footer-logo">
+              <div class="logo-text"><span class="lux">LOGO</span>TEXT</div>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="contact-info">
+              <!-- Phone -->
+              <div class="contact-item">
+                <div class="contact-icon phone-icon">
+                  <i class="fas fa-phone-alt"></i>
+                </div>
+                <div class="contact-details">
+                  <h4>Contact Label 1</h4>
+                  <div class="contact-group">
+                    <div class="contact-row">
+                      <div class="contact-label">Contact 1</div>
+                      <div class="contact-value">Contact Value 1</div>
+                    </div>
+                    <div class="contact-row">
+                      <div class="contact-label">Contact 2</div>
+                      <div class="contact-value">Contact Value 2</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Email -->
+              <div class="contact-item">
+                <div class="contact-icon email-icon">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div class="contact-details">
+                  <h4>Contact Label 2</h4>
+                  <div class="contact-group">
+                    <div class="contact-row">
+                      <div class="contact-label">Contact 3</div>
+                      <div class="contact-value">Contact Value 3</div>
+                    </div>
+                    <div class="contact-row">
+                      <div class="contact-label">Contact 4</div>
+                      <div class="contact-value">Contact Value 4</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Office -->
+              <div class="contact-item">
+                <div class="contact-icon location-icon">
+                  <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div class="contact-details">
+                  <h4>Contact Label 3</h4>
+                  <div class="address">Contact Address</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Horizontal divider -->
+        <div class="footer-divider"></div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+          <div class="footer-left">
+            <ul class="legal-links">
+              <li><a href="#">Legal Link 1</a></li>
+              <li><a href="#">Legal Link 2</a></li>
+            </ul>
+          </div>
+          <div class="footer-right">
+            <p class="copyright">Copyright Text</p>
+            <p class="company-info">Company Information</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // JavaScript code for the template
+      document.addEventListener("DOMContentLoaded", function () {
+        console.log("Template loaded successfully");
+
+        // This is a placeholder for any JavaScript initialization code
+        // that would normally be used to populate the template with data
+      });
+    </script>
+
+    <script src="javascirpt.js"></script>
+  </body>
+</html>

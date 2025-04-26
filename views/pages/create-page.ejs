@@ -1,0 +1,1040 @@
+<%- include('../components/header', { pageTitle: 'Create New Page' }) %>
+
+<div class="page-intro">
+  <div class="intro-content">
+    <div class="intro-icon">
+      <i class="fas fa-file-alt"></i>
+    </div>
+    <div class="intro-text">
+      <h2>Create New Page</h2>
+      <p>Select a template to create a new page for your website</p>
+    </div>
+  </div>
+</div>
+
+<% if (message) { %>
+<div
+  class="alert <%= message.includes('success') ? 'alert-success' : 'alert-danger' %>"
+>
+  <%= message %>
+</div>
+<% } %>
+
+<!-- View Options Toggle -->
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <div>
+    <h5 class="mb-0">Select Template</h5>
+  </div>
+  <div class="btn-group" role="group" aria-label="View options">
+    <button type="button" id="gridViewBtn" class="btn btn-primary active">
+      <i class="fas fa-th-large"></i> Grid
+    </button>
+    <button type="button" id="listViewBtn" class="btn btn-outline-primary">
+      <i class="fas fa-list"></i> List
+    </button>
+  </div>
+</div>
+
+<!-- Template Cards in Grid View -->
+<div id="templatesGrid" class="templates-grid mb-5">
+  <!-- Attraction Template Card -->
+  <div class="template-card" data-template="attraction">
+    <div class="template-preview">
+      <img
+        src="/images/placeholders/attraction-template.jpg"
+        alt="Attraction Template"
+        onerror="this.src='/images/placeholders/default.jpg'; this.onerror=null;"
+      />
+      <div class="template-actions">
+        <button
+          class="btn btn-sm btn-primary preview-btn"
+          data-template="attraction"
+        >
+          <i class="fas fa-eye"></i> Preview
+        </button>
+      </div>
+    </div>
+    <div class="template-info">
+      <h3>Attraction</h3>
+      <p>
+        Perfect for showcasing tourist attractions, monuments, or landmarks.
+      </p>
+      <div class="template-features">
+        <span><i class="fas fa-image"></i> Photo Gallery</span>
+        <span><i class="fas fa-ticket-alt"></i> Ticket Info</span>
+        <span><i class="fas fa-clock"></i> Opening Hours</span>
+      </div>
+      <button
+        class="btn btn-success create-page-btn w-100"
+        data-template="attraction"
+      >
+        Create Page
+      </button>
+    </div>
+  </div>
+
+  <!-- Things To Do Template Card -->
+  <div class="template-card" data-template="things-to-do">
+    <div class="template-preview">
+      <img
+        src="/images/placeholders/things-to-do-template.jpg"
+        alt="Things To Do Template"
+        onerror="this.src='/images/placeholders/default.jpg'; this.onerror=null;"
+      />
+      <div class="template-actions">
+        <button
+          class="btn btn-sm btn-primary preview-btn"
+          data-template="things-to-do"
+        >
+          <i class="fas fa-eye"></i> Preview
+        </button>
+      </div>
+    </div>
+    <div class="template-info">
+      <h3>Things To Do</h3>
+      <p>Highlight experiences and activities available at your destination.</p>
+      <div class="template-features">
+        <span><i class="fas fa-list"></i> Activity Listings</span>
+        <span><i class="fas fa-filter"></i> Category Filters</span>
+        <span><i class="fas fa-star"></i> Recommendations</span>
+      </div>
+      <button
+        class="btn btn-success create-page-btn w-100"
+        data-template="things-to-do"
+      >
+        Create Page
+      </button>
+    </div>
+  </div>
+
+  <!-- Restaurant Template Card -->
+  <div class="template-card" data-template="restaurant">
+    <div class="template-preview">
+      <img
+        src="/images/placeholders/restaurant-template.jpg"
+        alt="Restaurant Template"
+        onerror="this.src='/images/placeholders/default.jpg'; this.onerror=null;"
+      />
+      <div class="template-actions">
+        <button
+          class="btn btn-sm btn-primary preview-btn"
+          data-template="restaurant"
+        >
+          <i class="fas fa-eye"></i> Preview
+        </button>
+      </div>
+    </div>
+    <div class="template-info">
+      <h3>Restaurant</h3>
+      <p>Feature restaurants, cafes, and other dining establishments.</p>
+      <div class="template-features">
+        <span><i class="fas fa-utensils"></i> Menu Highlights</span>
+        <span><i class="fas fa-clock"></i> Opening Hours</span>
+        <span><i class="fas fa-phone"></i> Reservations</span>
+      </div>
+      <button
+        class="btn btn-success create-page-btn w-100"
+        data-template="restaurant"
+      >
+        Create Page
+      </button>
+    </div>
+  </div>
+
+  <!-- Hotel Template Card -->
+  <div class="template-card" data-template="hotel">
+    <div class="template-preview">
+      <img
+        src="/images/placeholders/hotel-template.jpg"
+        alt="Hotel Template"
+        onerror="this.src='/images/placeholders/default.jpg'; this.onerror=null;"
+      />
+      <div class="template-actions">
+        <button
+          class="btn btn-sm btn-primary preview-btn"
+          data-template="hotel"
+        >
+          <i class="fas fa-eye"></i> Preview
+        </button>
+      </div>
+    </div>
+    <div class="template-info">
+      <h3>Hotel</h3>
+      <p>Feature hotels, resorts, and accommodation options.</p>
+      <div class="template-features">
+        <span><i class="fas fa-bed"></i> Room Types</span>
+        <span><i class="fas fa-concierge-bell"></i> Amenities</span>
+        <span><i class="fas fa-map-marker-alt"></i> Location</span>
+      </div>
+      <button
+        class="btn btn-success create-page-btn w-100"
+        data-template="hotel"
+      >
+        Create Page
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Template List View (Initially Hidden) -->
+<div id="templatesList" class="templates-list mb-5" style="display: none">
+  <div class="table-responsive">
+    <table class="table table-hover align-middle">
+      <thead class="table-light">
+        <tr>
+          <th width="70">Preview</th>
+          <th>Template</th>
+          <th>Description</th>
+          <th>Features</th>
+          <th width="150">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Attraction Template Row -->
+        <tr data-template="attraction">
+          <td>
+            <div class="template-thumbnail">
+              <img
+                src="/images/placeholders/icon-a.jpg"
+                alt="Attraction"
+                onerror="this.src='/images/placeholders/default-icon.jpg'; this.onerror=null;"
+              />
+            </div>
+          </td>
+          <td><strong>Attraction</strong></td>
+          <td>For tourist attractions, monuments, or landmarks.</td>
+          <td>Photo gallery, ticket info, opening hours</td>
+          <td>
+            <div class="btn-group btn-group-sm">
+              <button
+                class="btn btn-primary preview-btn"
+                data-template="attraction"
+              >
+                <i class="fas fa-eye"></i> Preview
+              </button>
+              <button
+                class="btn btn-success create-page-btn"
+                data-template="attraction"
+              >
+                <i class="fas fa-plus"></i> Create
+              </button>
+            </div>
+          </td>
+        </tr>
+
+        <!-- Things To Do Template Row -->
+        <tr data-template="things-to-do">
+          <td>
+            <div class="template-thumbnail">
+              <img
+                src="/images/placeholders/icon-t.jpg"
+                alt="Things To Do"
+                onerror="this.src='/images/placeholders/default-icon.jpg'; this.onerror=null;"
+              />
+            </div>
+          </td>
+          <td><strong>Things To Do</strong></td>
+          <td>Experiences and activities at your destination.</td>
+          <td>Activity listings, filters, recommendations</td>
+          <td>
+            <div class="btn-group btn-group-sm">
+              <button
+                class="btn btn-primary preview-btn"
+                data-template="things-to-do"
+              >
+                <i class="fas fa-eye"></i> Preview
+              </button>
+              <button
+                class="btn btn-success create-page-btn"
+                data-template="things-to-do"
+              >
+                <i class="fas fa-plus"></i> Create
+              </button>
+            </div>
+          </td>
+        </tr>
+
+        <!-- Restaurant Template Row -->
+        <tr data-template="restaurant">
+          <td>
+            <div class="template-thumbnail">
+              <img
+                src="/images/placeholders/icon-r.jpg"
+                alt="Restaurant"
+                onerror="this.src='/images/placeholders/default-icon.jpg'; this.onerror=null;"
+              />
+            </div>
+          </td>
+          <td><strong>Restaurant</strong></td>
+          <td>Restaurants, cafes, and dining establishments.</td>
+          <td>Menu highlights, opening hours, reservations</td>
+          <td>
+            <div class="btn-group btn-group-sm">
+              <button
+                class="btn btn-primary preview-btn"
+                data-template="restaurant"
+              >
+                <i class="fas fa-eye"></i> Preview
+              </button>
+              <button
+                class="btn btn-success create-page-btn"
+                data-template="restaurant"
+              >
+                <i class="fas fa-plus"></i> Create
+              </button>
+            </div>
+          </td>
+        </tr>
+
+        <!-- Hotel Template Row -->
+        <tr data-template="hotel">
+          <td>
+            <div class="template-thumbnail">
+              <img
+                src="/images/placeholders/icon-h.jpg"
+                alt="Hotel"
+                onerror="this.src='/images/placeholders/default-icon.jpg'; this.onerror=null;"
+              />
+            </div>
+          </td>
+          <td><strong>Hotel</strong></td>
+          <td>Hotels, resorts, and accommodation options.</td>
+          <td>Room types, amenities, location</td>
+          <td>
+            <div class="btn-group btn-group-sm">
+              <button class="btn btn-primary preview-btn" data-template="hotel">
+                <i class="fas fa-eye"></i> Preview
+              </button>
+              <button
+                class="btn btn-success create-page-btn"
+                data-template="hotel"
+              >
+                <i class="fas fa-plus"></i> Create
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Template Preview Modal -->
+<div
+  class="modal fade"
+  id="previewModal"
+  tabindex="-1"
+  aria-labelledby="previewModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="previewModalLabel">Template Preview</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body p-0">
+        <div class="ratio ratio-16x9">
+          <iframe
+            id="previewFrame"
+            src=""
+            title="Template Preview"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary" id="useTemplateBtn">
+          Use This Template
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Create Page Form Modal -->
+<div
+  class="modal fade"
+  id="createPageModal"
+  tabindex="-1"
+  aria-labelledby="createPageModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="createPageModalLabel">Create New Page</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form id="createPageForm">
+          <input
+            type="hidden"
+            id="selectedTemplate"
+            name="templateType"
+            value=""
+          />
+
+          <div class="mb-3">
+            <label for="pageName" class="form-label">Page Name:</label>
+            <input
+              type="text"
+              id="pageName"
+              name="pageName"
+              class="form-control"
+              placeholder="e.g., dubai-attractions"
+              required
+            />
+            <small class="form-text text-muted">
+              The page name will be converted to lowercase and special
+              characters will be replaced with hyphens.
+            </small>
+          </div>
+
+          <div class="mb-3">
+            <label for="pageTitle" class="form-label">Page Title:</label>
+            <input
+              type="text"
+              id="pageTitle"
+              name="pageTitle"
+              class="form-control"
+              placeholder="e.g., Dubai Attractions"
+              required
+            />
+            <small class="form-text text-muted">
+              This will be displayed as the title of your page.
+            </small>
+          </div>
+
+          <div class="mb-3">
+            <label for="pageDescription" class="form-label">Description:</label>
+            <textarea
+              id="pageDescription"
+              name="pageDescription"
+              class="form-control"
+              rows="3"
+              placeholder="Brief description of this page"
+            ></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancel
+        </button>
+        <button type="button" class="btn btn-success" id="submitCreatePageForm">
+          <i class="fas fa-plus-circle"></i> Create Page
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Success Notification Modal -->
+<div
+  class="modal fade"
+  id="successModal"
+  tabindex="-1"
+  aria-labelledby="successModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-success text-white">
+        <h5 class="modal-title" id="successModalLabel">
+          <i class="fas fa-check-circle me-2"></i> Page Created Successfully
+        </h5>
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="text-center mb-4">
+          <div class="success-icon">
+            <i class="fas fa-file-alt"></i>
+          </div>
+        </div>
+        <p class="fs-5 text-center mb-4">
+          Your new page has been created and is ready to use!
+        </p>
+        <div id="pageDetails" class="alert alert-light border">
+          <p class="mb-1">
+            <strong>Page Name:</strong> <span id="createdPageName"></span>
+          </p>
+          <p class="mb-1">
+            <strong>Template:</strong> <span id="createdPageTemplate"></span>
+          </p>
+          <p class="mb-0">
+            <strong>URL:</strong> <span id="createdPageUrl"></span>
+          </p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a id="viewPageLink" href="#" target="_blank" class="btn btn-primary">
+          <i class="fas fa-eye"></i> View Page
+        </a>
+        <button type="button" class="btn btn-success" id="addContentBtn">
+          <i class="fas fa-plus"></i> Add Content
+        </button>
+        <button
+          type="button"
+          class="btn btn-outline-secondary"
+          data-bs-dismiss="modal"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add Content Modal -->
+<div
+  class="modal fade"
+  id="addContentModal"
+  tabindex="-1"
+  aria-labelledby="addContentModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-success text-white">
+        <h5 class="modal-title" id="addContentModalLabel">
+          <i class="fas fa-plus-circle"></i> Add Page Content
+        </h5>
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form id="addContentForm">
+          <div class="mb-3">
+            <label for="contentTitle" class="form-label">Content Title</label>
+            <input
+              type="text"
+              class="form-control"
+              id="contentTitle"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="contentBody" class="form-label">Content</label>
+            <textarea
+              class="form-control"
+              id="contentBody"
+              rows="5"
+              required
+            ></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancel
+        </button>
+        <button type="button" class="btn btn-success" id="submitAddContent">
+          <i class="fas fa-plus"></i> Add Content
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .page-intro {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+    background: linear-gradient(to right, #f8f9fa, #ffffff);
+    border-radius: 8px;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    border-left: 4px solid var(--primary-color);
+  }
+
+  .intro-content {
+    display: flex;
+    align-items: center;
+  }
+
+  .intro-icon {
+    font-size: 1.8rem;
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(
+      135deg,
+      var(--primary-color) 0%,
+      var(--bs-primary) 100%
+    );
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    box-shadow: 0 0.25rem 0.5rem rgba(var(--primary-color-rgb), 0.2);
+    transition: transform 0.3s ease;
+  }
+
+  .intro-icon:hover {
+    transform: scale(1.05);
+  }
+
+  .intro-text h2 {
+    margin: 0;
+    font-weight: 600;
+  }
+
+  .intro-text p {
+    margin: 0.5rem 0 0;
+    color: #6c757d;
+  }
+
+  /* Grid View Styles */
+  .templates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 24px;
+  }
+
+  .template-card {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background-color: white;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .template-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+
+  .template-preview {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+  }
+
+  .template-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .template-card:hover .template-preview img {
+    transform: scale(1.05);
+  }
+
+  .template-actions {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .template-card:hover .template-actions {
+    opacity: 1;
+  }
+
+  .template-info {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .template-info h3 {
+    margin-bottom: 8px;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .template-info p {
+    color: #6c757d;
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+
+  .template-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+    margin-top: auto;
+  }
+
+  .template-features span {
+    background-color: #f8f9fa;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    display: inline-flex;
+    align-items: center;
+    color: #495057;
+  }
+
+  .template-features span i {
+    margin-right: 5px;
+    color: var(--primary-color);
+  }
+
+  .create-page-btn {
+    margin-top: auto;
+  }
+
+  /* List View Styles */
+  .template-thumbnail {
+    width: 60px;
+    height: 40px;
+    overflow: hidden;
+    border-radius: 4px;
+  }
+
+  .template-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Success Modal */
+  .success-icon {
+    font-size: 4rem;
+    color: #28a745;
+    margin-bottom: 1rem;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .templates-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .template-preview {
+      height: 160px;
+    }
+
+    .template-actions {
+      opacity: 1;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Elements
+    const gridViewBtn = document.getElementById("gridViewBtn");
+    const listViewBtn = document.getElementById("listViewBtn");
+    const templatesGrid = document.getElementById("templatesGrid");
+    const templatesList = document.getElementById("templatesList");
+    const previewButtons = document.querySelectorAll(".preview-btn");
+    const createPageButtons = document.querySelectorAll(".create-page-btn");
+    const previewModal = new bootstrap.Modal(
+      document.getElementById("previewModal")
+    );
+    const createPageModal = new bootstrap.Modal(
+      document.getElementById("createPageModal")
+    );
+    const successModal = new bootstrap.Modal(
+      document.getElementById("successModal")
+    );
+    const previewFrame = document.getElementById("previewFrame");
+    const useTemplateBtn = document.getElementById("useTemplateBtn");
+    const selectedTemplateInput = document.getElementById("selectedTemplate");
+    const createPageForm = document.getElementById("createPageForm");
+    const submitCreatePageForm = document.getElementById(
+      "submitCreatePageForm"
+    );
+
+    // Toggle between grid and list views
+    gridViewBtn.addEventListener("click", function () {
+      templatesGrid.style.display = "grid";
+      templatesList.style.display = "none";
+      gridViewBtn.classList.add("active");
+      gridViewBtn.classList.remove("btn-outline-primary");
+      gridViewBtn.classList.add("btn-primary");
+      listViewBtn.classList.remove("active");
+      listViewBtn.classList.add("btn-outline-primary");
+      listViewBtn.classList.remove("btn-primary");
+    });
+
+    listViewBtn.addEventListener("click", function () {
+      templatesGrid.style.display = "none";
+      templatesList.style.display = "block";
+      listViewBtn.classList.add("active");
+      listViewBtn.classList.remove("btn-outline-primary");
+      listViewBtn.classList.add("btn-primary");
+      gridViewBtn.classList.remove("active");
+      gridViewBtn.classList.add("btn-outline-primary");
+      gridViewBtn.classList.remove("btn-primary");
+    });
+
+    // Preview button functionality
+    previewButtons.forEach((button) => {
+      button.addEventListener("click", function () {
+        const templateName = this.getAttribute("data-template");
+
+        // Show the modal first (helps with visual feedback)
+        previewModal.show();
+
+        // Set a loading message
+        const modalBody = document.querySelector("#previewModal .modal-body");
+        const loadingMessage = document.createElement("div");
+        loadingMessage.className = "text-center p-5";
+        loadingMessage.innerHTML =
+          '<i class="fas fa-spinner fa-spin fa-2x mb-3"></i><p>Loading template preview...</p>';
+
+        // Clear previous content and show loading
+        modalBody.innerHTML = "";
+        modalBody.appendChild(loadingMessage);
+
+        // Create iframe after showing loading message
+        const iframe = document.createElement("iframe");
+        iframe.id = "previewFrame";
+        iframe.src = `/admin/views/templates/${templateName}.html`;
+        iframe.title = "Template Preview";
+        iframe.className = "w-100";
+        iframe.style.height = "600px";
+        iframe.style.border = "none";
+
+        // Handle iframe load events
+        iframe.onload = function () {
+          modalBody.innerHTML = "";
+          modalBody.appendChild(iframe);
+          useTemplateBtn.setAttribute("data-template", templateName);
+        };
+
+        // Handle iframe errors
+        iframe.onerror = function () {
+          modalBody.innerHTML = "";
+          const errorMessage = document.createElement("div");
+          errorMessage.className = "alert alert-warning m-3";
+          errorMessage.innerHTML = `<i class="fas fa-exclamation-triangle me-2"></i> Unable to load preview for ${templateName} template. You can still create the page without preview.`;
+          modalBody.appendChild(errorMessage);
+        };
+      });
+    });
+
+    // Use template button in preview modal
+    useTemplateBtn.addEventListener("click", function () {
+      const templateName = this.getAttribute("data-template");
+      previewModal.hide();
+      showCreatePageModal(templateName);
+    });
+
+    // Create page button functionality
+    createPageButtons.forEach((button) => {
+      button.addEventListener("click", function () {
+        const templateName = this.getAttribute("data-template");
+        showCreatePageModal(templateName);
+      });
+    });
+
+    function showCreatePageModal(templateName) {
+      selectedTemplateInput.value = templateName;
+
+      // Update modal title based on template
+      document.getElementById(
+        "createPageModalLabel"
+      ).textContent = `Create New ${
+        templateName.charAt(0).toUpperCase() +
+        templateName.slice(1).replace(/-/g, " ")
+      } Page`;
+
+      createPageModal.show();
+    }
+
+    // Submit create page form
+    submitCreatePageForm.addEventListener("click", async function () {
+      if (!createPageForm.checkValidity()) {
+        createPageForm.reportValidity();
+        return;
+      }
+
+      // Disable button and show loading state
+      this.disabled = true;
+      this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating...';
+
+      try {
+        // Gather form data
+        const formData = {
+          pageName: document.getElementById("pageName").value,
+          pageTitle: document.getElementById("pageTitle").value,
+          pageDescription:
+            document.getElementById("pageDescription").value || "",
+          templateType: document.getElementById("selectedTemplate").value,
+        };
+
+        // Send request to create page
+        const response = await fetch("/admin/create-page", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          // Show success modal
+          createPageModal.hide();
+
+          // Update success modal details
+          document.getElementById("createdPageName").textContent =
+            data.fileName;
+          document.getElementById("createdPageTemplate").textContent =
+            formData.templateType.charAt(0).toUpperCase() +
+            formData.templateType.slice(1).replace(/-/g, " ");
+          document.getElementById("createdPageUrl").textContent = data.path;
+
+          // Update links
+          document.getElementById("viewPageLink").href = data.path;
+
+          successModal.show();
+        } else {
+          // Show error alert
+          const alertDiv = document.createElement("div");
+          alertDiv.className = "alert alert-danger";
+          alertDiv.textContent = data.message || "Failed to create the page";
+          document.querySelector(".modal-body").prepend(alertDiv);
+
+          setTimeout(() => {
+            alertDiv.remove();
+          }, 5000);
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        // Show error alert
+        const alertDiv = document.createElement("div");
+        alertDiv.className = "alert alert-danger";
+        alertDiv.textContent = "An unexpected error occurred";
+        document.querySelector(".modal-body").prepend(alertDiv);
+
+        setTimeout(() => {
+          alertDiv.remove();
+        }, 5000);
+      } finally {
+        // Reset button state
+        this.disabled = false;
+        this.innerHTML = '<i class="fas fa-plus-circle"></i> Create Page';
+      }
+    });
+
+    // Add Content Modal
+    const addContentModal = new bootstrap.Modal(
+      document.getElementById("addContentModal")
+    );
+    const addContentBtn = document.getElementById("addContentBtn");
+    const submitAddContent = document.getElementById("submitAddContent");
+    let currentPageName = "";
+
+    // Handle Add Content button click
+    addContentBtn.addEventListener("click", function () {
+      currentPageName = document.getElementById("createdPageName").textContent;
+      addContentModal.show();
+    });
+
+    // Handle submit add content
+    submitAddContent.addEventListener("click", async function () {
+      const contentTitle = document.getElementById("contentTitle").value;
+      const contentBody = document.getElementById("contentBody").value;
+
+      if (!contentTitle || !contentBody) {
+        alert("Please fill in all fields");
+        return;
+      }
+
+      this.disabled = true;
+      this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Adding...';
+
+      try {
+        const response = await fetch(
+          `/admin/add-page-content/${currentPageName}`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              title: contentTitle,
+              content: contentBody,
+            }),
+          }
+        );
+
+        const data = await response.json();
+
+        if (data.success) {
+          // Hide modal
+          addContentModal.hide();
+
+          // Show success message
+          const alertDiv = document.createElement("div");
+          alertDiv.className = "alert alert-success";
+          alertDiv.textContent = data.message || "Content added successfully";
+          document.querySelector(".modal-body").prepend(alertDiv);
+
+          // Reset form
+          document.getElementById("addContentForm").reset();
+
+          setTimeout(() => {
+            alertDiv.remove();
+          }, 5000);
+        } else {
+          // Show error alert
+          const alertDiv = document.createElement("div");
+          alertDiv.className = "alert alert-danger";
+          alertDiv.textContent = data.message || "Failed to add content";
+          document.querySelector(".modal-body").prepend(alertDiv);
+
+          setTimeout(() => {
+            alertDiv.remove();
+          }, 5000);
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        // Show error alert
+        const alertDiv = document.createElement("div");
+        alertDiv.className = "alert alert-danger";
+        alertDiv.textContent = "An unexpected error occurred";
+        document.querySelector(".modal-body").prepend(alertDiv);
+
+        setTimeout(() => {
+          alertDiv.remove();
+        }, 5000);
+      } finally {
+        // Reset button state
+        this.disabled = false;
+        this.innerHTML = '<i class="fas fa-plus"></i> Add Content';
+      }
+    });
+  });
+</script>
+
+<%- include('../components/footer') %>

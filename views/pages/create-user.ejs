@@ -1,0 +1,389 @@
+<%- include('../components/header', { pageTitle: 'Create New User' }) %>
+
+<div class="page-intro">
+  <div class="intro-content">
+    <div class="intro-icon">
+      <i class="fas fa-user-plus"></i>
+    </div>
+    <div class="intro-text">
+      <h2>Create New User</h2>
+      <p>Add a new admin user or editor to the system</p>
+    </div>
+  </div>
+  <div class="intro-actions">
+    <a href="/admin/users" class="btn btn-secondary">
+      <i class="fas fa-arrow-left"></i> Back to Users
+    </a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-lg-8">
+        <form id="createUserForm">
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="name"
+                >Full Name <span class="text-danger">*</span></label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                name="name"
+                placeholder="John Doe"
+                required
+              />
+            </div>
+
+            <div class="form-group col-md-6">
+              <label for="email"
+                >Email Address <span class="text-danger">*</span></label
+              >
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                placeholder="john@example.com"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="password"
+                >Password <span class="text-danger">*</span></label
+              >
+              <div class="input-group">
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  name="password"
+                  minlength="6"
+                  required
+                />
+                <div class="input-group-append">
+                  <button
+                    class="btn btn-outline-secondary toggle-password"
+                    type="button"
+                    data-target="password"
+                  >
+                    <i class="fas fa-eye"></i>
+                  </button>
+                </div>
+              </div>
+              <small class="form-text text-muted"
+                >Password must be at least 6 characters long</small
+              >
+            </div>
+
+            <div class="form-group col-md-6">
+              <label for="role"
+                >User Role <span class="text-danger">*</span></label
+              >
+              <select class="form-control" id="role" name="role">
+                <option value="editor">Editor</option>
+                <option value="admin">Administrator</option>
+              </select>
+              <small class="form-text text-muted">
+                Administrators have full access to all features
+              </small>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="custom-control custom-switch">
+              <input
+                type="checkbox"
+                class="custom-control-input"
+                id="isActive"
+                name="isActive"
+                checked
+              />
+              <label class="custom-control-label" for="isActive"
+                >Account Active</label
+              >
+            </div>
+            <small class="form-text text-muted">
+              Inactive accounts cannot log in to the system
+            </small>
+          </div>
+
+          <div class="form-group">
+            <div
+              class="progress password-strength-meter"
+              style="height: 5px; display: none"
+            >
+              <div
+                class="progress-bar"
+                role="progressbar"
+                style="width: 0%"
+              ></div>
+            </div>
+          </div>
+
+          <div class="form-group mt-4">
+            <button type="submit" class="btn btn-primary">
+              <i class="fas fa-save"></i> Create User
+            </button>
+            <a href="/admin/users" class="btn btn-light ml-2"> Cancel </a>
+          </div>
+        </form>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="card bg-light">
+          <div class="card-body">
+            <h5 class="card-title">User Permissions</h5>
+
+            <div class="mt-3">
+              <h6 class="mb-2">Administrator</h6>
+              <ul class="permission-list">
+                <li>
+                  <i class="fas fa-check text-success"></i> Manage all content
+                </li>
+                <li>
+                  <i class="fas fa-check text-success"></i> Manage all users
+                </li>
+                <li>
+                  <i class="fas fa-check text-success"></i> Access all settings
+                </li>
+                <li>
+                  <i class="fas fa-check text-success"></i> Create new
+                  administrators
+                </li>
+              </ul>
+
+              <h6 class="mb-2 mt-4">Editor</h6>
+              <ul class="permission-list">
+                <li>
+                  <i class="fas fa-check text-success"></i> Manage content
+                </li>
+                <li>
+                  <i class="fas fa-check text-success"></i> Edit own profile
+                </li>
+                <li>
+                  <i class="fas fa-times text-danger"></i> Cannot manage users
+                </li>
+                <li>
+                  <i class="fas fa-times text-danger"></i> Limited access to
+                  settings
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .page-intro {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+  }
+
+  .intro-content {
+    display: flex;
+    align-items: center;
+  }
+
+  .intro-icon {
+    font-size: 1.8rem;
+    width: 56px;
+    height: 56px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+  }
+
+  .intro-text h2 {
+    margin: 0;
+    font-weight: 600;
+  }
+
+  .intro-text p {
+    margin: 0.5rem 0 0;
+    color: #6c757d;
+  }
+
+  .permission-list {
+    padding-left: 1.5rem;
+    list-style-type: none;
+  }
+
+  .permission-list li {
+    margin-bottom: 0.5rem;
+  }
+
+  .permission-list i {
+    margin-right: 0.5rem;
+    width: 16px;
+  }
+
+  @media (max-width: 992px) {
+    .page-intro {
+      flex-direction: column;
+    }
+
+    .intro-actions {
+      margin-top: 1rem;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Password visibility toggle
+    const toggleButton = document.querySelector(".toggle-password");
+    if (toggleButton) {
+      toggleButton.addEventListener("click", function () {
+        const targetId = this.getAttribute("data-target");
+        const passwordInput = document.getElementById(targetId);
+
+        if (passwordInput.type === "password") {
+          passwordInput.type = "text";
+          this.innerHTML = '<i class="fas fa-eye-slash"></i>';
+        } else {
+          passwordInput.type = "password";
+          this.innerHTML = '<i class="fas fa-eye"></i>';
+        }
+      });
+    }
+
+    // Password strength meter
+    const passwordInput = document.getElementById("password");
+    const strengthMeter = document.querySelector(".password-strength-meter");
+    const strengthBar = strengthMeter.querySelector(".progress-bar");
+
+    passwordInput.addEventListener("input", function () {
+      const password = this.value;
+
+      if (password.length === 0) {
+        strengthMeter.style.display = "none";
+        return;
+      }
+
+      strengthMeter.style.display = "block";
+
+      // Calculate password strength
+      let strength = 0;
+
+      // Length check
+      if (password.length >= 8) strength += 25;
+      else if (password.length >= 6) strength += 10;
+
+      // Contains lowercase
+      if (/[a-z]/.test(password)) strength += 15;
+
+      // Contains uppercase
+      if (/[A-Z]/.test(password)) strength += 15;
+
+      // Contains number
+      if (/[0-9]/.test(password)) strength += 15;
+
+      // Contains special character
+      if (/[^A-Za-z0-9]/.test(password)) strength += 20;
+
+      // Variety of character types
+      const charTypes = [/[a-z]/, /[A-Z]/, /[0-9]/, /[^A-Za-z0-9]/].filter(
+        (regex) => regex.test(password)
+      ).length;
+      strength += charTypes * 5;
+
+      // Cap at 100
+      strength = Math.min(strength, 100);
+
+      // Update the progress bar
+      strengthBar.style.width = `${strength}%`;
+
+      // Color the bar based on strength
+      if (strength < 30) {
+        strengthBar.className = "progress-bar bg-danger";
+      } else if (strength < 60) {
+        strengthBar.className = "progress-bar bg-warning";
+      } else {
+        strengthBar.className = "progress-bar bg-success";
+      }
+    });
+
+    // Form submission
+    const form = document.getElementById("createUserForm");
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const formData = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        password: document.getElementById("password").value,
+        role: document.getElementById("role").value,
+        isActive: document.getElementById("isActive").checked,
+      };
+
+      try {
+        // Disable form and show loading
+        const submitBtn = form.querySelector('button[type="submit"]');
+        submitBtn.disabled = true;
+        submitBtn.innerHTML =
+          '<i class="fas fa-spinner fa-spin"></i> Creating...';
+
+        const response = await fetch("/api/auth/register", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        });
+
+        const data = await response.json();
+
+        // Re-enable form
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="fas fa-save"></i> Create User';
+
+        if (data.success) {
+          // Show success message and redirect
+          Swal.fire({
+            icon: "success",
+            title: "User Created!",
+            text: "New user has been added successfully",
+            confirmButtonColor: "#28a745",
+          }).then(() => {
+            window.location.href = "/admin/users";
+          });
+        } else {
+          // Show error message
+          Swal.fire({
+            icon: "error",
+            title: "Creation Failed",
+            text:
+              data.message || data.errors?.[0]?.msg || "Failed to create user",
+            confirmButtonColor: "#dc3545",
+          });
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        Swal.fire({
+          icon: "error",
+          title: "System Error",
+          text: "An unexpected error occurred while creating the user",
+          confirmButtonColor: "#dc3545",
+        });
+      }
+    });
+  });
+</script>
+
+<%- include('../components/footer') %>

@@ -1,0 +1,219 @@
+<%- include('../components/header', { pageTitle: 'Create Section' }) %>
+
+<div class="card">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <h2 class="card-title">Create New Section</h2>
+    <a href="/admin/sections" class="btn btn-secondary">
+      <i class="fas fa-arrow-left"></i> Back to Sections
+    </a>
+  </div>
+  <div class="card-body">
+    <form id="createSectionForm">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="name">Section ID/Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              name="name"
+              placeholder="e.g., about-us (no spaces)"
+              required
+            />
+            <small class="form-text text-muted"
+              >This is used in the URL and should be lowercase with no
+              spaces.</small
+            >
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="displayName">Display Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="displayName"
+              name="displayName"
+              placeholder="e.g., About Us"
+              required
+            />
+            <small class="form-text text-muted"
+              >This is shown to users on the site.</small
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="order">Order</label>
+            <input
+              type="number"
+              class="form-control"
+              id="order"
+              name="order"
+              value="<%= sections.length + 1 %>"
+              min="1"
+              required
+            />
+            <small class="form-text text-muted"
+              >Order in which this section appears on the site.</small
+            >
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="icon">Icon</label>
+            <input
+              type="text"
+              class="form-control"
+              id="icon"
+              name="icon"
+              placeholder="e.g., fas fa-home"
+              required
+            />
+            <small class="form-text text-muted"
+              >FontAwesome icon class for this section.</small
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="content">Content</label>
+        <textarea
+          class="form-control editor"
+          id="content"
+          name="content"
+          rows="15"
+        ></textarea>
+      </div>
+
+      <div class="form-check mb-3">
+        <input
+          type="checkbox"
+          class="form-check-input"
+          id="isActive"
+          name="isActive"
+          checked
+        />
+        <label class="form-check-label" for="isActive"
+          >Show this section on the site</label
+        >
+      </div>
+
+      <button type="submit" class="btn btn-primary">
+        <i class="fas fa-save"></i> Create Section
+      </button>
+    </form>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Initialize WYSIWYG editor
+    if (typeof ClassicEditor !== "undefined") {
+      ClassicEditor.create(document.querySelector(".editor"), {
+        toolbar: [
+          "heading",
+          "|",
+          "bold",
+          "italic",
+          "link",
+          "bulletedList",
+          "numberedList",
+          "|",
+          "outdent",
+          "indent",
+          "|",
+          "imageUpload",
+          "blockQuote",
+          "insertTable",
+          "mediaEmbed",
+          "undo",
+          "redo",
+        ],
+        image: {
+          toolbar: [
+            "imageTextAlternative",
+            "|",
+            "imageStyle:full",
+            "imageStyle:side",
+          ],
+        },
+      }).catch((error) => {
+        console.error("WYSIWYG editor error:", error);
+      });
+    }
+
+    // Form submission
+    const form = document.getElementById("createSectionForm");
+
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      // Simplify the section name to be URL-friendly
+      const name = document
+        .getElementById("name")
+        .value.trim()
+        .toLowerCase()
+        .replace(/\s+/g, "-")
+        .replace(/[^a-z0-9-]/g, "");
+
+      document.getElementById("name").value = name;
+
+      // Get form data
+      const formData = {
+        name: name,
+        displayName: document.getElementById("displayName").value,
+        order: parseInt(document.getElementById("order").value),
+        icon: document.getElementById("icon").value,
+        content: document
+          .querySelector(".ck-editor__editable")
+          .ckeditorInstance.getData(),
+        isActive: document.getElementById("isActive").checked,
+      };
+
+      try {
+        const response = await fetch("/api/sections", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          Swal.fire({
+            icon: "success",
+            title: "Success!",
+            text: "Section created successfully",
+            showConfirmButton: true,
+          }).then(() => {
+            window.location.href = "/admin/sections";
+          });
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: data.message || "Failed to create section",
+          });
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: "An unexpected error occurred",
+        });
+      }
+    });
+  });
+</script>
+
+<%- include('../components/footer') %>

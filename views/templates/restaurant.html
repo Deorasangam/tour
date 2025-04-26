@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LuxTripper - Restaurant Template</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+      /* Restaurant specific styles */
+      .points-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+
+      .point-card {
+        background-color: var(--card-bg);
+        font-weight: bold;
+        border-radius: 6px;
+        color: #000000;
+        padding: 15px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        border: 1px solid var(--card-border);
+      }
+
+      .point-card h4 {
+        font-size: 14px;
+        color: #000;
+        margin-bottom: 5px;
+        display: flex;
+        align-items: center;
+      }
+
+      .point-card h4 i {
+        margin-right: 5px;
+        color: var(--accent-color);
+      }
+
+      .point-card p {
+        font-weight: 600;
+        font-size: 14px;
+      }
+
+      /* Major cards (like address) take up the full width */
+      .address-card {
+        grid-column: span 2;
+      }
+
+      /* Menu items styling */
+      .menu-category {
+        margin-bottom: 30px;
+      }
+
+      .menu-category h3 {
+        font-size: 24px;
+        margin-bottom: 15px;
+        color: var(--heading-color);
+        border-bottom: 2px solid var(--accent-color);
+        padding-bottom: 8px;
+      }
+
+      .menu-item {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+        border-bottom: 1px dotted #ddd;
+      }
+
+      .menu-item-name {
+        font-weight: bold;
+        font-size: 18px;
+      }
+
+      .menu-item-description {
+        font-size: 14px;
+        color: #666;
+        margin-top: 5px;
+      }
+
+      .menu-item-price {
+        font-weight: bold;
+        color: var(--accent-color);
+        font-size: 18px;
+        white-space: nowrap;
+        margin-left: 15px;
+      }
+
+      /* Media queries for responsive design */
+      @media (max-width: 576px) {
+        .points-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .address-card {
+          grid-column: span 1;
+        }
+
+        .menu-item {
+          flex-direction: column;
+        }
+
+        .menu-item-price {
+          margin-left: 0;
+          margin-top: 5px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header id="main-header">
+      <div class="container header-container">
+        <a href="#" class="logo"><span>LOGO</span>TEXT</a>
+
+        <button class="mobile-menu-btn">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <nav>
+          <ul id="nav-menu">
+            <li><a href="#">Menu Item 1</a></li>
+            <li><a href="#">Menu Item 2</a></li>
+            <li><a href="#">Menu Item 3</a></li>
+            <li><a href="#">Menu Item 4</a></li>
+          </ul>
+        </nav>
+
+        <div class="contact-info">
+          <div class="phone">
+            <i class="fas fa-phone-alt"></i>
+            <span>Phone Number</span>
+          </div>
+        </div>
+        <button class="cta-button">Reservations</button>
+        <div class="search-icon">
+          <i class="fas fa-search"></i>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero-section">
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="">HOME</a> <span>></span> <a href="">RESTAURANTS</a>
+          <span>></span> <a href="">CUISINE</a> <span>></span>
+          <a href="" id="restaurant-name">RESTAURANT NAME</a>
+        </div>
+
+        <div class="hero-content">
+          <h1 id="hero-title">Restaurant Name</h1>
+          <h2 id="hero-subtitle">Cuisine Type</h2>
+          <div class="location">
+            <i class="fas fa-map-marker-alt"></i>
+            <span id="hero-location">Restaurant Location</span>
+          </div>
+        </div>
+
+        <div class="key-points">
+          <h3>Quick Info</h3>
+          <div class="points-grid">
+            <div class="point-card">
+              <h4><i class="fas fa-clock"></i> Opening Hours</h4>
+              <p>12:00 PM - 10:00 PM</p>
+            </div>
+            <div class="point-card">
+              <h4><i class="fas fa-utensils"></i> Cuisine</h4>
+              <p>Italian</p>
+            </div>
+            <div class="point-card">
+              <h4><i class="fas fa-credit-card"></i> Price Range</h4>
+              <p>$$$</p>
+            </div>
+            <div class="point-card">
+              <h4><i class="fas fa-phone"></i> Contact</h4>
+              <p>+1 234 567 8900</p>
+            </div>
+            <div class="point-card address-card">
+              <h4><i class="fas fa-map-marker-alt"></i> Address</h4>
+              <p>123 Restaurant Street, City, Country</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Links -->
+    <div class="quick-links">
+      <div class="container">
+        <a href="#about-section">ABOUT</a>
+        <a href="#menu-section">MENU</a>
+        <a href="#opening-hours-section">HOURS</a>
+        <a href="#photos-section">PHOTOS</a>
+        <a href="#reviews-section">REVIEWS</a>
+        <a href="#reservation-section">RESERVATION</a>
+        <a href="#location-section">LOCATION</a>
+      </div>
+    </div>
+
+    <!-- About Section -->
+    <section class="section" id="about-section">
+      <div class="container section-inner">
+        <h2 class="section-title">
+          <i class="fas fa-info-circle"></i>
+          <span id="about-title">About Restaurant</span>
+        </h2>
+
+        <p id="about-description">
+          Restaurant description goes here. This could include information about
+          the chef, history of the restaurant, ambiance, cuisine specialties,
+          etc.
+        </p>
+      </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="section" id="menu-section">
+      <div class="container section-inner">
+        <h2 class="section-title">
+          <i class="fas fa-utensils"></i>
+          <span id="menu-title">Our Menu</span>
+        </h2>
+
+        <div class="menu-category">
+          <h3>Starters</h3>
+          <div class="menu-item">
+            <div>
+              <div class="menu-item-name">Caprese Salad</div>
+              <div class="menu-item-description">
+                Fresh mozzarella, tomatoes, and basil with balsamic glaze
+              </div>
+            </div>
+            <div class="menu-item-price">$12.99</div>
+          </div>
+          <div class="menu-item">
+            <div>
+              <div class="menu-item-name">Bruschetta</div>
+              <div class="menu-item-description">
+                Grilled bread topped with tomatoes, olive oil, and herbs
+              </div>
+            </div>
+            <div class="menu-item-price">$9.99</div>
+          </div>
+        </div>
+
+        <div class="menu-category">
+          <h3>Main Courses</h3>
+          <div class="menu-item">
+            <div>
+              <div class="menu-item-name">Pasta Carbonara</div>
+              <div class="menu-item-description">
+                Spaghetti with pancetta, eggs, pecorino cheese, and black pepper
+              </div>
+            </div>
+            <div class="menu-item-price">$18.99</div>
+          </div>
+          <div class="menu-item">
+            <div>
+              <div class="menu-item-name">Margherita Pizza</div>
+              <div class="menu-item-description">
+                Tomato sauce, fresh mozzarella, and basil
+              </div>
+            </div>
+            <div class="menu-item-price">$16.99</div>
+          </div>
+        </div>
+
+        <div class="menu-category">
+          <h3>Desserts</h3>
+          <div class="menu-item">
+            <div>
+              <div class="menu-item-name">Tiramisu</div>
+              <div class="menu-item-description">
+                Coffee-flavored Italian dessert with layers of mascarpone cheese
+                and ladyfingers
+              </div>
+            </div>
+            <div class="menu-item-price">$8.99</div>
+          </div>
+          <div class="menu-item">
+            <div>
+              <div class="menu-item-name">Panna Cotta</div>
+              <div class="menu-item-description">
+                Italian sweetened cream with vanilla and fresh berries
+              </div>
+            </div>
+            <div class="menu-item-price">$7.99</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Opening Hours Section -->
+    <section class="section" id="opening-hours-section">
+      <div class="container section-inner">
+        <h2 class="section-title">
+          <i class="fas fa-clock"></i>
+          <span>Opening Hours</span>
+        </h2>
+
+        <div class="hours-container">
+          <div class="hours-row">
+            <div class="day">Monday:</div>
+            <div class="time">12:00 PM - 10:00 PM</div>
+          </div>
+          <div class="hours-row">
+            <div class="day">Tuesday:</div>
+            <div class="time">12:00 PM - 10:00 PM</div>
+          </div>
+          <div class="hours-row">
+            <div class="day">Wednesday:</div>
+            <div class="time">12:00 PM - 10:00 PM</div>
+          </div>
+          <div class="hours-row">
+            <div class="day">Thursday:</div>
+            <div class="time">12:00 PM - 10:00 PM</div>
+          </div>
+          <div class="hours-row">
+            <div class="day">Friday:</div>
+            <div class="time">12:00 PM - 11:00 PM</div>
+          </div>
+          <div class="hours-row">
+            <div class="day">Saturday:</div>
+            <div class="time">11:00 AM - 11:00 PM</div>
+          </div>
+          <div class="hours-row">
+            <div class="day">Sunday:</div>
+            <div class="time">11:00 AM - 9:00 PM</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reservation Section -->
+    <section class="section" id="reservation-section">
+      <div class="container section-inner">
+        <h2 class="section-title">
+          <i class="fas fa-calendar-alt"></i>
+          <span>Make a Reservation</span>
+        </h2>
+
+        <div class="reservation-form">
+          <form action="#" method="post">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required />
+              </div>
+              <div class="form-group">
+                <label for="guests">Number of Guests</label>
+                <select id="guests" name="guests" required>
+                  <option value="1">1 Person</option>
+                  <option value="2">2 People</option>
+                  <option value="3">3 People</option>
+                  <option value="4">4 People</option>
+                  <option value="5">5 People</option>
+                  <option value="6">6 People</option>
+                  <option value="7+">7+ People</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="date">Date</label>
+                <input type="date" id="date" name="date" required />
+              </div>
+              <div class="form-group">
+                <label for="time">Time</label>
+                <input type="time" id="time" name="time" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="message">Special Requests</label>
+              <textarea id="message" name="message" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn-primary">Book a Table</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-columns">
+          <div class="footer-column">
+            <h3>About Us</h3>
+            <p>
+              Our restaurant is dedicated to bringing you the finest Italian
+              cuisine using fresh, locally-sourced ingredients.
+            </p>
+          </div>
+
+          <div class="footer-column">
+            <h3>Contact Info</h3>
+            <ul class="contact-info">
+              <li>
+                <i class="fas fa-map-marker-alt"></i> 123 Restaurant Street,
+                City
+              </li>
+              <li><i class="fas fa-phone"></i> +1 234 567 8900</li>
+              <li><i class="fas fa-envelope"></i> info@restaurant.com</li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-tripadvisor"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2023 Restaurant Name. All Rights Reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
+        const navMenu = document.getElementById("nav-menu");
+
+        mobileMenuBtn.addEventListener("click", function () {
+          navMenu.classList.toggle("open");
+          mobileMenuBtn.classList.toggle("active");
+        });
+      });
+    </script>
+  </body>
+</html>
