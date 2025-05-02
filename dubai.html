@@ -1,0 +1,2386 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LuxTripper - Burj Khalifa</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+      /* Ensure key point cards display correctly with major/minor sizes */
+      .points-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+
+      .point-card {
+        background-color: var(--card-bg);
+        font-weight: bold;
+        border-radius: 6px;
+        color: #000000;
+        padding: 15px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        border: 1px solid var(--card-border);
+      }
+
+      .point-card h4 {
+        font-size: 14px;
+        color: #000;
+        margin-bottom: 5px;
+        display: flex;
+        align-items: center;
+      }
+
+      .point-card h4 i {
+        margin-right: 5px;
+        color: var(--accent-color);
+      }
+
+      .point-card p {
+        font-weight: 600;
+        font-size: 14px;
+      }
+
+      /* Major cards (like address) take up the full width */
+      .address-card {
+        grid-column: span 2;
+      }
+
+      /* Media queries for responsive design */
+      @media (max-width: 576px) {
+        .points-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .address-card {
+          grid-column: span 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header id="main-header">
+      <div class="container header-container">
+        <a href="#" class="logo"><span>LUX</span>TRIPPER</a>
+
+        <button class="mobile-menu-btn">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <nav>
+          <ul id="nav-menu">
+            <li><a href="#">Holidays</a></li>
+            <li><a href="#">Tours</a></li>
+            <li><a href="#">Exclusive Deals</a></li>
+            <li><a href="#">About Us</a></li>
+          </ul>
+        </nav>
+
+        <div class="contact-info">
+          <div class="phone">
+            <i class="fas fa-phone-alt"></i>
+            <span>0203 023 7776</span>
+          </div>
+        </div>
+        <button class="cta-button">Plan Your Trip</button>
+        <div class="search-icon">
+          <i class="fas fa-search"></i>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section
+      class="hero"
+      id="hero-section"
+      style="background-image: url('/images/images10.jpeg')"
+    >
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="">HOME</a> <span>></span> <a href="">ATTRACTIONS</a>
+          <span>></span> <a href="">UAE</a> <span>></span> <a href="">DUBAI</a>
+          <span>></span> <a href="">BURJ KHALIFA</a>
+        </div>
+
+        <div class="hero-content">
+          <h1 id="hero-title">The Burj Khalifa</h1>
+          <h2 id="hero-subtitle">The World's Tallest Tower</h2>
+          <div class="location">
+            <i class="fas fa-map-marker-alt"></i>
+            <span id="hero-location">Dubai, UAE</span>
+          </div>
+        </div>
+
+        <div class="key-points">
+          <h3>Key Points</h3>
+          <div class="points-grid">
+            <!-- Key points will be dynamically generated -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Links -->
+    <div class="quick-links">
+      <div class="container">
+        <a href="#about-section">ABOUT</a>
+        <a href="#opening-hours-section">OPENING HOURS</a>
+        <a href="#tickets-section">TICKETS</a>
+        <a href="#tours-section">TOURS</a>
+        <a href="#photos-section">PHOTOS</a>
+        <a href="#hotels-section">HOTELS</a>
+        <a href="#facts-section">FACTS</a>
+      </div>
+    </div>
+
+    <!-- About Section -->
+    <section class="section" id="about-section">
+      <div class="container section-inner">
+        <h2 class="section-title">
+          <i class="fas fa-info-circle"></i>
+          <span id="about-title">About Burj Khalifa</span>
+        </h2>
+
+        <p id="about-description">
+          The Burj Khalifa, located in Dubai, United Arab Emirates, is the
+          tallest man-made structure in the world, standing at 828 meters (2,717
+          feet). Completed in 2010, it was designed by the Chicago-based
+          architecture firm Skidmore, Owings & Merrill, with Adrian Smith as the
+          lead architect. The building's design draws inspiration from Islamic
+          architecture, particularly the Hymenocallis flower, and features a
+          Y-shaped floor plan designed to maximize residential and hotel space.
+          The shape provides reduced wind forces on the tower and enhances its
+          stability. It was developed by Emaar Properties and cost approximately
+          $1.5 billion. The tower features 163 floors, including residential,
+          commercial, and hospitality spaces, and is home to the world's highest
+          observation deck at the top, on the 148th floor.
+        </p>
+      </div>
+    </section>
+
+    <!-- History Section -->
+    <section class="section" id="history-section">
+      <div class="container section-inner">
+        <h2 class="section-title">
+          <i class="fas fa-history"></i>
+          <span id="history-title">History & Construction</span>
+        </h2>
+
+        <div class="history-image-container">
+          <img
+            id="history-image"
+            src="/images/images7.jpg"
+            alt="Burj Khalifa Construction"
+            class="history-image"
+          />
+        </div>
+
+        <p id="history-description">
+          The Burj Khalifa, an iconic symbol of Dubai's ambition, is a testament
+          to modern engineering and architectural prowess. Construction began in
+          2004, driven by Dubai's vision to diversify its economy through
+          tourism and service industries. Designed by Skidmore, Owings &
+          Merrill, the tower's construction involved overcoming immense
+          challenges, including the extreme heat of the region and the sheer
+          scale of the project. Reinforced concrete formed the primary
+          structure, with innovative techniques used to pump concrete to
+          unprecedented heights. The construction process required meticulous
+          planning and precise execution, with more than 12,000 workers at its
+          peak. Today, this megastructure, housing residences, offices, and a
+          hotel, has solidified Dubai's place on the global stage, drawing
+          visitors from around the world.
+        </p>
+      </div>
+    </section>
+
+    <!-- Architecture and Design Section -->
+    <section class="section" id="architecture-section">
+      <div class="container section-inner">
+        <h2 class="section-title">
+          <i class="fas fa-drafting-compass"></i>
+          <span id="architecture-title">Architecture and Design</span>
+        </h2>
+
+        <div class="arch-cards">
+          <div class="arch-card">
+            <div class="arch-card-label">
+              <i class="fas fa-user"></i> Architect
+            </div>
+            <div class="arch-card-content">
+              <p>Adrian Smith</p>
+              <p class="arch-secondary">(Skidmore, Owings & Merrill - SOM)</p>
+            </div>
+          </div>
+
+          <div class="arch-card">
+            <div class="arch-card-label">
+              <i class="fas fa-lightbulb"></i> Design Inspiration
+            </div>
+            <div class="arch-card-content">
+              <p>
+                Inspired by the Hymenocallis flower and Islamic architecture
+                (geometric patterns).
+              </p>
+            </div>
+          </div>
+
+          <div class="arch-card">
+            <div class="arch-card-label">
+              <i class="fas fa-building"></i> Floors
+            </div>
+            <div class="arch-card-content">
+              <p>
+                163 habitable floors, including residential, commercial, and
+                hotel spaces.
+              </p>
+            </div>
+          </div>
+
+          <div class="arch-card">
+            <div class="arch-card-label">
+              <i class="fas fa-draw-polygon"></i> Shape
+            </div>
+            <div class="arch-card-content">
+              <p>
+                Y-shaped floor plan to maximize views and reduce wind forces.
+              </p>
+            </div>
+          </div>
+
+          <div class="arch-card full-width">
+            <div class="arch-card-label">
+              <i class="fas fa-elevator"></i> Elevators
+            </div>
+            <div class="arch-card-content">
+              <p>
+                57 elevators and 8 escalators; double-decker elevators for
+                efficiency.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="arch-image-container">
+          <img
+            id="architecture-image"
+            src="/images/images6.jpg"
+            alt="Burj Khalifa Skyline View"
+            class="arch-image"
+          />
+        </div>
+
+        <p id="architecture-description">
+          The Burj Khalifa's architecture and design are a fusion of Islamic
+          influences and cutting-edge engineering. Its tri-lobed footprint,
+          inspired by the desert flower Hymenocallis, enhances structural
+          stability and reduces wind resistance. The tower's spiraling pattern
+          decreases in cross-section as it rises, creating a stepped profile
+          that minimizes wind vortices. The facade, composed of reflective
+          glazing panels and aluminum mullions, reflects the intense desert sun,
+          while also incorporating a sophisticated window washing system to
+          maintain its pristine appearance. Inside, the design emphasizes luxury
+          and functionality, with a mix of residential, commercial, and
+          hospitality spaces.
+        </p>
+      </div>
+    </section>
+
+    <!-- Travel Information Section -->
+    <section class="section" id="travel-section">
+      <div class="container section-inner">
+        <h2 class="section-title">
+          <i class="fas fa-plane"></i>
+          <span id="travel-title">How to get there from UK</span>
+        </h2>
+
+        <div class="map-container">
+          <div id="travel-map" class="travel-map">
+            <!-- Map placeholder - in a real site this would be replaced with an actual map -->
+            <div class="map-placeholder">
+              <i class="fas fa-map-marked-alt"></i>
+              <p>Interactive Map</p>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="sub-heading">
+          Here's estimated travel times for each mode of transport:
+        </h3>
+
+        <div class="travel-modes">
+          <div class="travel-mode">
+            <div class="travel-mode-btn flight-btn">
+              <i class="fas fa-plane"></i> By Flight
+            </div>
+          </div>
+          <div class="travel-mode">
+            <div class="travel-mode-btn road-btn">
+              <i class="fas fa-car"></i> By Road
+            </div>
+          </div>
+          <div class="travel-mode">
+            <div class="travel-mode-btn metro-btn">
+              <i class="fas fa-subway"></i> By Metro
+            </div>
+          </div>
+        </div>
+
+        <div class="travel-info">
+          <p id="travel-description">
+            The fastest and most convenient way to reach Burj Khalifa from the
+            UK is by taking a direct flight to Dubai International Airport
+            (DXB). Major airlines like Emirates, British Airways, and Etihad
+            operate frequent flights from London, Manchester, and other UK
+            cities. Upon arrival, you can take a taxi (15-20 mins) or metro
+            (20-25 mins) to Burj Khalifa.
+          </p>
+
+          <div class="travel-time">
+            <i class="far fa-clock"></i>
+            <span>7 hours (flight) + 30-40 mins (airport to Burj Khalifa)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Opening Hours Section -->
+    <section class="section" id="opening-hours-section">
+      <div class="container section-inner">
+        <h2 class="section-title">
+          <i class="far fa-clock"></i>
+          <span id="opening-hours-title">Burj Khalifa Opening hours</span>
+        </h2>
+
+        <p id="opening-hours-description">
+          When planning a visit to the Burj Khalifa, the world's tallest tower,
+          it's important to know the opening hours to make the most of your
+          experience. This guide provides information on the standard opening
+          hours, highlighting any seasonal changes, and offers tips on the best
+          time to visit for avoiding crowds and enjoying breathtaking views.
+        </p>
+      </div>
+    </section>
+
+    <!-- Observation Decks Section -->
+    <section class="section" id="observation-decks-section">
+      <div class="container section-inner">
+        <h2 class="section-title">
+          <i class="fas fa-eye"></i>
+          <span id="observation-decks-title"
+            >Observation decks and their timings</span
+          >
+        </h2>
+
+        <div class="observation-decks" id="observation-decks-container">
+          <!-- Deck cards will be dynamically generated -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Best Time to Visit Section -->
+    <section class="section" id="best-time-section">
+      <div class="container section-inner">
+        <h2 class="section-title">
+          <i class="far fa-clock"></i>
+          <span id="best-time-title">Best time to visit Burj Khalifa</span>
+        </h2>
+
+        <div class="visit-info">
+          <h3 class="visit-subheading">Prime hours vs non-prime hours</h3>
+
+          <p class="visit-text" id="best-time-description">
+            When selecting your time slot, you will either choose a prime time
+            visit or a non-prime time visit. Entry during prime hours cost
+            slightly more because these tickets correspond with Dubai's sunset
+            timings. The views you get from the observation decks are absolutely
+            spectacular, as you get to see the city bathed in a beautiful amber
+            hue. Just imagine watching the sun setting over the Persian Gulf
+            from the highest man-made point in the world!
+          </p>
+
+          <div class="pricing-table-container">
+            <table class="pricing-table">
+              <thead>
+                <tr>
+                  <th>Ticket time</th>
+                  <th>At the Top</th>
+                  <th>At the Top Sky</th>
+                  <th>Price</th>
+                  <th>Tickets</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Non-Prime hours</td>
+                  <td>
+                    08:30AM - 03:30PM<br />
+                    06:30AM - closing
+                  </td>
+                  <td>07:30PM - closing</td>
+                  <td>From AED 159.01</td>
+                  <td><a href="#" class="book-now-btn">Book Now</a></td>
+                </tr>
+                <tr>
+                  <td>Prime hours</td>
+                  <td>04:00PM - 06:00PM</td>
+                  <td>03:30AM - 06:00PM</td>
+                  <td>From AED 244</td>
+                  <td><a href="#" class="book-now-btn">Book Now</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 class="visit-subheading">Peak season vs Low season</h3>
+
+          <p class="visit-text">
+            Dubai experience a surge in tourists during the cooler months
+            (December - February). While the festive spirit and pleasant weather
+            are enticing, these months also coincide larger crowds at the Burj
+            Khalifa. Consider visiting during the shoulder seasons (March-May,
+            September-November) for a comfortable balance between weather and
+            crowds.
+          </p>
+
+          <div class="season-calendar">
+            <div class="month-card peak">
+              <div class="month-name">JAN</div>
+              <div class="month-icon"><i class="fas fa-heart"></i></div>
+            </div>
+            <div class="month-card peak">
+              <div class="month-name">FEB</div>
+              <div class="month-icon"><i class="fas fa-heart"></i></div>
+            </div>
+            <div class="month-card moderate">
+              <div class="month-name">MAR</div>
+              <div class="month-icon"><i class="fas fa-heart"></i></div>
+            </div>
+            <div class="month-card moderate">
+              <div class="month-name">APR</div>
+              <div class="month-icon"><i class="fas fa-heart"></i></div>
+            </div>
+            <div class="month-card off">
+              <div class="month-name">MAY</div>
+              <div class="month-icon"><i class="fas fa-heart"></i></div>
+            </div>
+            <div class="month-card off">
+              <div class="month-name">JUN</div>
+              <div class="month-icon"><i class="fas fa-heart"></i></div>
+            </div>
+            <div class="month-card off">
+              <div class="month-name">JUL</div>
+              <div class="month-icon"><i class="fas fa-heart"></i></div>
+            </div>
+            <div class="month-card off">
+              <div class="month-name">AUG</div>
+              <div class="month-icon"><i class="fas fa-heart"></i></div>
+            </div>
+            <div class="month-card moderate">
+              <div class="month-name">SEP</div>
+              <div class="month-icon"><i class="fas fa-heart"></i></div>
+            </div>
+            <div class="month-card moderate">
+              <div class="month-name">OCT</div>
+              <div class="month-icon"><i class="fas fa-heart"></i></div>
+            </div>
+            <div class="month-card moderate">
+              <div class="month-name">NOV</div>
+              <div class="month-icon"><i class="fas fa-heart"></i></div>
+            </div>
+            <div class="month-card peak">
+              <div class="month-name">DEC</div>
+              <div class="month-icon"><i class="fas fa-heart"></i></div>
+            </div>
+          </div>
+
+          <div class="season-legend">
+            <div class="legend-item">
+              <span class="legend-dot off-dot"></span>
+              <span>Off Season</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-dot moderate-dot"></span>
+              <span>Moderate Season</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-dot peak-dot"></span>
+              <span>Peak Season</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Best Ways to Experience Section -->
+    <section class="section" id="best-ways-section">
+      <div class="container section-inner">
+        <h2 class="section-title">
+          <i class="fas fa-star-of-life"></i>
+          <span id="best-ways-title">Best Ways to Experience Burj Khalifa</span>
+        </h2>
+
+        <div class="experience-container">
+          <div class="experience-wrapper" id="experienceWrapper">
+            <!-- Experience Card 1 -->
+            <div class="experience-card">
+              <div class="experience-image">
+                <img
+                  src="https://images.unsplash.com/photo-1580835245051-e491d1fc457d"
+                  alt="Observation Deck"
+                  class="card-img"
+                />
+              </div>
+              <div class="experience-content">
+                <h3 class="experience-title">
+                  Visit At The Top - Observation Decks
+                </h3>
+                <p class="experience-description">
+                  For the ultimate panoramic views, head to At The Top on the
+                  124th and 125th floors. If you're looking for an even more
+                  exclusive experience, the At The Top Sky on the 148th floor
+                  offers a premium lounge and a less crowded experience.
+                </p>
+                <div class="experience-tip">
+                  <i class="fas fa-lightbulb"></i>
+                  <span>Tip for you</span>
+                </div>
+                <p class="tip-text">
+                  Visit during sunset for the most stunning views of Dubai's
+                  skyline.
+                </p>
+              </div>
+            </div>
+
+            <!-- Experience Card 2 -->
+            <div class="experience-card">
+              <div class="experience-image">
+                <img
+                  src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3"
+                  alt="Restaurant View"
+                  class="card-img"
+                />
+              </div>
+              <div class="experience-content">
+                <h3 class="experience-title">Dine with a View</h3>
+                <p class="experience-description">
+                  For a truly luxurious experience, book a table at Atmosphere,
+                  the world's highest restaurant on the 122nd floor. Enjoy
+                  gourmet cuisine with floor-to-ceiling windows overlooking the
+                  city.
+                </p>
+                <div class="experience-tip">
+                  <i class="fas fa-lightbulb"></i>
+                  <span>Tip for you</span>
+                </div>
+                <p class="tip-text">
+                  Reserve a window-side table for the best views!
+                </p>
+              </div>
+            </div>
+
+            <!-- Experience Card 3 -->
+            <div class="experience-card">
+              <div class="experience-image">
+                <img
+                  src="https://images.unsplash.com/photo-1514924013411-cbf25faa35bb"
+                  alt="Dubai Fountain"
+                  class="card-img"
+                />
+              </div>
+              <div class="experience-content">
+                <h3 class="experience-title">
+                  Watch the Burj Khalifa Light Show & Dubai Fountain
+                </h3>
+                <p class="experience-description">
+                  For the ultimate panoramic views, head to At The Top on the
+                  124th and 125th floors. If you're looking for an even more
+                  exclusive experience.
+                </p>
+                <div class="experience-tip">
+                  <i class="fas fa-lightbulb"></i>
+                  <span>Tip for you</span>
+                </div>
+                <p class="tip-text">
+                  Visit during sunset for the most stunning views of Dubai's
+                  skyline.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Next Button placed outside container and fully visible -->
+          <div class="slider-button-container">
+            <button
+              class="next-btn"
+              id="nextBtn"
+              aria-label="View more experiences"
+            >
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ticket Section -->
+    <section class="section" id="tickets-section">
+      <div class="container section-inner">
+        <h2 class="section-title">
+          <i class="fas fa-ticket-alt"></i>
+          <span id="tickets-title">Burj Khalifa Tickets</span>
+        </h2>
+
+        <div class="tickets-grid">
+          <!-- Ticket Card 1 -->
+          <div class="ticket-card">
+            <div class="ticket-image">
+              <img
+                src="https://images.unsplash.com/photo-1582672060674-bc2bd808a8b5"
+                alt="Burj Khalifa View"
+                class="ticket-img"
+              />
+            </div>
+            <div class="ticket-content">
+              <h3 class="ticket-title">
+                Burj Khalifa Level 124 and 125 Entry Ticket
+              </h3>
+
+              <div class="ticket-price-row">
+                <div class="ticket-price">
+                  <span class="price-amount">£3,776</span>
+                  <span class="price-suffix">pp</span>
+                </div>
+                <a href="#" class="view-tour-btn">View Tour</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ticket Card 2 -->
+          <div class="ticket-card">
+            <div class="ticket-image">
+              <img
+                src="https://images.unsplash.com/photo-1513183564737-dce0a9c8c7da"
+                alt="Burj Khalifa Aerial View"
+                class="ticket-img"
+              />
+            </div>
+            <div class="ticket-content">
+              <h3 class="ticket-title">
+                Burj Khalifa Sky Level Ticket, Levels 124, 124 and 148
+              </h3>
+
+              <div class="ticket-price-row">
+                <div class="ticket-price">
+                  <span class="price-amount">£9,475</span>
+                  <span class="price-suffix">pp</span>
+                </div>
+                <a href="#" class="view-tour-btn">View Tour</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ticket Card 3 -->
+          <div class="ticket-card">
+            <div class="ticket-image">
+              <img
+                src="https://images.unsplash.com/photo-1544085421-099ac440993e"
+                alt="Burj Khalifa Restaurant View"
+                class="ticket-img"
+              />
+            </div>
+            <div class="ticket-content">
+              <h3 class="ticket-title">
+                Burj Khalifa VIP Ticket Lounge Access at Level 152
+              </h3>
+
+              <div class="ticket-price-row">
+                <div class="ticket-price">
+                  <span class="price-amount">£18,974</span>
+                  <span class="price-suffix">pp</span>
+                </div>
+                <a href="#" class="view-tour-btn">View Tour</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ticket Card 4 -->
+          <div class="ticket-card">
+            <div class="ticket-image">
+              <img
+                src="https://images.unsplash.com/photo-1508020963102-c6c723be5764"
+                alt="Sunset at Burj Khalifa"
+                class="ticket-img"
+              />
+            </div>
+            <div class="ticket-content">
+              <h3 class="ticket-title">
+                Burj Khalifa Level 124, 125 Ticket and Cafe Access
+              </h3>
+
+              <div class="ticket-price-row">
+                <div class="ticket-price">
+                  <span class="price-amount">£4,726</span>
+                  <span class="price-suffix">pp</span>
+                </div>
+                <a href="#" class="view-tour-btn">View Tour</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tours Section -->
+    <section class="section" id="tours-section">
+      <div class="container section-inner">
+        <h2 class="section-title">
+          <i class="fas fa-map-marker-alt"></i>
+          <span id="tours-title">Burj Khalifa Tours</span>
+        </h2>
+
+        <p class="section-description" id="tours-description">
+          Burj Khalifa tours offer the chance to ascend the world's tallest
+          building, providing breathtaking panoramic views of Dubai's skyline.
+          Visitors can access observation decks on various levels, experiencing
+          the city from an unparalleled perspective.
+        </p>
+
+        <div class="tours-grid">
+          <!-- Tour Card 1 -->
+          <div class="tour-card">
+            <div class="tour-image">
+              <img
+                src="https://images.unsplash.com/photo-1580835245051-e491d1fc457d"
+                alt="Observation Deck"
+                class="tour-img"
+              />
+            </div>
+            <div class="tour-content">
+              <h3 class="tour-title">
+                Burj Khalifa level 124 and 125 Entry Ticket
+              </h3>
+
+              <div class="price-container">
+                <div class="price-block">
+                  <div class="price-label">From</div>
+                  <div class="price-row">
+                    <div class="current-price">
+                      £2,149<span class="price-pp">pp</span>
+                    </div>
+                    <div class="original-price">
+                      £2,549<span class="price-pp">pp</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="savings-badge">
+                  <i class="fas fa-tag"></i> Save £400
+                </div>
+              </div>
+
+              <div class="tour-actions">
+                <a href="#" class="phone-btn">
+                  <i class="fas fa-phone-alt"></i>
+                </a>
+                <a href="#" class="view-deal-btn">View Deal</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tour Card 2 -->
+          <div class="tour-card">
+            <div class="tour-image">
+              <img
+                src="https://images.unsplash.com/photo-1510547697459-9663194fefd0"
+                alt="Burj Khalifa Sky Level"
+                class="tour-img"
+              />
+            </div>
+            <div class="tour-content">
+              <h3 class="tour-title">
+                Burj Khalifa Sky Level Ticket, Level 124, 125 & 148
+              </h3>
+
+              <div class="price-container">
+                <div class="price-block">
+                  <div class="price-label">From</div>
+                  <div class="price-row">
+                    <div class="current-price">
+                      £2,149<span class="price-pp">pp</span>
+                    </div>
+                    <div class="original-price">
+                      £2,549<span class="price-pp">pp</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="savings-badge">
+                  <i class="fas fa-tag"></i> Save £400
+                </div>
+              </div>
+
+              <div class="tour-actions">
+                <a href="#" class="phone-btn">
+                  <i class="fas fa-phone-alt"></i>
+                </a>
+                <a href="#" class="view-deal-btn">View Deal</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tour Card 3 -->
+          <div class="tour-card">
+            <div class="tour-image">
+              <img
+                src="https://images.unsplash.com/photo-1568197311131-fedaa0f8b9d0"
+                alt="Dubai Aquarium"
+                class="tour-img"
+              />
+            </div>
+            <div class="tour-content">
+              <h3 class="tour-title">
+                Aquarium & Burj Khalifa Levels 124 & 125 Combo Ticket
+              </h3>
+
+              <div class="price-container">
+                <div class="price-block">
+                  <div class="price-label">From</div>
+                  <div class="price-row">
+                    <div class="current-price">
+                      £2,149<span class="price-pp">pp</span>
+                    </div>
+                    <div class="original-price">
+                      £2,549<span class="price-pp">pp</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="savings-badge">
+                  <i class="fas fa-tag"></i> Save £400
+                </div>
+              </div>
+
+              <div class="tour-actions">
+                <a href="#" class="phone-btn">
+                  <i class="fas fa-phone-alt"></i>
+                </a>
+                <a href="#" class="view-deal-btn">View Deal</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hotels Section -->
+    <section class="section" id="hotels-section">
+      <div class="container section-inner">
+        <h2 class="section-title">
+          <i class="fas fa-hotel"></i>
+          <span id="hotels-title">Burj Khalifa Hotel to Stay</span>
+        </h2>
+
+        <div class="hotels-container">
+          <div class="hotels-wrapper">
+            <!-- Hotel Card 1 -->
+            <div class="hotel-card">
+              <div class="hotel-image">
+                <div class="special-offer-tag">Special Offer</div>
+                <img
+                  src="https://images.unsplash.com/photo-1590073242678-70ee3fc28f17"
+                  alt="Atlantis The Palm"
+                  class="hotel-img"
+                />
+              </div>
+
+              <div class="hotel-content">
+                <div class="location-nights">
+                  <div class="location">
+                    <i class="fas fa-map-marker-alt"></i> Dubai | 5 Nights
+                  </div>
+                  <div class="rating">
+                    <span>4.9</span>
+                    <i class="fas fa-star"></i>
+                  </div>
+                </div>
+
+                <h3 class="hotel-title">
+                  Atlantis The Palm with Extraordinary Experiences
+                </h3>
+
+                <div class="amenities">
+                  <div class="amenity">
+                    <i class="fas fa-plane"></i>
+                    <span>Flights</span>
+                  </div>
+                  <div class="amenity">
+                    <i class="fas fa-hotel"></i>
+                    <span>Hotel</span>
+                  </div>
+                  <div class="amenity">
+                    <i class="fas fa-car"></i>
+                    <span>Transfers</span>
+                  </div>
+                  <div class="amenity">
+                    <i class="fas fa-utensils"></i>
+                    <span>Full Board</span>
+                  </div>
+                </div>
+
+                <ul class="hotel-features">
+                  <li>Lorem ipsum dolor sit amet, consectetuer</li>
+                  <li>Lorem ipsum dolor sit amet, consectetuer</li>
+                  <li>Lorem ipsum dolor sit amet, consectetuer</li>
+                </ul>
+
+                <div class="hotel-price-container">
+                  <div class="price-block">
+                    <div class="price-label">From</div>
+                    <div class="price-row">
+                      <div class="current-price">
+                        £2,149<span class="price-pp">pp</span>
+                      </div>
+                      <div class="original-price">
+                        £2,549<span class="price-pp">pp</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="savings-badge">
+                    <i class="fas fa-tag"></i> Save £400
+                  </div>
+                </div>
+
+                <div class="hotel-actions">
+                  <a href="#" class="phone-btn">
+                    <i class="fas fa-phone-alt"></i>
+                  </a>
+                  <a href="#" class="view-deal-btn">View Deal</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Hotel Card 2 -->
+            <div class="hotel-card">
+              <div class="hotel-image">
+                <div class="special-offer-tag">Special Offer</div>
+                <img
+                  src="https://images.unsplash.com/photo-1590073242678-70ee3fc28f17"
+                  alt="Atlantis The Palm"
+                  class="hotel-img"
+                />
+              </div>
+
+              <div class="hotel-content">
+                <div class="location-nights">
+                  <div class="location">
+                    <i class="fas fa-map-marker-alt"></i> Dubai | 5 Nights
+                  </div>
+                  <div class="rating">
+                    <span>4.9</span>
+                    <i class="fas fa-star"></i>
+                  </div>
+                </div>
+
+                <h3 class="hotel-title">
+                  Atlantis The Palm with Extraordinary Experiences
+                </h3>
+
+                <div class="amenities">
+                  <div class="amenity">
+                    <i class="fas fa-plane"></i>
+                    <span>Flights</span>
+                  </div>
+                  <div class="amenity">
+                    <i class="fas fa-hotel"></i>
+                    <span>Hotel</span>
+                  </div>
+                  <div class="amenity">
+                    <i class="fas fa-car"></i>
+                    <span>Transfers</span>
+                  </div>
+                  <div class="amenity">
+                    <i class="fas fa-utensils"></i>
+                    <span>Full Board</span>
+                  </div>
+                </div>
+
+                <ul class="hotel-features">
+                  <li>Lorem ipsum dolor sit amet, consectetuer</li>
+                  <li>Lorem ipsum dolor sit amet, consectetuer</li>
+                  <li>Lorem ipsum dolor sit amet, consectetuer</li>
+                </ul>
+
+                <div class="hotel-price-container">
+                  <div class="price-block">
+                    <div class="price-label">From</div>
+                    <div class="price-row">
+                      <div class="current-price">
+                        £2,149<span class="price-pp">pp</span>
+                      </div>
+                      <div class="original-price">
+                        £2,549<span class="price-pp">pp</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="savings-badge">
+                    <i class="fas fa-tag"></i> Save £400
+                  </div>
+                </div>
+
+                <div class="hotel-actions">
+                  <a href="#" class="phone-btn">
+                    <i class="fas fa-phone-alt"></i>
+                  </a>
+                  <a href="#" class="view-deal-btn">View Deal</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Hotel Card 2 -->
+            <div class="hotel-card">
+              <div class="hotel-image">
+                <div class="special-offer-tag">Special Offer</div>
+                <img
+                  src="https://images.unsplash.com/photo-1590073242678-70ee3fc28f17"
+                  alt="Atlantis The Palm"
+                  class="hotel-img"
+                />
+              </div>
+
+              <div class="hotel-content">
+                <div class="location-nights">
+                  <div class="location">
+                    <i class="fas fa-map-marker-alt"></i> Dubai | 5 Nights
+                  </div>
+                  <div class="rating">
+                    <span>4.9</span>
+                    <i class="fas fa-star"></i>
+                  </div>
+                </div>
+
+                <h3 class="hotel-title">
+                  Atlantis The Palm with Extraordinary Experiences
+                </h3>
+
+                <div class="amenities">
+                  <div class="amenity">
+                    <i class="fas fa-plane"></i>
+                    <span>Flights</span>
+                  </div>
+                  <div class="amenity">
+                    <i class="fas fa-hotel"></i>
+                    <span>Hotel</span>
+                  </div>
+                  <div class="amenity">
+                    <i class="fas fa-car"></i>
+                    <span>Transfers</span>
+                  </div>
+                  <div class="amenity">
+                    <i class="fas fa-utensils"></i>
+                    <span>Full Board</span>
+                  </div>
+                </div>
+
+                <ul class="hotel-features">
+                  <li>Lorem ipsum dolor sit amet, consectetuer</li>
+                  <li>Lorem ipsum dolor sit amet, consectetuer</li>
+                  <li>Lorem ipsum dolor sit amet, consectetuer</li>
+                </ul>
+
+                <div class="hotel-price-container">
+                  <div class="price-block">
+                    <div class="price-label">From</div>
+                    <div class="price-row">
+                      <div class="current-price">
+                        £2,149<span class="price-pp">pp</span>
+                      </div>
+                      <div class="original-price">
+                        £2,549<span class="price-pp">pp</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="savings-badge">
+                    <i class="fas fa-tag"></i> Save £400
+                  </div>
+                </div>
+
+                <div class="hotel-actions">
+                  <a href="#" class="phone-btn">
+                    <i class="fas fa-phone-alt"></i>
+                  </a>
+                  <a href="#" class="view-deal-btn">View Deal</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slider Button (positioned to match the image) -->
+          <button
+            class="hotels-slider-btn"
+            id="hotelsNextBtn"
+            aria-label="View more hotels"
+          >
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+
+        <!-- View All Deals Button -->
+        <div class="view-all-container">
+          <a href="#" class="view-all-btn">
+            View All Deals
+            <i class="fas fa-chevron-right"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Photos Gallery Section -->
+    <section class="section photos-section" id="photos-section">
+      <div class="container section-inner">
+        <h2 class="section-title">
+          <i class="fas fa-camera"></i>
+          <span id="photos-title">Burj Khalifa Photos</span>
+        </h2>
+
+        <div class="photo-filter">
+          <button class="filter-btn active">Inside</button>
+          <button class="filter-btn">Top floor view</button>
+        </div>
+
+        <div class="photos-gallery">
+          <!-- Main large photo -->
+          <div class="photo-item large">
+            <img
+              src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b"
+              alt="Burj Khalifa Luxury Apartment"
+              class="gallery-img"
+            />
+          </div>
+
+          <!-- Small photos -->
+          <div class="photo-item">
+            <img
+              src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c"
+              alt="Burj Khalifa View"
+              class="gallery-img"
+            />
+          </div>
+
+          <div class="photo-item">
+            <img
+              src="https://images.unsplash.com/photo-1564501049412-61c2a3083791"
+              alt="Burj Khalifa Room View"
+              class="gallery-img"
+            />
+          </div>
+
+          <div class="photo-item">
+            <img
+              src="https://images.unsplash.com/photo-1513622470522-26c3c8a854bc"
+              alt="Burj Khalifa Sunset View"
+              class="gallery-img"
+            />
+          </div>
+
+          <div class="photo-item more-photos">
+            <img
+              src="https://images.unsplash.com/photo-1506272517653-5db26be1cbdd"
+              alt="More Burj Khalifa Photos"
+              class="gallery-img"
+            />
+            <div class="more-overlay">
+              <span>50+</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section
+      class="section faq-section"
+      id="faq-section"
+      style="max-width: 100vw"
+    >
+      <div class="container section-inner">
+        <h2 class="section-title" style="padding-left: 150px">
+          <i class="far fa-question-circle"></i>
+          <span id="faq-title">FAQ's</span>
+        </h2>
+
+        <div class="faq-container">
+          <!-- FAQ Item 1 (Open) -->
+          <div class="faq-item active">
+            <div class="faq-question">
+              <span>What is Lorem Ipsum?</span>
+              <button class="toggle-btn">
+                <i class="fas fa-minus"></i>
+              </button>
+            </div>
+            <div class="faq-answer">
+              <div class="answer-content">
+                <p>
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry. Lorem Ipsum has been the industry's
+                  standard dummy text ever since the 1500s, when an unknown
+                  printer took a galley of type and scrambled it to make a type
+                  specimen book. It has survived not only five centuries, but
+                  also the leap into electronic typesetting, remaining
+                  essentially unchanged. It was popularised in the 1960s with
+                  the release of Letraset sheets containing Lorem Ipsum
+                  passages, and more recently with desktop publishing software
+                  like Aldus PageMaker including versions of Lorem Ipsum.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item 2 (Closed) -->
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Where does it come from?</span>
+              <button class="toggle-btn">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+            <div class="faq-answer">
+              <div class="answer-content">
+                <p>
+                  Contrary to popular belief, Lorem Ipsum is not simply random
+                  text. It has roots in a piece of classical Latin literature
+                  from 45 BC, making it over 2000 years old. Richard McClintock,
+                  a Latin professor at Hampden-Sydney College in Virginia,
+                  looked up one of the more obscure Latin words, consectetur,
+                  from a Lorem Ipsum passage, and going through the cites of the
+                  word in classical literature, discovered the undoubtable
+                  source.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item 3 (Closed) -->
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Why do we use it?</span>
+              <button class="toggle-btn">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+            <div class="faq-answer">
+              <div class="answer-content">
+                <p>
+                  It is a long established fact that a reader will be distracted
+                  by the readable content of a page when looking at its layout.
+                  The point of using Lorem Ipsum is that it has a more-or-less
+                  normal distribution of letters, as opposed to using 'Content
+                  here, content here', making it look like readable English.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item 4 (Closed) -->
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Where can I get some?</span>
+              <button class="toggle-btn">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+            <div class="faq-answer">
+              <div class="answer-content">
+                <p>
+                  There are many variations of passages of Lorem Ipsum
+                  available, but the majority have suffered alteration in some
+                  form, by injected humour, or randomised words which don't look
+                  even slightly believable.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item 5 (Closed) -->
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Where does it come from?</span>
+              <button class="toggle-btn">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+            <div class="faq-answer">
+              <div class="answer-content">
+                <p>
+                  Contrary to popular belief, Lorem Ipsum is not simply random
+                  text. It has roots in a piece of classical Latin literature
+                  from 45 BC, making it over 2000 years old. Richard McClintock,
+                  a Latin professor at Hampden-Sydney College in Virginia,
+                  looked up one of the more obscure Latin words, consectetur,
+                  from a Lorem Ipsum passage, and going through the cites of the
+                  word in classical literature, discovered the undoubtable
+                  source.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Facts & Records Section -->
+    <section class="section facts-section" id="facts-section">
+      <div class="container section-inner">
+        <h2 class="section-title" style="padding-left: 110px">
+          <i class="fas fa-list-alt"></i>
+          <span id="facts-title">Burj Khalifa Facts & Records</span>
+        </h2>
+
+        <div class="facts-container">
+          <!-- Fact Item 1 -->
+          <div class="fact-item">
+            <div class="fact-number">
+              <span>1</span>
+            </div>
+            <div class="fact-content">
+              <h3 class="fact-title">World's Tallest Structure</h3>
+              <p class="fact-description">
+                The Burj Khalifa stands as an awe-inspiring testament to human
+                ingenuity. Reaching a staggering height of 828 meters, it has
+                held the record for the world's tallest building since 2010. Its
+                silhouette dominates the Dubai skyline, offering unparalleled
+                panoramic views.
+              </p>
+            </div>
+          </div>
+
+          <!-- Fact Item 2 -->
+          <div class="fact-item">
+            <div class="fact-number">
+              <span>2</span>
+            </div>
+            <div class="fact-content">
+              <h3 class="fact-title">The Dubai Fountain Spectacle</h3>
+              <p class="fact-description">
+                Enhance your visit by witnessing the mesmerizing Dubai Fountain
+                show at its base. This synchronized water, light, and music
+                performance creates a captivating spectacle. The fountain's
+                powerful jets, illuminated by thousands of lights, dance to
+                various musical scores.
+              </p>
+            </div>
+          </div>
+
+          <!-- Fact Item 3 -->
+          <div class="fact-item">
+            <div class="fact-number">
+              <span>3</span>
+            </div>
+            <div class="fact-content">
+              <h3 class="fact-title">Multiple World Records</h3>
+              <p class="fact-description">
+                Beyond its height, the Burj Khalifa boasts numerous world
+                records. These include the tallest free-standing structure, the
+                highest number of stories, and the highest occupied floor. The
+                intricate engineering involved in its construction is a story of
+                innovative techniques and materials.
+              </p>
+            </div>
+          </div>
+
+          <!-- Fact Item 4 -->
+          <div class="fact-item">
+            <div class="fact-number">
+              <span>4</span>
+            </div>
+            <div class="fact-content">
+              <h3 class="fact-title">A Vertical City</h3>
+              <p class="fact-description">
+                The Burj Khalifa is more than just a tower; it's a vertical
+                city. It encompasses luxury residences, the Armani Hotel Dubai,
+                and fine dining establishments. This multi-purpose design offers
+                visitors a diverse range of experiences.
+              </p>
+            </div>
+          </div>
+
+          <!-- Fact Item 5 -->
+          <div class="fact-item">
+            <div class="fact-number">
+              <span>5</span>
+            </div>
+            <div class="fact-content">
+              <h3 class="fact-title">Artistic Integration</h3>
+              <p class="fact-description">
+                The Burj Khalifa harmoniously integrates art and design,
+                featuring numerous commissioned artworks. From Jaume Plensa's
+                swirling steel sculptures to the lobby's intricate glass panels,
+                art enriches the visitor experience. These artistic elements
+                reflect the building's global influence and cultural
+                significance.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Nearby Attractions Section -->
+    <section
+      class="section attractions-section"
+      id="nearby-attractions-section"
+    >
+      <div class="container section-inner">
+        <h2 class="section-title">
+          <i class="fas fa-monument"></i>
+          <span id="nearby-attractions-title"
+            >Burj Khalifa Nearby Attractions</span
+          >
+        </h2>
+
+        <div class="attractions-container">
+          <button
+            class="slider-btn prev-btn"
+            id="attractionsPrevBtn"
+            aria-label="Previous attractions"
+          >
+            <i class="fas fa-chevron-left"></i>
+          </button>
+
+          <div class="attractions-slider" id="attractionsSlider">
+            <!-- Attraction Card 1 -->
+            <div class="attraction-card">
+              <div class="attraction-img-container">
+                <img
+                  src="https://images.unsplash.com/photo-1582672060674-bc2bd808a8f5"
+                  alt="Burj Khalifa"
+                  class="attraction-img"
+                />
+              </div>
+              <h3 class="attraction-name">Burj Khalifa</h3>
+            </div>
+
+            <!-- Attraction Card 2 -->
+            <div class="attraction-card">
+              <div class="attraction-img-container">
+                <img
+                  src="https://images.unsplash.com/photo-1584551246679-0daf3d275d0f"
+                  alt="Dubai Mall"
+                  class="attraction-img"
+                />
+              </div>
+              <h3 class="attraction-name">Dubai Mall</h3>
+            </div>
+
+            <!-- Attraction Card 3 -->
+            <div class="attraction-card">
+              <div class="attraction-img-container">
+                <img
+                  src="https://images.unsplash.com/photo-1569110462378-8e0df7fb6ca0"
+                  alt="Dubai Fountain"
+                  class="attraction-img"
+                />
+              </div>
+              <h3 class="attraction-name">Dubai Fountain</h3>
+            </div>
+
+            <!-- Attraction Card 4 -->
+            <div class="attraction-card">
+              <div class="attraction-img-container">
+                <img
+                  src="https://images.unsplash.com/photo-1586627161720-ee2ef39ba56a"
+                  alt="Miracle Garden"
+                  class="attraction-img"
+                />
+              </div>
+              <h3 class="attraction-name">Miracle Garden</h3>
+            </div>
+
+            <!-- Additional attractions -->
+            <div class="attraction-card">
+              <div class="attraction-img-container">
+                <img
+                  src="https://images.unsplash.com/photo-1585412460859-4271d609bce3"
+                  alt="Dubai Frame"
+                  class="attraction-img"
+                />
+              </div>
+              <h3 class="attraction-name">Dubai Frame</h3>
+            </div>
+
+            <div class="attraction-card">
+              <div class="attraction-img-container">
+                <img
+                  src="https://images.unsplash.com/photo-1544655152-4dc84de1b0bf"
+                  alt="Dubai Opera"
+                  class="attraction-img"
+                />
+              </div>
+              <h3 class="attraction-name">Dubai Opera</h3>
+            </div>
+          </div>
+
+          <button
+            class="slider-btn next-btn"
+            id="attractionsNextBtn"
+            aria-label="Next attractions"
+          >
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+
+        <div class="more-attractions-container">
+          <a href="#" class="more-attractions-btn">
+            More Attractions in Dubai
+            <div class="arrow-icon">
+              <i class="fas fa-chevron-right"></i>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Beyond Burj Khalifa Section -->
+    <section class="section beyond-section" id="beyond-section">
+      <div class="container section-inner">
+        <h2 class="section-title">
+          <i class="fas fa-globe-americas"></i>
+          <span id="beyond-title">Beyond Burj Khalifa</span>
+        </h2>
+
+        <div class="beyond-slider-container">
+          <button
+            class="slider-btn prev-btn"
+            id="beyondPrevBtn"
+            aria-label="Previous famous buildings"
+          >
+            <i class="fas fa-chevron-left"></i>
+          </button>
+
+          <div class="beyond-slider" id="beyondSlider">
+            <!-- Tower Card 1 -->
+            <div class="tower-card">
+              <div class="tower-img-container">
+                <img
+                  src="https://images.unsplash.com/photo-1573126617899-41f1dffb196c"
+                  alt="Dubai Miracle Garden"
+                  class="tower-img"
+                />
+              </div>
+              <h3 class="tower-name">Dubai Miracle Garden</h3>
+            </div>
+
+            <!-- Tower Card 2 -->
+            <div class="tower-card">
+              <div class="tower-img-container">
+                <img
+                  src="https://images.unsplash.com/photo-1522614288668-a697127e9a23"
+                  alt="Shanghai Tower"
+                  class="tower-img"
+                />
+              </div>
+              <h3 class="tower-name">Shanghai Tower</h3>
+            </div>
+
+            <!-- Tower Card 3 -->
+            <div class="tower-card">
+              <div class="tower-img-container">
+                <img
+                  src="https://images.unsplash.com/photo-1578292858254-7cd80e13e5bc"
+                  alt="Lotte World Tower"
+                  class="tower-img"
+                />
+              </div>
+              <h3 class="tower-name">Lotte World Tower</h3>
+            </div>
+
+            <!-- Tower Card 4 -->
+            <div class="tower-card">
+              <div class="tower-img-container">
+                <img
+                  src="https://images.unsplash.com/photo-1587161584760-f18aa7313bed"
+                  alt="One World Trade Center"
+                  class="tower-img"
+                />
+              </div>
+              <h3 class="tower-name">One World Trade Center</h3>
+            </div>
+
+            <!-- Additional cards can be added here -->
+            <div class="tower-card">
+              <div class="tower-img-container">
+                <img
+                  src="https://images.unsplash.com/photo-1563292608-3a76f99012b3"
+                  alt="Taipei 101"
+                  class="tower-img"
+                />
+              </div>
+              <h3 class="tower-name">Taipei 101</h3>
+            </div>
+
+            <div class="tower-card">
+              <div class="tower-img-container">
+                <img
+                  src="https://images.unsplash.com/photo-1593463644214-8fc9503cc2e7"
+                  alt="Petronas Twin Towers"
+                  class="tower-img"
+                />
+              </div>
+              <h3 class="tower-name">Petronas Twin Towers</h3>
+            </div>
+          </div>
+
+          <button
+            class="slider-btn next-btn"
+            id="beyondNextBtn"
+            aria-label="Next famous buildings"
+          >
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- WhatsApp Subscription Section -->
+    <section class="whatsapp-subscription">
+      <div class="whatsapp-container">
+        <div class="whatsapp-content">
+          <h2 class="whatsapp-title">
+            Subscribe to our
+            <span class="whatsapp-logo-text"
+              ><i class="fab fa-whatsapp"></i> WhatsApp</span
+            >
+          </h2>
+          <p class="whatsapp-subtitle">
+            First access to our exclusive travel deals & offers
+          </p>
+          <a href="#" class="subscribe-button">Click here to Subscribe</a>
+        </div>
+        <div class="qr-code">
+          <img
+            src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://example.com/whatsapp"
+            alt="WhatsApp QR Code"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Subscription Section -->
+    <section class="newsletter-section">
+      <div class="newsletter-container">
+        <h3 class="newsletter-title">
+          Subscribe to our newsletter to get the best offers direct to your
+          inbox
+        </h3>
+
+        <form class="newsletter-form">
+          <input
+            type="text"
+            placeholder="First Name"
+            class="form-input"
+            required
+          />
+          <input
+            type="text"
+            placeholder="Last Name"
+            class="form-input"
+            required
+          />
+          <input
+            type="email"
+            placeholder="Email Address"
+            class="form-input"
+            required
+          />
+          <button type="submit" class="subscribe-btn">Subscribe</button>
+        </form>
+
+        <div class="social-icons">
+          <a href="#" class="social-icon facebook"
+            ><i class="fab fa-facebook-f"></i
+          ></a>
+          <a href="#" class="social-icon instagram"
+            ><i class="fab fa-instagram"></i
+          ></a>
+          <a href="#" class="social-icon twitter"
+            ><i class="fab fa-twitter"></i
+          ></a>
+          <a href="#" class="social-icon youtube"
+            ><i class="fab fa-youtube"></i
+          ></a>
+          <a href="#" class="social-icon tiktok"
+            ><i class="fab fa-tiktok"></i
+          ></a>
+          <a href="#" class="social-icon threads"
+            ><i class="fab fa-threads"></i
+          ></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="site-footer">
+      <div class="footer-container">
+        <div class="footer-top">
+          <!-- Left Column: Important Links -->
+          <div class="footer-column links-column">
+            <h3 class="footer-heading">IMPORTANT LINKS</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="#"><span class="arrow">→</span> ATOL Certificate</a>
+              </li>
+              <li>
+                <a href="#"><span class="arrow">→</span> ABTA Membership</a>
+              </li>
+              <li>
+                <a href="#"><span class="arrow">→</span> Travel Insurance</a>
+              </li>
+              <li>
+                <a href="#"><span class="arrow">→</span> Make Payment</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Middle Column: Quick Links -->
+          <div class="footer-column links-column">
+            <h3 class="footer-heading">QUICK LINKS</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="#"><span class="arrow">→</span> About Us</a>
+              </li>
+              <li>
+                <a href="#"><span class="arrow">→</span> Contact Us</a>
+              </li>
+              <li>
+                <a href="#"><span class="arrow">→</span> Blog</a>
+              </li>
+              <li>
+                <a href="#"><span class="arrow">→</span> Sitemap</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Right Column: Logo and Contact Info -->
+          <div class="footer-column contact-column">
+            <!-- Logo -->
+            <div class="footer-logo">
+              <div class="logo-text"><span class="lux">LUX</span>TRIPPER</div>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="contact-info">
+              <!-- Phone -->
+              <div class="contact-item">
+                <div class="contact-icon phone-icon">
+                  <i class="fas fa-phone-alt"></i>
+                </div>
+                <div class="contact-details">
+                  <h4>Call Us</h4>
+                  <div class="contact-group">
+                    <div class="contact-row">
+                      <div class="contact-label">Sales</div>
+                      <div class="contact-value">0203 023 7776</div>
+                    </div>
+                    <div class="contact-row">
+                      <div class="contact-label">Customer Support</div>
+                      <div class="contact-value">0203 023 7775</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Email -->
+              <div class="contact-item">
+                <div class="contact-icon email-icon">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div class="contact-details">
+                  <h4>Email Address</h4>
+                  <div class="contact-group">
+                    <div class="contact-row">
+                      <div class="contact-label">Sales</div>
+                      <div class="contact-value">
+                        concierge@luxtripper.co.uk
+                      </div>
+                    </div>
+                    <div class="contact-row">
+                      <div class="contact-label">Customer Support</div>
+                      <div class="contact-value">helpdesk@luxtripper.co.uk</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Office -->
+              <div class="contact-item">
+                <div class="contact-icon location-icon">
+                  <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div class="contact-details">
+                  <h4>Office</h4>
+                  <div class="address">
+                    10-11 Percy Street, Fitzrovia, London, W1T 1DN
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Horizontal divider -->
+        <div class="footer-divider"></div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+          <div class="footer-left">
+            <ul class="legal-links">
+              <li><a href="#">Terms & Conditions</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+            </ul>
+          </div>
+          <div class="footer-right">
+            <p class="copyright">© 2025 Luxtripper. All rights reserved.</p>
+            <p class="company-info">A trading division of Moresand Ltd</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Function to fetch section data from the API
+      async function fetchSectionData() {
+        try {
+          const response = await fetch("/api/public/sections");
+          if (!response.ok) {
+            throw new Error("Failed to fetch sections data");
+          }
+          const data = await response.json();
+          return data.sections;
+        } catch (error) {
+          console.error("Error fetching section data:", error);
+          return [];
+        }
+      }
+
+      // Function to update page content with section data
+      function updatePageContent(sections) {
+        if (!sections || sections.length === 0) return;
+
+        sections.forEach((section) => {
+          if (!section.isActive) return;
+
+          switch (section.name) {
+            case "navbar":
+              updateNavbarSection(section);
+              break;
+            case "hero":
+              updateHeroSection(section);
+              break;
+            case "about":
+              updateAboutSection(section);
+              break;
+            case "history":
+              updateHistorySection(section);
+              break;
+            case "architecture":
+              updateArchitectureSection(section);
+              break;
+            case "travel":
+              updateTravelSection(section);
+              break;
+            case "opening-hours":
+              updateOpeningHoursSection(section);
+              break;
+            case "observation-decks":
+              updateObservationDecksSection(section);
+              break;
+            case "best-time":
+              updateBestTimeSection(section);
+              break;
+            case "best-ways":
+              updateElement("best-ways-title", section.content.title);
+              break;
+            case "tickets":
+              updateElement("tickets-title", section.content.title);
+              break;
+            case "tours":
+              updateToursSection(section);
+              break;
+            case "hotels":
+              updateElement("hotels-title", section.content.title);
+              break;
+            case "photos":
+              updateElement("photos-title", section.content.title);
+              break;
+            case "faq":
+              updateElement("faq-title", section.content.title);
+              break;
+            case "facts":
+              updateElement("facts-title", section.content.title);
+              break;
+            case "nearby-attractions":
+              updateElement("nearby-attractions-title", section.content.title);
+              break;
+            case "beyond":
+              updateElement("beyond-title", section.content.title);
+              break;
+          }
+        });
+      }
+
+      // Helper functions to update specific sections
+      function updateElement(id, content) {
+        const element = document.getElementById(id);
+        if (element && content) {
+          element.textContent = content;
+        }
+      }
+
+      // Function to update the navbar and header elements
+      function updateNavbarSection(section) {
+        console.log("Updating navbar with data:", section.content);
+
+        // Update logo
+        if (section.content.logo) {
+          const logoElement = document.querySelector(".logo");
+          if (logoElement) {
+            // Set logo link
+            logoElement.href = section.content.logo.url || "#";
+
+            // Set logo text with accent part
+            const accentText = section.content.logo.accentText || "LUX";
+            const fullText = section.content.logo.text || "LUXTRIPPER";
+            const nonAccentText = fullText.replace(accentText, "");
+
+            logoElement.innerHTML = `<span>${accentText}</span>${nonAccentText}`;
+          }
+        }
+
+        // Update contact phone
+        if (section.content.contactPhone) {
+          const phoneElement = document.querySelector(".phone span");
+          const phoneIcon = document.querySelector(".phone i");
+
+          if (phoneElement) {
+            phoneElement.textContent =
+              section.content.contactPhone.number || "";
+          }
+
+          if (phoneIcon && section.content.contactPhone.icon) {
+            phoneIcon.className = section.content.contactPhone.icon;
+          }
+        }
+
+        // Update CTA button
+        if (section.content.ctaButton) {
+          const ctaButton = document.querySelector(".cta-button");
+
+          if (ctaButton) {
+            ctaButton.textContent =
+              section.content.ctaButton.text || "Plan Your Trip";
+
+            // If the CTA is an anchor element
+            if (ctaButton.tagName === "A") {
+              ctaButton.href = section.content.ctaButton.url || "#";
+            }
+          }
+        }
+
+        // Update navigation menu items
+        if (section.content.menuItems && section.content.menuItems.length > 0) {
+          const navMenu = document.getElementById("nav-menu");
+
+          if (navMenu) {
+            // Sort menu items by order property
+            const sortedItems = [...section.content.menuItems].sort(
+              (a, b) => (a.order || 0) - (b.order || 0)
+            );
+
+            // Clear existing menu items
+            navMenu.innerHTML = "";
+
+            // Add each menu item
+            sortedItems.forEach((item) => {
+              const li = document.createElement("li");
+              const a = document.createElement("a");
+
+              a.href = item.url || "#";
+              a.textContent = item.text || "";
+
+              li.appendChild(a);
+              navMenu.appendChild(li);
+            });
+          }
+        }
+      }
+
+      // Helper function to fix image paths
+      function fixImagePath(imageUrl, defaultImage = null) {
+        // If no image provided or it's the default, just return it
+        if (!imageUrl || imageUrl === defaultImage) {
+          return defaultImage || "";
+        }
+
+        // Handle case where image path is already a full URL
+        if (imageUrl.startsWith("http")) {
+          return imageUrl; // Use as is
+        }
+
+        // Handle case where URL starts with /admin/public
+        if (imageUrl.includes("/public/")) {
+          // Convert to correct path
+          imageUrl = imageUrl.substring(imageUrl.indexOf("/public/") + 7);
+        }
+
+        // Ensure URL starts with a single slash
+        if (!imageUrl.startsWith("/")) {
+          imageUrl = "/" + imageUrl;
+        }
+
+        // Clean up any double slashes
+        imageUrl = imageUrl.replace(/\/\//g, "/");
+
+        return imageUrl;
+      }
+
+      function updateHeroSection(section) {
+        console.log("Updating hero section:", section);
+        updateElement("hero-title", section.content.title);
+        updateElement("hero-subtitle", section.content.subtitle);
+        updateElement("hero-location", section.content.location);
+
+        // Update background image if available
+        if (section.content.backgroundImage) {
+          console.log(
+            "Setting hero background image:",
+            section.content.backgroundImage
+          );
+
+          const heroSection = document.getElementById("hero-section");
+          if (heroSection) {
+            // Process image URL
+            const imageUrl = fixImagePath(section.content.backgroundImage);
+            console.log("Using image URL:", imageUrl);
+            heroSection.style.backgroundImage = `url('${imageUrl}')`;
+          } else {
+            console.error("Hero section element not found");
+          }
+        } else {
+          console.log("No background image provided for hero section");
+        }
+
+        // Log the entire section content to help with debugging
+        console.log(
+          "Complete hero section content:",
+          JSON.stringify(section.content, null, 2)
+        );
+
+        // Update key points if available - Use more robust approach
+        if (section.content.keyPoints) {
+          console.log("Updating key points:", section.content.keyPoints);
+
+          // Get the container for the key points
+          const pointsGrid = document.querySelector(".points-grid");
+          if (!pointsGrid) {
+            console.error("Points grid not found");
+            return;
+          }
+
+          // Clear existing key points
+          pointsGrid.innerHTML = "";
+
+          // Function to create a key point card
+          function createKeyPointCard(keyPoint) {
+            // Determine the title, icon, and content
+            const title = keyPoint.title || "Key Point";
+            const icon = keyPoint.icon || "fas fa-info-circle";
+            const content = keyPoint.detail || keyPoint.value || "";
+
+            // Create special classes for some cards based on size property or title
+            let specialClass = "";
+            if (keyPoint.size === "major") {
+              specialClass = "address-card"; // Use address-card class for major cards
+            } else if (title.toLowerCase().includes("address")) {
+              // For backward compatibility - address cards are major by default
+              specialClass = "address-card";
+            }
+
+            // Create the HTML for the card
+            const cardHtml = `
+              <div class="point-card ${specialClass}">
+                <h4><i class="${icon}"></i> ${title}</h4>
+                <p>${content}</p>
+              </div>
+            `;
+
+            return cardHtml;
+          }
+
+          if (Array.isArray(section.content.keyPoints)) {
+            // New array-based structure - generate all key points
+            section.content.keyPoints.forEach((keyPoint) => {
+              if (keyPoint) {
+                const cardHtml = createKeyPointCard(keyPoint);
+                pointsGrid.insertAdjacentHTML("beforeend", cardHtml);
+              }
+            });
+          } else {
+            // Legacy object-based structure for backward compatibility
+            const pointsToUpdate = [
+              { name: "opened", title: "Opened" },
+              { name: "floors", title: "Floors" },
+              { name: "height", title: "Height" },
+              { name: "owner", title: "Owner" },
+              { name: "cost", title: "Cost of build" },
+              { name: "elevators", title: "Elevators" },
+              { name: "address", title: "Address" },
+            ];
+
+            // Create each key point
+            pointsToUpdate.forEach((point) => {
+              const keyPointData = section.content.keyPoints[point.name];
+              if (keyPointData) {
+                // Add the title to the key point data for the card creation function
+                keyPointData.title = point.title;
+                const cardHtml = createKeyPointCard(keyPointData);
+                pointsGrid.insertAdjacentHTML("beforeend", cardHtml);
+              }
+            });
+          }
+        } else {
+          console.log("No key points data available");
+        }
+      }
+
+      function updateAboutSection(section) {
+        updateElement("about-title", section.content.title);
+        updateElement("about-description", section.content.description);
+      }
+
+      function updateHistorySection(section) {
+        updateElement("history-title", section.content.title);
+        updateElement("history-description", section.content.description);
+
+        const historyImage = document.getElementById("history-image");
+        if (historyImage && section.content.image) {
+          // Process image URL
+          const imageUrl = fixImagePath(section.content.image);
+          console.log("Using history image URL:", imageUrl);
+          historyImage.src = imageUrl;
+        }
+      }
+
+      function updateArchitectureSection(section) {
+        updateElement("architecture-title", section.content.title);
+        updateElement("architecture-description", section.content.description);
+
+        const architectureImage = document.getElementById("architecture-image");
+        if (architectureImage && section.content.image) {
+          // Process image URL
+          const imageUrl = fixImagePath(section.content.image);
+          console.log("Using architecture image URL:", imageUrl);
+          architectureImage.src = imageUrl;
+        }
+
+        // Update architecture cards if available
+        if (
+          section.content.archCards &&
+          Array.isArray(section.content.archCards)
+        ) {
+          console.log(
+            "Updating architecture cards:",
+            section.content.archCards
+          );
+
+          // Get the container for the architecture cards
+          const archCardsContainer = document.querySelector(".arch-cards");
+          if (!archCardsContainer) {
+            console.error("Architecture cards container not found");
+            return;
+          }
+
+          // Clear existing cards
+          archCardsContainer.innerHTML = "";
+
+          // Add each architecture card
+          section.content.archCards.forEach((card) => {
+            if (!card) return; // Skip invalid cards
+
+            // Create elements for the card
+            const archCard = document.createElement("div");
+            archCard.className = "arch-card";
+
+            // Add full-width class if specified
+            if (card.isFullWidth === true || card.isFullWidth === "true") {
+              archCard.classList.add("full-width");
+            }
+
+            // Create the card content
+            archCard.innerHTML = `
+              <div class="arch-card-label">
+                <i class="${card.icon || "fas fa-info-circle"}"></i> ${
+              card.label || "Arch Card"
+            }
+              </div>
+              <div class="arch-card-content">
+                <p>${card.content || ""}</p>
+                ${
+                  card.secondary
+                    ? `<p class="arch-secondary">${card.secondary}</p>`
+                    : ""
+                }
+              </div>
+            `;
+
+            // Add the card to the container
+            archCardsContainer.appendChild(archCard);
+          });
+        }
+      }
+
+      function updateTravelSection(section) {
+        updateElement("travel-title", section.content.title);
+        updateElement("travel-description", section.content.description);
+      }
+
+      function updateOpeningHoursSection(section) {
+        updateElement("opening-hours-title", section.content.title);
+        updateElement("opening-hours-description", section.content.description);
+      }
+
+      function updateObservationDecksSection(section) {
+        updateElement("observation-decks-title", section.content.title);
+
+        // Handle observation decks if they exist
+        const decksContainer = document.getElementById(
+          "observation-decks-container"
+        );
+        if (!decksContainer) {
+          console.error("Observation decks container not found");
+          return;
+        }
+
+        // Clear existing content
+        decksContainer.innerHTML = "";
+
+        // Check if decks array exists
+        if (
+          section.content.decks &&
+          Array.isArray(section.content.decks) &&
+          section.content.decks.length > 0
+        ) {
+          section.content.decks.forEach((deck) => {
+            if (!deck) return; // Skip invalid deck entries
+
+            const deckCard = document.createElement("div");
+            deckCard.className = "deck-card";
+
+            // Use default image if none provided
+            const defaultImage = "/images/default-deck.jpg";
+            const imageUrl = fixImagePath(deck.image, defaultImage);
+
+            console.log("Using deck image URL:", imageUrl);
+
+            deckCard.innerHTML = `
+              <div class="deck-image">
+                <img src="${imageUrl}" alt="${
+              deck.title || "Observation Deck"
+            }" class="deck-img">
+              </div>
+              <div class="deck-details">
+                <h3 class="deck-title">${deck.title || "Observation Deck"}</h3>
+                <ul class="deck-info">
+                  <li>
+                    <i class="fas fa-check"></i>
+                    <span><strong>Floors - </strong>${
+                      deck.floors || "N/A"
+                    }</span>
+                  </li>
+                  <li>
+                    <i class="fas fa-check"></i>
+                    <span>
+                      <strong>Opening time - </strong><br>
+                      Weekdays : ${deck.openingWeekdays || "N/A"}<br>
+                      Weekends : ${deck.openingWeekends || "N/A"}
+                    </span>
+                  </li>
+                  <li>
+                    <i class="fas fa-check"></i>
+                    <span><strong>Closing times - </strong>${
+                      deck.closing || "N/A"
+                    }</span>
+                  </li>
+                </ul>
+              </div>
+            `;
+
+            decksContainer.appendChild(deckCard);
+          });
+        } else {
+          // Display a message if no decks are found
+          decksContainer.innerHTML = `
+            <div class="no-decks-message">
+              <p>No observation deck information available.</p>
+            </div>
+          `;
+        }
+      }
+
+      function updateBestTimeSection(section) {
+        updateElement("best-time-title", section.content.title);
+        updateElement("best-time-description", section.content.description);
+      }
+
+      function updateToursSection(section) {
+        updateElement("tours-title", section.content.title);
+        updateElement("tours-description", section.content.description);
+      }
+
+      // Function to display error messages
+      function displayError(message) {
+        console.error("Error:", message);
+
+        // Create an error message element
+        const errorElement = document.createElement("div");
+        errorElement.className = "error-message";
+        errorElement.style.cssText =
+          "background: #ffeeee; color: #d32f2f; padding: 15px; margin: 20px auto; max-width: 80%; border-radius: 4px; text-align: center;";
+        errorElement.innerHTML = `
+          <h3 style="margin-top: 0;">Error Loading Content</h3>
+          <p>${message}</p>
+          <p>Please refresh the page or try again later.</p>
+        `;
+
+        // Add to the page
+        const mainContent =
+          document.querySelector(".page-content") || document.body;
+        mainContent.prepend(errorElement);
+      }
+
+      // Initialize the page
+      document.addEventListener("DOMContentLoaded", async () => {
+        console.log("Fetching section data from database...");
+        try {
+          const sections = await fetchSectionData();
+          console.log("Retrieved sections:", sections);
+
+          if (!sections || sections.length === 0) {
+            displayError(
+              "No content sections found. The database might be empty or there might be connection issues."
+            );
+            return;
+          }
+
+          updatePageContent(sections);
+        } catch (error) {
+          displayError("Failed to load content: " + error.message);
+        }
+      });
+    </script>
+
+    <script src="javascirpt.js"></script>
+  </body>
+</html>

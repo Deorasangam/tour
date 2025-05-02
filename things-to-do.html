@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Panel - Things to Do</title>
+    <link rel="stylesheet" type="text/css" href="/css/admin-styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header>
+      <div class="container">
+        <div class="logo">
+          <h1><span class="highlight">ADMIN</span> PANEL</h1>
+        </div>
+        <nav>
+          <ul class="main-nav">
+            <li>
+              <a href="#"><i class="fas fa-home"></i> Dashboard</a>
+            </li>
+            <li>
+              <a href="#"><i class="fas fa-list"></i> Attractions</a>
+            </li>
+            <li>
+              <a href="#"><i class="fas fa-users"></i> Users</a>
+            </li>
+            <li>
+              <a href="#"><i class="fas fa-cog"></i> Settings</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="page-content">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="filters">
+          <h3>Filters</h3>
+          <div class="search-box">
+            <input type="text" placeholder="Search attractions..." />
+          </div>
+
+          <div class="filter-group">
+            <h4>Status</h4>
+            <div class="filter-options">
+              <label><input type="checkbox" checked /> Active</label>
+              <label><input type="checkbox" /> Draft</label>
+              <label><input type="checkbox" /> Inactive</label>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <h4>Categories</h4>
+            <div class="filter-options">
+              <label><input type="checkbox" /> Attractions</label>
+              <label><input type="checkbox" /> Activities</label>
+              <label><input type="checkbox" /> Historical Places</label>
+              <label><input type="checkbox" /> Waterparks</label>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <h4>Tags</h4>
+            <div class="filter-options">
+              <label><input type="checkbox" /> Family</label>
+              <label><input type="checkbox" /> Kids</label>
+              <label><input type="checkbox" /> Couples</label>
+              <label><input type="checkbox" /> Free</label>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Content Area -->
+      <section class="content">
+        <div class="admin-controls">
+          <button class="admin-btn btn-add">
+            <i class="fas fa-plus"></i> Add New Attraction
+          </button>
+          <button class="admin-btn btn-edit">
+            <i class="fas fa-file-export"></i> Export Data
+          </button>
+        </div>
+
+        <h1>Manage Attractions</h1>
+
+        <div class="attractions-list">
+          <!-- Attraction Item 1 -->
+          <div class="attraction-item" data-id="1">
+            <div class="attraction-number">1</div>
+            <div class="attraction-image">
+              <img
+                src="https://images.unsplash.com/photo-1582672060674-bc2bd808a8b5"
+                alt="Burj Khalifa"
+              />
+            </div>
+            <div class="attraction-content">
+              <div class="attraction-tags">
+                <span class="tag">Family</span>
+                <span class="status-badge status-active">Active</span>
+              </div>
+              <h3>Burj Khalifa</h3>
+              <div class="admin-controls">
+                <button class="admin-btn btn-edit">
+                  <i class="fas fa-edit"></i> Edit
+                </button>
+                <button class="admin-btn btn-delete">
+                  <i class="fas fa-trash"></i> Delete
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Attraction Item 2 -->
+          <div class="attraction-item" data-id="2">
+            <div class="attraction-number">2</div>
+            <div class="attraction-image">
+              <img
+                src="https://images.pexels.com/photos/2044434/pexels-photo-2044434.jpeg"
+                alt="Dubai Mall"
+              />
+            </div>
+            <div class="attraction-content">
+              <div class="attraction-tags">
+                <span class="tag">Shopping</span>
+                <span class="status-badge status-draft">Draft</span>
+              </div>
+              <h3>Dubai Mall</h3>
+              <div class="admin-controls">
+                <button class="admin-btn btn-edit">
+                  <i class="fas fa-edit"></i> Edit
+                </button>
+                <button class="admin-btn btn-delete">
+                  <i class="fas fa-trash"></i> Delete
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Add more attraction items as needed -->
+        </div>
+      </section>
+    </main>
+
+    <script src="/js/admin.js"></script>
+  </body>
+</html>

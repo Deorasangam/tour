@@ -1,0 +1,283 @@
+/* Admin Panel Styles */
+:root {
+  --primary-color: #34c2ff;
+  --secondary-color: #f8f8f8;
+  --dark-color: #333;
+  --light-color: #fff;
+  --grey-color: #ccc;
+  --light-grey: #f4f4f4;
+  --success-color: #28a745;
+  --warning-color: #ffc107;
+  --danger-color: #dc3545;
+}
+
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  line-height: 1.6;
+  background-color: #f0f2f5;
+}
+
+/* Admin Header */
+header {
+  background-color: var(--light-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.logo h1 {
+  font-size: 1.5rem;
+  color: var(--dark-color);
+}
+
+.main-nav {
+  display: flex;
+  gap: 2rem;
+}
+
+.main-nav a {
+  color: var(--dark-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.main-nav a:hover {
+  color: var(--primary-color);
+}
+
+/* Admin Content Layout */
+.page-content {
+  margin-top: 80px;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 2rem;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  background-color: var(--light-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: fit-content;
+}
+
+.filters h3 {
+  color: var(--dark-color);
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid var(--grey-color);
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+}
+
+.filter-group {
+  margin-bottom: 1.5rem;
+}
+
+.filter-group h4 {
+  color: var(--dark-color);
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.filter-options label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.8rem;
+  cursor: pointer;
+  color: var(--dark-color);
+}
+
+.filter-options input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--primary-color);
+}
+
+/* Main Content Area */
+.content {
+  background-color: var(--light-color);
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.content h1 {
+  color: var(--dark-color);
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+/* Attractions List */
+.attractions-list {
+  display: grid;
+  gap: 2rem;
+}
+
+.attraction-item {
+  background-color: var(--light-color);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.attraction-item:hover {
+  transform: translateY(-5px);
+}
+
+.attraction-number {
+  background-color: var(--primary-color);
+  color: var(--light-color);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+}
+
+.attraction-image {
+  position: relative;
+  height: 250px;
+}
+
+.attraction-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.attraction-content {
+  padding: 1.5rem;
+}
+
+.attraction-tags {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tag {
+  background-color: var(--primary-color);
+  color: var(--light-color);
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .page-content {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: sticky;
+    top: 90px;
+  }
+}
+
+@media (max-width: 768px) {
+  header .container {
+    padding: 1rem;
+  }
+
+  .main-nav {
+    display: none;
+  }
+
+  .content {
+    padding: 1rem;
+  }
+
+  .attraction-image {
+    height: 200px;
+  }
+}
+
+/* Admin Controls */
+.admin-controls {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.admin-btn {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-add {
+  background-color: var(--success-color);
+  color: var(--light-color);
+}
+
+.btn-edit {
+  background-color: var(--warning-color);
+  color: var(--dark-color);
+}
+
+.btn-delete {
+  background-color: var(--danger-color);
+  color: var(--light-color);
+}
+
+.admin-btn:hover {
+  opacity: 0.9;
+}
+
+/* Status Indicators */
+.status-badge {
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.status-active {
+  background-color: var(--success-color);
+  color: var(--light-color);
+}
+
+.status-draft {
+  background-color: var(--warning-color);
+  color: var(--dark-color);
+}
+
+.status-inactive {
+  background-color: var(--danger-color);
+  color: var(--light-color);
+}
